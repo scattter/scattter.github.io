@@ -17,8 +17,8 @@
 
 <script>
     (function () {
-        if ('123456') {
-            if (prompt('请输入文章密码') !== '123456') {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
                 alert('密码错误！');
                 if (history.length === 1) {
                     location.replace("http://xxxxxxx.xxx"); // 这里替换成你的首页
@@ -100,7 +100,7 @@
 
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -111,16 +111,15 @@
 
 
 
-<meta name="description" content="TCP信息的传递都是通过输入与输出流操作的，而UDP信息的传递都是通过Packet完成的。 1.文件上传Client  1、建立连接  使用Socket创建客户端+服务的地址和端口 2、操作输入输出流 3、释放资源  1234567891011121314public static void main(String[] args)&amp;#123;	Socket client &#x3D; new So">
+<meta name="description" content="装饰模式1.BufferedInputStream&amp;BufferedOutputStream在进行文件拷贝的时候，我们使用了缓冲数组进行数据的预先保存，这样能够减少IO操作进而增加处理效率。 为了进一步提高效率，在输入流的外面Java也提供了一个装饰器，经过该装饰器装饰后的IO流处理效率更高。 具体代码示例为： 12345678910111213141516171819public sta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java">
-<meta property="og:url" content="https://scattter.github.io/2020/01/01/Java/index.html">
+<meta property="og:title" content="装饰模式详述">
+<meta property="og:url" content="https://scattter.github.io/2020/01/01/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%BF%B0/index.html">
 <meta property="og:site_name" content="明天要下雨">
-<meta property="og:description" content="TCP信息的传递都是通过输入与输出流操作的，而UDP信息的传递都是通过Packet完成的。 1.文件上传Client  1、建立连接  使用Socket创建客户端+服务的地址和端口 2、操作输入输出流 3、释放资源  1234567891011121314public static void main(String[] args)&amp;#123;	Socket client &#x3D; new So">
-<meta property="article:published_time" content="2020-01-01T11:45:21.000Z">
-<meta property="article:modified_time" content="2020-01-01T11:46:06.772Z">
+<meta property="og:description" content="装饰模式1.BufferedInputStream&amp;BufferedOutputStream在进行文件拷贝的时候，我们使用了缓冲数组进行数据的预先保存，这样能够减少IO操作进而增加处理效率。 为了进一步提高效率，在输入流的外面Java也提供了一个装饰器，经过该装饰器装饰后的IO流处理效率更高。 具体代码示例为： 12345678910111213141516171819public sta">
+<meta property="article:published_time" content="2020-01-01T13:51:40.614Z">
+<meta property="article:modified_time" content="2019-11-18T13:40:17.241Z">
 <meta property="article:author" content="Scatter">
-<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
 
@@ -151,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://scattter.github.io/2020/01/01/Java/"/>
+  <link rel="canonical" href="https://scattter.github.io/2020/01/01/装饰模式详述/"/>
 
 
 
 
 
-  <title>Java | 明天要下雨</title>
+  <title>装饰模式详述 | 明天要下雨</title>
   
 
 
@@ -328,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://scattter.github.io/scattter.github.io/2020/01/01/Java/">
+    <link itemprop="mainEntityOfPage" href="https://scattter.github.io/scattter.github.io/2020/01/01/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Scatter">
@@ -345,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java</h1>
+          <h1 class="post-title" itemprop="name headline">装饰模式详述</h1>
         
 
         <div class="post-meta">
@@ -357,7 +356,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-01T19:45:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-01T21:51:40+08:00">
                 2020-01-01
               </time>
             
@@ -367,28 +366,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/scattter.github.io/categories/Study/" itemprop="url" rel="index">
-                    <span itemprop="name">Study</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -413,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  580
+                  1.1k
                 </span>
               
 
@@ -429,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -450,32 +427,38 @@
       
 
       
-        <p>TCP信息的传递都是通过输入与输出流操作的，而UDP信息的传递都是通过Packet完成的。</p>
-<h4 id="1-文件上传"><a href="#1-文件上传" class="headerlink" title="1.文件上传"></a>1.文件上传</h4><p><strong><em>Client</em></strong></p>
+        <h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><h4 id="1-BufferedInputStream-amp-BufferedOutputStream"><a href="#1-BufferedInputStream-amp-BufferedOutputStream" class="headerlink" title="1.BufferedInputStream&amp;BufferedOutputStream"></a>1.BufferedInputStream&amp;BufferedOutputStream</h4><p>在进行文件拷贝的时候，我们使用了缓冲数组进行数据的预先保存，这样能够减少IO操作进而增加处理效率。</p>
+<p>为了进一步提高效率，在输入流的外面Java也提供了一个装饰器，经过该装饰器装饰后的IO流处理效率更高。</p>
+<p>具体代码示例为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static void copy(String srcPath,String destPath) &#123;</span><br><span class="line">		File src &#x3D; new File(srcPath);</span><br><span class="line">		File dest &#x3D; new File(destPath);</span><br><span class="line">		&#x2F;&#x2F;增加BufferedInputStream后copy的效率提升许多</span><br><span class="line">		try(InputStream is &#x3D; new BufferedInputStream(new FileInputStream(src)) ;</span><br><span class="line">			OutputStream os &#x3D; new BufferedOutputStream(new FileOutputStream(dest))) &#123;</span><br><span class="line">			int len &#x3D; -1;</span><br><span class="line">			byte[] flush &#x3D; new byte[5];</span><br><span class="line">			while ((len&#x3D;is.read(flush))!&#x3D;-1) &#123;</span><br><span class="line">				os.write(flush,0,len);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(&quot;success&quot;);</span><br><span class="line">			os.flush();</span><br><span class="line">		&#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-BufferedReader-amp-BufferedWriter"><a href="#2-BufferedReader-amp-BufferedWriter" class="headerlink" title="2.BufferedReader&amp;BufferedWriter"></a>2.BufferedReader&amp;BufferedWriter</h4><p>相比于字节流，字符流多了两个方法，仅限于纯文本</p>
 <blockquote>
-<p>1、建立连接  使用Socket创建客户端+服务的地址和端口</p>
-<p>2、操作输入输出流</p>
-<p>3、释放资源</p>
+<p>1.readLine()方法,按行读取</p>
+<p>2.newLine()方法，换行</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">	Socket client &#x3D; new Socket(&quot;localhost&quot;,6666);</span><br><span class="line">	InputStream is &#x3D; new BufferedInputStream(new FileInputStream(filepath));</span><br><span class="line">	OutputStream os &#x3D; new BufferedOutputStream(client.getOutputStream());</span><br><span class="line">	byte[] flush &#x3D; new byte[1024];</span><br><span class="line">	int len &#x3D; -1;</span><br><span class="line">	while((len&#x3D;is.read(flush))!&#x3D;-1)&#123;</span><br><span class="line">		os.write(flush,0,len);</span><br><span class="line">	&#125;</span><br><span class="line">	os.flush();</span><br><span class="line">	os.close();</span><br><span class="line">	is.close();</span><br><span class="line">	client.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体代码为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static void copy(String srcPath,String destPath) &#123;</span><br><span class="line">		File src &#x3D; new File(srcPath);</span><br><span class="line">		File dest &#x3D; new File(destPath);</span><br><span class="line">		&#x2F;&#x2F;增加BufferedInputStream后copy的效率提升许多</span><br><span class="line">		try(BufferedReader br &#x3D; new BufferedReader(new FileReader(src)) ;</span><br><span class="line">			BufferedWriter bw &#x3D; new BufferedWriter(new FileWriter(dest))) &#123;</span><br><span class="line">			&#x2F;&#x2F;这两行可以省略</span><br><span class="line">			&#x2F;&#x2F;int len &#x3D; -1;</span><br><span class="line">			&#x2F;&#x2F;byte[] flush &#x3D; new byte[5];</span><br><span class="line">			Srting line &#x3D; null;</span><br><span class="line">			while ((line &#x3D; br.readline())!&#x3D;null) &#123;</span><br><span class="line">				bw.write(line);</span><br><span class="line">				bw.newLine();&#x2F;&#x2F;这里是换行</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(&quot;success&quot;);</span><br><span class="line">			bw.flush();</span><br><span class="line">		&#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong><em>Server</em></strong></p>
+<h4 id="3-InputStreamReader-amp-InputStreamWriter"><a href="#3-InputStreamReader-amp-InputStreamWriter" class="headerlink" title="3.InputStreamReader&amp;InputStreamWriter"></a>3.InputStreamReader&amp;InputStreamWriter</h4><p>字节流与字符流之间的桥梁，能将字节流转换为字符流，并且能为字节流指定字符集，可处理一个个的字符</p>
+<p>下面是读取网络流的代码：（<strong>字符流都要加上Buffered</strong>）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	try(BufferedReader reader &#x3D; new BufferedReader(</span><br><span class="line">			new InputStreamReader(</span><br><span class="line">					new URL(&quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot;).openStream(),&quot;UTF-8&quot;));</span><br><span class="line">		BufferedWriter writer &#x3D; new BufferedWriter(</span><br><span class="line">			new OutputStreamWriter(</span><br><span class="line">					new FileOutputStream(&quot;baidu.txt&quot;),&quot;GBK&quot;));)&#123;</span><br><span class="line">		String msg &#x3D; &quot;&quot;;</span><br><span class="line">		while ((msg&#x3D;reader.readLine())!&#x3D;null) &#123;</span><br><span class="line">			writer.write(msg);</span><br><span class="line">			writer.newLine();</span><br><span class="line">		&#125;</span><br><span class="line">		writer.flush();</span><br><span class="line">	&#125;catch(IOException e) &#123;</span><br><span class="line">		System.out.println(&quot;Wrrrrrrrong!&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-DataInputStream-amp-DataOutputStream"><a href="#4-DataInputStream-amp-DataOutputStream" class="headerlink" title="4.DataInputStream&amp;DataOutputStream"></a>4.DataInputStream&amp;DataOutputStream</h4><p> (<strong>这个不是太懂</strong>)</p>
+<p>数据输入流允许应用程序以与机器无关方式从底层输入流中读取基本 Java 数据类型 </p>
+<p>某东西转为字节数组或者某东西占用多少字节用这个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">	&#x2F;&#x2F;写出</span><br><span class="line">	ByteArrayOutputStream baos &#x3D; new ByteArrayOutputStream();</span><br><span class="line">	DataOutputStream dos &#x3D; new DataOutputStream(baos);</span><br><span class="line">	&#x2F;&#x2F;操作数据类型+数据</span><br><span class="line">	dos.writeUTF(&quot;你好&quot;);</span><br><span class="line">	dos.writeInt(18);</span><br><span class="line">	dos.writeBoolean(false);</span><br><span class="line">	dos.writeChar(&#39;s&#39;);</span><br><span class="line">	dos.flush();</span><br><span class="line">	byte[] datas &#x3D; baos.toByteArray();&#x2F;&#x2F;将baos内的数据读取到数组中</span><br><span class="line">	&#x2F;&#x2F;读取</span><br><span class="line">	DataInputStream dis &#x3D; new DataInputStream(new ByteArrayInputStream(datas));</span><br><span class="line">	&#x2F;&#x2F;顺序与写出一致</span><br><span class="line">	String msg &#x3D; dis.readUTF();</span><br><span class="line">	System.out.println(msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-ObjectInputStream-amp-ObjectOutputStream"><a href="#5-ObjectInputStream-amp-ObjectOutputStream" class="headerlink" title="5.ObjectInputStream&amp;ObjectOutputStream"></a>5.ObjectInputStream&amp;ObjectOutputStream</h4><p>序列化和反序列化</p>
 <blockquote>
-<p>1、指定端口 使用ServerSocket创建服务器</p>
-<p>2、阻塞式等待链接 accept  返回Socket</p>
-<p>3、操作输入输出流</p>
-<p>4、释放资源</p>
+<p>1.先写出后读取</p>
+<p>2.读取的顺序和写出的顺序保持一致</p>
+<p>3.不是所有的对象都可以序列化，必须实现Serialization接口</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">	ServerSocket server &#x3D; new ServerSocket(6666);</span><br><span class="line">	Socket socket &#x3D; server.accept();</span><br><span class="line">	</span><br><span class="line">	OutputStream os &#x3D; new BufferedOutputStream(new FileOutputStream(filepath));</span><br><span class="line">	InputStream is &#x3D; new BufferedInputStream(socket.getInputStream);</span><br><span class="line">	byte[] flush &#x3D; new byte[1024];</span><br><span class="line">	int len &#x3D; -1;</span><br><span class="line">	while((len&#x3D;is.read(flush))!&#x3D;-1)&#123;</span><br><span class="line">		os.write(flush,0,len);</span><br><span class="line">	&#125;</span><br><span class="line">	os.flush();</span><br><span class="line">	System.out.println(&quot;Picture has stored!&quot;);</span><br><span class="line">	os.close();</span><br><span class="line">	is.close();</span><br><span class="line">	client.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是写入文件的序列化和反序列化代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">public class TestObject &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws IOException, ClassNotFoundException &#123;</span><br><span class="line">		&#x2F;&#x2F;写入 序列化</span><br><span class="line">		&#x2F;&#x2F;ByteArrayOutputStream baos &#x3D; new ByteArrayOutputStream();&#x2F;&#x2F;如果是存到文件不需要这个</span><br><span class="line">		ObjectOutputStream oos &#x3D; new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(&quot;obj.ss&quot;)));</span><br><span class="line">		&#x2F;&#x2F;oos.writeUTF(&quot;你你你&quot;);</span><br><span class="line">		&#x2F;&#x2F;oos.writeInt(13);</span><br><span class="line">		oos.writeObject(&quot;哇哇哇哇&quot;);</span><br><span class="line">		Employee emp &#x3D; new Employee(&quot;mary&quot;,400);</span><br><span class="line">		oos.writeObject(emp);</span><br><span class="line">		oos.flush();</span><br><span class="line">		oos.close();</span><br><span class="line">		&#x2F;&#x2F;byte[] datas &#x3D; baos.toByteArray();&#x2F;&#x2F;如果是存到文件不需要这个</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;读取 反序列化</span><br><span class="line">		ObjectInputStream ois &#x3D; new ObjectInputStream(new BufferedInputStream(new FileInputStream(&quot;obj.ss&quot;)));</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;对象的数据还原 </span><br><span class="line">		Object str &#x3D; ois.readObject();</span><br><span class="line">		Object employee &#x3D; ois.readObject();</span><br><span class="line">		</span><br><span class="line">		&#x2F;&#x2F;类型需要手动去转</span><br><span class="line">		if (str instanceof String) &#123;</span><br><span class="line">			String strObj &#x3D; (String)str;</span><br><span class="line">			System.out.println(strObj);</span><br><span class="line">		&#125;</span><br><span class="line">		if (employee instanceof Employee) &#123;</span><br><span class="line">			Employee empObj &#x3D; (Employee)emp;</span><br><span class="line">			System.out.println(empObj.getName()+&quot;---&gt;&quot;+empObj.getSalary());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;创建一个新对象实验</span><br><span class="line">class Employee implements java.io.Serializable&#123;</span><br><span class="line">	private transient String name;&#x2F;&#x2F;transient是不进行反序列化</span><br><span class="line">	private double salary;</span><br><span class="line">	</span><br><span class="line">	public Employee() &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	public Employee(String name, double salary) &#123;</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">		this.salary &#x3D; salary;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public String getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setName(String name) &#123;</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">	&#125;</span><br><span class="line">	public double getSalary() &#123;</span><br><span class="line">		return salary;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setSalary(double salary) &#123;</span><br><span class="line">		this.salary &#x3D; salary;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-用户登录"><a href="#2-用户登录" class="headerlink" title="2.用户登录"></a>2.用户登录</h4><p><strong><em>Client</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws UnknownHostException, IOException &#123;</span><br><span class="line">	BufferedReader reader &#x3D; new BufferedReader(new InputStreamReader(System.in));</span><br><span class="line">	&#x2F;&#x2F;1、建立连接  使用Socket创建客户端+服务的地址和端口</span><br><span class="line">	Socket client &#x3D; new Socket(&quot;localhost&quot;,8888);</span><br><span class="line">	&#x2F;&#x2F;2、操作输入输出流	</span><br><span class="line">	DataOutputStream dos &#x3D; new DataOutputStream(client.getOutputStream());</span><br><span class="line">	System.out.print(&quot;输入你的用户名:&quot;);</span><br><span class="line">	dos.writeUTF(reader.readLine());</span><br><span class="line">	System.out.print(&quot;输入你的密码:&quot;);</span><br><span class="line">	dos.writeUTF(reader.readLine());</span><br><span class="line">	&#x2F;*</span><br><span class="line">	&#x2F;&#x2F;另一种比较正式的写入</span><br><span class="line">	System.out.print(&quot;输入你的用户名:&quot;);</span><br><span class="line">	String uname &#x3D; reader.readLine();</span><br><span class="line">	System.out.print(&quot;输入你的密码:&quot;);</span><br><span class="line">	String upwd &#x3D; reader.readLine();</span><br><span class="line">	dos.writeUTF(&quot;uname:&quot;+uname+&quot;&amp;&quot;+&quot;upwd&quot;+upwd);</span><br><span class="line">	*&#x2F;</span><br><span class="line">	dos.flush();</span><br><span class="line">	&#x2F;&#x2F;这里是接收服务器返回信息：登陆成功or失败</span><br><span class="line">	DataInputStream dis &#x3D; new DataInputStream(client.getInputStream());</span><br><span class="line">	String data &#x3D; dis.readUTF();</span><br><span class="line">	System.out.println(data);</span><br><span class="line">	&#x2F;&#x2F;3、释放资源</span><br><span class="line">	dos.close();</span><br><span class="line">	client.close();</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong><em>Server</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)&#123;</span><br><span class="line">	ServerSocket server &#x3D; new ServerSocket(8888);</span><br><span class="line">	Socket socket &#x3D; server.accept();</span><br><span class="line">	DataInputStream dis &#x3D; new DataInputStream(socket.getInputStream());</span><br><span class="line">	String data1 &#x3D; dis.readLine();</span><br><span class="line">	String data2 &#x3D; dis.readLine();</span><br><span class="line">	System.out.println(&quot;你输入的用户名为:&quot;+data1);</span><br><span class="line">	System.out.println(&quot;你输入的密码为:&quot;+data2);</span><br><span class="line">	</span><br><span class="line">	DataOutputStream dos &#x3D; DataOutputStream(socket.getOutputStream());</span><br><span class="line">	if(data1.equals(&quot;zzk&quot;) &amp;&amp; data2.equals(&quot;123&quot;))&#123;</span><br><span class="line">		dos.writeUTF(&quot;欢迎回来！&quot;);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		dos.writeUTF(&quot;用户或密码名有误！&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	dis.close();</span><br><span class="line">	dos.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<h4 id="6-PrintStream-amp-PrintWriter"><a href="#6-PrintStream-amp-PrintWriter" class="headerlink" title="6.PrintStream&amp;PrintWriter"></a>6.PrintStream&amp;PrintWriter</h4><p>方便打印用</p>
 
       
     </div>
@@ -488,35 +471,6 @@
 	<div>
       
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-  
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/scattter.github.io/2020/01/01/Java/">Java</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 Scatter 的个人博客">Scatter</a></p>
-  <p><span>发布时间:</span>2020年01月01日 - 19:45</p>
-  <p><span>最后更新:</span>2020年01月01日 - 19:46</p>
-  <p><span>原始链接:</span><a href="/scattter.github.io/2020/01/01/Java/" title="Java">https://scattter.github.io/2020/01/01/Java/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://scattter.github.io/2020/01/01/Java/"  aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    $(".fa-clipboard").click(function(){
-      clipboard.on('success', function(){
-        swal({   
-          title: "",   
-          text: '复制成功',
-          icon: "success", 
-          showConfirmButton: true
-          });
-	});
-    });  
-</script>
-
       
 	</div>
 
@@ -562,12 +516,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/scattter.github.io/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-          
-        </div>
-      
 
       
       
@@ -577,8 +525,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/scattter.github.io/2020/01/01/TCP-%E7%99%BB%E5%BD%95&%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="next" title="TCP-登录&文件上传">
-                <i class="fa fa-chevron-left"></i> TCP-登录&文件上传
+              <a href="/scattter.github.io/2020/01/01/%E6%96%87%E4%BB%B6-%E7%A8%8B%E5%BA%8F-%E5%AD%97%E8%8A%82%E6%B5%81(%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AF%B9%E6%8E%A5)/" rel="next" title="文件-程序-字节流(流之间的对接)">
+                <i class="fa fa-chevron-left"></i> 文件-程序-字节流(流之间的对接)
               </a>
             
           </div>
@@ -587,8 +535,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/scattter.github.io/2020/01/01/21-29/" rel="prev" title="21:29">
-                21:29 <i class="fa fa-chevron-right"></i>
+              <a href="/scattter.github.io/2020/01/01/%E8%A3%85%E9%A5%B0%E5%99%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="装饰器设计模式">
+                装饰器设计模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -670,32 +618,14 @@
               
                 <a href="/scattter.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/scattter.github.io/categories/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
 
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/scattter.github.io/tags/index.html">
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
             
 
           </nav>
@@ -747,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-文件上传"><span class="nav-number">1.</span> <span class="nav-text">1.文件上传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-用户登录"><span class="nav-number">2.</span> <span class="nav-text">2.用户登录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰模式"><span class="nav-number">1.</span> <span class="nav-text">装饰模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-BufferedInputStream-amp-BufferedOutputStream"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.BufferedInputStream&amp;BufferedOutputStream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-BufferedReader-amp-BufferedWriter"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.BufferedReader&amp;BufferedWriter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-InputStreamReader-amp-InputStreamWriter"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.InputStreamReader&amp;InputStreamWriter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-DataInputStream-amp-DataOutputStream"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.DataInputStream&amp;DataOutputStream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-ObjectInputStream-amp-ObjectOutputStream"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.ObjectInputStream&amp;ObjectOutputStream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-PrintStream-amp-PrintWriter"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.PrintStream&amp;PrintWriter</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -809,7 +739,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.2k字</span>
+  <span class="post-count">博客全站共4.1k字</span>
 </div>
         
 
