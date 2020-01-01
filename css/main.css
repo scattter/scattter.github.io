@@ -1060,7 +1060,7 @@ pre .javascript .function {
   display: none;
   margin: 20px -10px -20px;
   background: #f5f7f9;
-  font-size: 12px;
+  font-size: 20px;
   opacity: 3.6;
   cursor: pointer;
   text-align: center;
@@ -1983,7 +1983,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #968cff;
+  background: #1771e2;
 }
 .links-of-blogroll {
   font-size: 13px;
