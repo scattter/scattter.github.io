@@ -2001,7 +2001,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #053677;
+  background: #a3ffcd;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3181,6 +3181,10 @@ pre .javascript .function {
 }
 .post-toc .nav .nav-child {
   display: block;
+}
+div.aplayer {
+  margin: 5px auto;
+  max-width: 600px;
 }
 #heart {
   animation: heartAnimate 1.33s ease-in-out infinite;

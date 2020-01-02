@@ -3,22 +3,25 @@
   <entry>
     <title>博客写作技巧</title>
     <url>/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本文借鉴 <a href="http://yearito.cn/posts/hexo-writing-skills.html" target="_blank" rel="noopener">http://yearito.cn/posts/hexo-writing-skills.html</a> </p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p>本文借鉴 <a href="http://yearito.cn/posts/hexo-writing-skills.html" target="_blank" rel="noopener">http://yearito.cn/posts/hexo-writing-skills.html</a> </p>
 <a id="more"></a>
 
 <div class="note [ primary ]"><h3 id="1-文本居中标签"><a href="#1-文本居中标签" class="headerlink" title="1.文本居中标签"></a>1.文本居中标签</h3></div>
 
-<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161913625.png" alt="image-20200102161913625"></p>
+<img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161913625.png" alt="image-20200102161913625" style="zoom:50%;">
+
 <blockquote class="blockquote-center">也无风雨也无晴</blockquote>
 
 <div class="note [ success]"><h3 id="2-代码块进阶方法"><a href="#2-代码块进阶方法" class="headerlink" title="2.代码块进阶方法"></a>2.代码块进阶方法</h3></div>
 
-<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161929054.png" alt="image-20200102161929054"></p>
-<figure class="highlight plain"><figcaption><span>test1</span></figcaption><table><tr><td class="code"><pre><span class="line">console.log(&quot;test1&quot;);</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	String targ_path &#x3D; &quot;D:&#x2F;java_project&#x2F;work_place&#x2F;IO_study&#x2F;target&quot;;</span><br><span class="line">	String dest_path &#x3D; &quot;D:&#x2F;java_project&#x2F;work_place&#x2F;IO_study&#x2F;copy&quot;;</span><br><span class="line">    folderCopy(targ_path,dest_path);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">public static void folderCopy(String targ_path,String dest_path) &#123;</span><br><span class="line">	File src &#x3D; new File(targ_path);</span><br><span class="line">	File dest &#x3D; new File(dest_path);</span><br><span class="line">	-findFiles(src, des);</span><br><span class="line">	+findFiles(src, des);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161929054.png" alt="image-20200102161929054" style="zoom:50%;">
+
+<figure class="highlight plain"><figcaption><span>test1</span></figcaption><table><tr><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	String targ_path &#x3D; &quot;D:&#x2F;java_project&#x2F;work_place&#x2F;IO_study&#x2F;target&quot;;</span><br><span class="line">	String dest_path &#x3D; &quot;D:&#x2F;java_project&#x2F;work_place&#x2F;IO_study&#x2F;copy&quot;;</span><br><span class="line">    folderCopy(targ_path,dest_path);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">public static void folderCopy(String targ_path,String dest_path) &#123;</span><br><span class="line">	File src &#x3D; new File(targ_path);</span><br><span class="line">	File dest &#x3D; new File(dest_path);</span><br><span class="line">	-findFiles(src, des);</span><br><span class="line">	+findFiles(src, des);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <div class="note [ info ]"><h3 id="3-label-标签"><a href="#3-label-标签" class="headerlink" title="3.label 标签"></a>3.label 标签</h3></div>
 
-<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161817947.png" alt="image-20200102161817947"></p>
+<img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161817947.png" alt="image-20200102161817947" style="zoom:50%;">
+
 <blockquote class="blockquote-center">
 I heard the echo, <span class="label default">from the valleys and the heart</span>
 Open to the lonely soul of <span class="label info">sickle harvesting</span>
@@ -33,7 +36,8 @@ Bored
 
 <div class="note [ warning]"><h3 id="4-button按钮"><a href="#4-button按钮" class="headerlink" title="4.button按钮"></a>4.button按钮</h3></div>
 
-<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161753826.png" alt="image-20200102161753826"></p>
+<img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161753826.png" alt="image-20200102161753826" style="zoom:50%;">
+
 <a class="btn" href="#">文本</a>  
 
 <a class="btn" href="#" title="标题">文本 & 标题</a>  
@@ -44,7 +48,8 @@ Bored
 
 <div class="note [ danger]"><h3 id="5-tab标签"><a href="#5-tab标签" class="headerlink" title="5.tab标签"></a>5.tab标签</h3></div>
 
-<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161725658.png" alt="image-20200102161725658"></p>
+<img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161725658.png" alt="image-20200102161725658" style="zoom:50%;">
+
 <div class="tabs" id="tab标签列表"><ul class="nav-tabs"><li class="tab active"><a href="#tab标签列表-1">标签页1</a></li><li class="tab"><a href="#tab标签列表-2">标签页2</a></li><li class="tab"><a href="#tab标签列表-3">标签页3</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tab标签列表-1"><p>  标签页1文本内容</p>
 </div><div class="tab-pane" id="tab标签列表-2"><p>  标签页2文本内容</p>
 </div><div class="tab-pane" id="tab标签列表-3"><p>  标签页3文本内容</p>
@@ -52,24 +57,48 @@ Bored
 
 <div class="note [ class]"><h3 id="6-多媒体"><a href="#6-多媒体" class="headerlink" title="6.多媒体"></a>6.多媒体</h3></div>
 
-<h4 id="6-1网易云播放器"><a href="#6-1网易云播放器" class="headerlink" title="6.1网易云播放器"></a>6.1网易云播放器</h4><center>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=159584&auto=1&height=66"></iframe>
+<h4 id="6-1-网易云播放器"><a href="#6-1-网易云播放器" class="headerlink" title="6.1 网易云播放器"></a>6.1 网易云播放器</h4><center>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=757567&auto=0&height=66"></iframe>
 </center>
 
-<h4 id="6-2Aplayer-音频播放器"><a href="#6-2Aplayer-音频播放器" class="headerlink" title="6.2Aplayer 音频播放器"></a>6.2Aplayer 音频播放器</h4>
-        <div id="aplayer-JUDvGKKV" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+<h4 id="6-2-Aplayer-音频播放器"><a href="#6-2-Aplayer-音频播放器" class="headerlink" title="6.2 Aplayer 音频播放器"></a>6.2 Aplayer 音频播放器</h4><p><strong><em>1.使用本地文件</em></strong></p>
+
+        <div id="aplayer-InjWFUAo" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-JUDvGKKV"),
+            element: document.getElementById("aplayer-InjWFUAo"),
             narrow: false,
             autoplay: false,
             showlrc: false,
             music: {
-              title: "爱的代价_李宗盛_128K.mp3",
-              author: "undefined",
-              url: "undefined",
+              title: "爱的代价",
+              author: "李宗盛",
+              url: "爱的代价.mp3",
+              pic: "/scattter.github.io/2020/01/02/博客写作/爱的代价.jpg",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+
+<p><strong><em>2.使用网络歌曲</em></strong></p>
+
+        <div id="aplayer-CdsrGrxc" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-CdsrGrxc"),
+            narrow: false,
+            autoplay: false,
+            showlrc: false,
+            music: {
+              title: "那就这样吧",
+              author: "动力火车",
+              url: "https://music.163.com/#/song?id=28582816   autoplay=false",
               pic: "",
               lrc: ""
             }
@@ -78,18 +107,28 @@ Bored
           window.aplayers.push(ap);
         </script>
 
+
+
+<h4 id="6-3-Dplayer播放器"><a href="#6-3-Dplayer播放器" class="headerlink" title="6.3 Dplayer播放器"></a>6.3 Dplayer播放器</h4><p><strong><em>1.使用B站外链播放器</em></strong></p>
+<p>需要在网上代码后加上width与height</p>
+<center>
+<iframe src="//player.bilibili.com/player.html?aid=78817586&amp;cid=134863083&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="90%" height="500">
+</iframe>
+</center>
+
+<p><strong><em>2.使用B站专属插件</em></strong></p>
 <blockquote>
-<ul>
-<li>title: 曲目标题</li>
-<li>author: 曲目作者</li>
-<li>url: 音乐文件 URL 地址</li>
-<li>picture_url: (可选) 音乐对应的图片地址</li>
-<li>narrow: （可选）播放器袖珍风格</li>
-<li>autoplay: (可选) 自动播放，移动端浏览器暂时不支持此功能</li>
-<li>width:xxx: (可选) 播放器宽度 (默认: 100%)</li>
-<li>lrc:xxx: （可选）歌词文件 URL 地址</li>
-</ul>
+<p>npm install –save hexo-tag-bilibili</p>
+<p>该插件好像不行了</p>
 </blockquote>
+<div class="bili_video"><embed height="452" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="http://share.acg.tv/flash.swf" flashvars="aid=81394266&page=1" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></div>
+
+<p><strong><em>3.使用Dplayer</em></strong></p>
+<blockquote>
+<p>还没有找到方法</p>
+</blockquote>
+<div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"https://www.bilibili.com/video/av78817586/这才是猛男该看的片！！！.mp4"},"danmaku":{"id":"9E2E3368B56CDBB4","api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
 ]]></content>
       <categories>
         <category>博客</category>
@@ -102,7 +141,7 @@ Bored
   <entry>
     <title>博客搭建-hexo</title>
     <url>/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="HEXO搭建博客"><a href="#HEXO搭建博客" class="headerlink" title="HEXO搭建博客"></a>HEXO搭建博客</h2>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h2 id="HEXO搭建博客"><a href="#HEXO搭建博客" class="headerlink" title="HEXO搭建博客"></a>HEXO搭建博客</h2>]]></content>
       <categories>
         <category>技术学习</category>
       </categories>
@@ -115,7 +154,7 @@ Bored
   <entry>
     <title>输入和输出流拷贝</title>
     <url>/scattter.github.io/2020/01/02/%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E6%B5%81%E6%8B%B7%E8%B4%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Java的输入和输出流</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p>Java的输入和输出流</p>
 <p>Java的输入和输出流</p>
 <a id="more"></a>
 
@@ -170,7 +209,7 @@ Bored
   <entry>
     <title>装饰模式</title>
     <url>/scattter.github.io/2020/01/02/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%BF%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h3><a id="more"></a>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h3 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h3><a id="more"></a>
 
 <blockquote class="blockquote-center">我不去想是否能够成功，既然选择了远方，便只顾风雨兼程。</blockquote>
 
@@ -231,7 +270,7 @@ Bored
   <entry>
     <title>装饰器设计模式</title>
     <url>/scattter.github.io/2020/01/01/%E8%A3%85%E9%A5%B0%E5%99%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="装饰器的设计模式"><a href="#装饰器的设计模式" class="headerlink" title="装饰器的设计模式"></a>装饰器的设计模式</h2><blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h2 id="装饰器的设计模式"><a href="#装饰器的设计模式" class="headerlink" title="装饰器的设计模式"></a>装饰器的设计模式</h2><blockquote>
 <p>1.抽象组件：需要装饰的抽象对象（接口或者抽象父类）</p>
 <p>2.具体组件：需要装饰的主对象</p>
 <p>3.抽象装饰类：包含了对抽象组件的引用以及装饰者共有的方法</p>
@@ -270,7 +309,7 @@ Bored
   <entry>
     <title>文件-程序-字节流(流之间的对接)</title>
     <url>/scattter.github.io/2020/01/01/%E6%96%87%E4%BB%B6-%E7%A8%8B%E5%BA%8F-%E5%AD%97%E8%8A%82%E6%B5%81(%E6%B5%81%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AF%B9%E6%8E%A5)/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="文件字节流与字节数组流之间的对接"><a href="#文件字节流与字节数组流之间的对接" class="headerlink" title="文件字节流与字节数组流之间的对接"></a>文件字节流与字节数组流之间的对接</h2><blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h2 id="文件字节流与字节数组流之间的对接"><a href="#文件字节流与字节数组流之间的对接" class="headerlink" title="文件字节流与字节数组流之间的对接"></a>文件字节流与字节数组流之间的对接</h2><blockquote>
 <p>1.java不能直接访问文件，都是先访问虚拟机，虚拟机再访问文件</p>
 <p>2.文件不能直接转为字节数组流，需要转为文件字节流然后再通过程序才能转为字节流</p>
 <p>3.字节数组流使用的是内存，所以使用完毕后不用释放，使用GC回收；文件字节流需要释放资源</p>
@@ -299,7 +338,7 @@ Bored
   <entry>
     <title>java学习</title>
     <url>/scattter.github.io/2020/01/01/java%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="java学习"><a href="#java学习" class="headerlink" title="java学习"></a>java学习</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	System.out.println(list);</span><br><span class="line">	</span><br><span class="line">	System.out.println(list.get(<span class="number">2</span>));</span><br><span class="line">	</span><br><span class="line">	list.add(<span class="number">0</span>,<span class="string">"行"</span>);</span><br><span class="line">	<span class="comment">//list.add("d");</span></span><br><span class="line">	System.out.println(list);</span><br><span class="line">	</span><br><span class="line">	list.remove(<span class="number">2</span>);</span><br><span class="line">	System.out.println(list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h1 id="java学习"><a href="#java学习" class="headerlink" title="java学习"></a>java学习</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	System.out.println(list);</span><br><span class="line">	</span><br><span class="line">	System.out.println(list.get(<span class="number">2</span>));</span><br><span class="line">	</span><br><span class="line">	list.add(<span class="number">0</span>,<span class="string">"行"</span>);</span><br><span class="line">	<span class="comment">//list.add("d");</span></span><br><span class="line">	System.out.println(list);</span><br><span class="line">	</span><br><span class="line">	list.remove(<span class="number">2</span>);</span><br><span class="line">	System.out.println(list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/scattter.github.io/2020/01/01/java%E5%AD%A6%E4%B9%A0/image-20200101220322958.png" alt="image-20200101220322958"></p>
 ]]></content>
@@ -307,7 +346,7 @@ Bored
   <entry>
     <title>IO_文件输入和输出流</title>
     <url>/scattter.github.io/2020/01/01/IO_%E6%96%87%E4%BB%B6%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E6%B5%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="IO-Stream"><a href="#IO-Stream" class="headerlink" title="IO_Stream"></a>IO_Stream</h2><h4 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h4><blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h2 id="IO-Stream"><a href="#IO-Stream" class="headerlink" title="IO_Stream"></a>IO_Stream</h2><h4 id="InputStream"><a href="#InputStream" class="headerlink" title="InputStream"></a>InputStream</h4><blockquote>
 <p>将字节解码为字符串输出</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStep</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//1.创建源</span></span><br><span class="line">		File src = <span class="keyword">new</span> File(<span class="string">"a.txt"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2.选择流</span></span><br><span class="line">		InputStream is = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			is = <span class="keyword">new</span> FileInputStream(src);</span><br><span class="line">			<span class="comment">//3.操作</span></span><br><span class="line">			<span class="comment">/*int temp;</span></span><br><span class="line"><span class="comment">			while ((temp=is.read())!=-1) &#123;</span></span><br><span class="line"><span class="comment">				System.out.print((char)temp);</span></span><br><span class="line"><span class="comment">				</span></span><br><span class="line"><span class="comment">			&#125;*/</span></span><br><span class="line">			<span class="comment">//高级的缓存器读取</span></span><br><span class="line">			<span class="keyword">byte</span>[] flush = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];<span class="comment">//这里是创建缓存器</span></span><br><span class="line">			<span class="keyword">int</span> len = -<span class="number">1</span>;<span class="comment">//这里预先设置读取的长度</span></span><br><span class="line">			<span class="keyword">while</span> ((len = is.read(flush))!=-<span class="number">1</span>) &#123;  <span class="comment">//这里输入流先将字节读入缓存器，然后根据读入的字节数返回len</span></span><br><span class="line">				String temp = <span class="keyword">new</span> String(flush,<span class="number">0</span>,len);<span class="comment">//（**解码**）读取缓存器，因为有可能缓存器没写满，所以需要len来确保不会乱码</span></span><br><span class="line">				System.out.println(temp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">//4.释放资源</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">null</span>!=is) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					is.close();</span><br><span class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">					<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -340,7 +379,7 @@ Bored
   <entry>
     <title>FileReader</title>
     <url>/scattter.github.io/2020/01/01/FileReader/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="FileReader和FileWriter的使用"><a href="#FileReader和FileWriter的使用" class="headerlink" title="FileReader和FileWriter的使用"></a>FileReader和FileWriter的使用</h2><p>这两个都是字符流，字符流的优点是不容易乱码</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h2 id="FileReader和FileWriter的使用"><a href="#FileReader和FileWriter的使用" class="headerlink" title="FileReader和FileWriter的使用"></a>FileReader和FileWriter的使用</h2><p>这两个都是字符流，字符流的优点是不容易乱码</p>
 <h3 id="1-FileReader"><a href="#1-FileReader" class="headerlink" title="1.FileReader"></a>1.FileReader</h3><h3 id="2-FileWriter"><a href="#2-FileWriter" class="headerlink" title="2.FileWriter"></a>2.FileWriter</h3><p>代码：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestWriteFile</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		File src = <span class="keyword">new</span> File(<span class="string">"dest.txt"</span>);</span><br><span class="line">		Writer os = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//3.操作</span></span><br><span class="line">			os = <span class="keyword">new</span> FileWriter(src);</span><br><span class="line">			String s = <span class="string">"this a test of outputstream!"</span>;</span><br><span class="line">			<span class="comment">//方法1</span></span><br><span class="line">			<span class="keyword">char</span>[] datas = s.toCharArray();</span><br><span class="line">			os.write(datas);</span><br><span class="line">			os.flush();</span><br><span class="line">			<span class="comment">//方法2</span></span><br><span class="line">			os.write(s);</span><br><span class="line">			<span class="comment">//方法3</span></span><br><span class="line">			os.append(s);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -349,7 +388,7 @@ Bored
   <entry>
     <title>copy&amp;close的封装</title>
     <url>/scattter.github.io/2020/01/01/copy&amp;close%E7%9A%84%E5%B0%81%E8%A3%85/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Copy-amp-Close"><a href="#Copy-amp-Close" class="headerlink" title="Copy&amp;Close"></a>Copy&amp;Close</h2><h4 id="copy-的封装"><a href="#copy-的封装" class="headerlink" title="copy()的封装"></a>copy()的封装</h4><p>直接将copy的形参封装为io流。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><h2 id="Copy-amp-Close"><a href="#Copy-amp-Close" class="headerlink" title="Copy&amp;Close"></a>Copy&amp;Close</h2><h4 id="copy-的封装"><a href="#copy-的封装" class="headerlink" title="copy()的封装"></a>copy()的封装</h4><p>直接将copy的形参封装为io流。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copy</span><span class="params">(InputStream is,OutputStream os)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">try</span>(is;os) &#123;   <span class="comment">//这里用了close资源释放的封装，在下面</span></span><br><span class="line">			<span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">byte</span>[] flush = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span> ((len=is.read(flush))!=-<span class="number">1</span>) &#123;</span><br><span class="line">				os.write(flush,<span class="number">0</span>,len);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"success"</span>);</span><br><span class="line">			os.flush();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
 
