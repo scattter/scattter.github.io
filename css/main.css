@@ -2001,7 +2001,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1d28ff;
+  background: #08360a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3185,6 +3185,22 @@ pre .javascript .function {
 div.aplayer {
   margin: 5px auto;
   max-width: 600px;
+}
+.back-to-top {
+  right: 60px;
+  width: 70px;
+  height: 900px;
+  top: -900px;
+  bottom: unset;
+  transition: all 0.5s ease-in-out;
+  background: url("/images/scroll.png");
+}
+.back-to-top > i {
+  display: none;
+}
+.back-to-top.back-to-top-on {
+  bottom: unset;
+  top: calc(100vh - 900px - 200px);
 }
 #heart {
   animation: heartAnimate 1.33s ease-in-out infinite;
