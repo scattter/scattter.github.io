@@ -63,12 +63,12 @@ Bored
 
 <h4 id="6-2-Aplayer-音频播放器"><a href="#6-2-Aplayer-音频播放器" class="headerlink" title="6.2 Aplayer 音频播放器"></a>6.2 Aplayer 音频播放器</h4><p><strong><em>1.使用本地文件</em></strong></p>
 
-        <div id="aplayer-YqyxzZQY" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-WFFNAJTU" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-YqyxzZQY"),
+            element: document.getElementById("aplayer-WFFNAJTU"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -86,12 +86,12 @@ Bored
 
 <p><strong><em>2.使用网络歌曲</em></strong></p>
 
-        <div id="aplayer-sDtLdAyO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-jMoasyzm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-sDtLdAyO"),
+            element: document.getElementById("aplayer-jMoasyzm"),
             narrow: false,
             autoplay: false,
             showlrc: false,
