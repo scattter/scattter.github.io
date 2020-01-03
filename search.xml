@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>博客写作技巧</title>
+    <title>MarkDowm技巧</title>
     <url>/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p>本文借鉴 <a href="http://yearito.cn/posts/hexo-writing-skills.html" target="_blank" rel="noopener">http://yearito.cn/posts/hexo-writing-skills.html</a> </p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/163301vts8qaa6h6qsheaa.png" alt="163301vts8qaa6h6qsheaa"></p>
+<blockquote>
+<p>本文借鉴 <a href="http://yearito.cn/posts/hexo-writing-skills.html" target="_blank" rel="noopener">http://yearito.cn/posts/hexo-writing-skills.html</a> </p>
+</blockquote>
 <a id="more"></a>
 
 <div class="note [ primary ]"><h3 id="1-文本居中标签"><a href="#1-文本居中标签" class="headerlink" title="1.文本居中标签"></a>1.文本居中标签</h3></div>
@@ -11,7 +14,6 @@
 <img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161913625.png" alt="image-20200102161913625" style="zoom:50%;">
 
 <blockquote class="blockquote-center">也无风雨也无晴</blockquote>
-
 <div class="note [ success]"><h3 id="2-代码块进阶方法"><a href="#2-代码块进阶方法" class="headerlink" title="2.代码块进阶方法"></a>2.代码块进阶方法</h3></div>
 
 <img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161929054.png" alt="image-20200102161929054" style="zoom:50%;">
@@ -23,7 +25,7 @@
 <img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/image-20200102161817947.png" alt="image-20200102161817947" style="zoom:50%;">
 
 <blockquote class="blockquote-center">
-I heard the echo, <span class="label default">from the valleys and the heart</span>
+I heard the echo, <span class="label default">from the valleys and the heart</span>CRLF
 Open to the lonely soul of <span class="label info">sickle harvesting</span>
 Repeat outrightly, but also repeat the well-being of
 Eventually <span class="label warning">swaying in the desert oasis</span>
@@ -63,12 +65,12 @@ Bored
 
 <h4 id="6-2-Aplayer-音频播放器"><a href="#6-2-Aplayer-音频播放器" class="headerlink" title="6.2 Aplayer 音频播放器"></a>6.2 Aplayer 音频播放器</h4><p><strong><em>1.使用本地文件</em></strong></p>
 
-        <div id="aplayer-ramlEClI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-zBVnuGUd" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ramlEClI"),
+            element: document.getElementById("aplayer-zBVnuGUd"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -86,12 +88,12 @@ Bored
 
 <p><strong><em>2.使用网络歌曲</em></strong></p>
 
-        <div id="aplayer-PsRcjhkJ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-VwarnOsb" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PsRcjhkJ"),
+            element: document.getElementById("aplayer-VwarnOsb"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -131,11 +133,11 @@ Bored
 
 ]]></content>
       <categories>
-        <category>博客</category>
+        <category>Tips,Edit</category>
       </categories>
       <tags>
-        <tag>博客</tag>
         <tag>Tips</tag>
+        <tag>MarkDown</tag>
       </tags>
   </entry>
   <entry>
