@@ -63,12 +63,12 @@ Bored
 
 <h4 id="6-2-Aplayer-音频播放器"><a href="#6-2-Aplayer-音频播放器" class="headerlink" title="6.2 Aplayer 音频播放器"></a>6.2 Aplayer 音频播放器</h4><p><strong><em>1.使用本地文件</em></strong></p>
 
-        <div id="aplayer-NocLpuxq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-gxdCYvIm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-NocLpuxq"),
+            element: document.getElementById("aplayer-gxdCYvIm"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -86,12 +86,12 @@ Bored
 
 <p><strong><em>2.使用网络歌曲</em></strong></p>
 
-        <div id="aplayer-PoVwIons" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-brjWLSCZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PoVwIons"),
+            element: document.getElementById("aplayer-brjWLSCZ"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -170,6 +170,10 @@ Bored
 <p>next主题 post与archievs冲突：</p>
 <p>没有完美的改善</p>
 <p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103133120496.png" alt="image-20200103133120496"></p>
+<p>顶部进度加载条样式：</p>
+<p> <a href="https://www.jianshu.com/p/d08513d38786" target="_blank" rel="noopener">https://www.jianshu.com/p/d08513d38786</a> </p>
+<p>hexo个性设计</p>
+<p> <a href="https://io-oi.me/tech/hexo-next-optimization/#移动端显示-back-to-top-按钮和侧栏" target="_blank" rel="noopener">https://io-oi.me/tech/hexo-next-optimization/#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%98%BE%E7%A4%BA-back-to-top-%E6%8C%89%E9%92%AE%E5%92%8C%E4%BE%A7%E6%A0%8F</a> </p>
 ]]></content>
       <categories>
         <category>技术学习</category>

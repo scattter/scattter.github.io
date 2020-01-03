@@ -534,12 +534,12 @@ Bored
 
 <h4 id="6-2-Aplayer-音频播放器"><a href="#6-2-Aplayer-音频播放器" class="headerlink" title="6.2 Aplayer 音频播放器"></a>6.2 Aplayer 音频播放器</h4><p><strong><em>1.使用本地文件</em></strong></p>
 
-        <div id="aplayer-NocLpuxq" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-gxdCYvIm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-NocLpuxq"),
+            element: document.getElementById("aplayer-gxdCYvIm"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -557,12 +557,12 @@ Bored
 
 <p><strong><em>2.使用网络歌曲</em></strong></p>
 
-        <div id="aplayer-PoVwIons" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-brjWLSCZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-PoVwIons"),
+            element: document.getElementById("aplayer-brjWLSCZ"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -827,9 +827,9 @@ Bored
 
           
           
+		  
 
           
-
         </div>
       </section>
 
@@ -888,6 +888,24 @@ Bored
   
 </div>
 
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("12/31/2019 20:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "☪本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 "; 
+    } 
+setInterval("createtime()",250);
+</script>
+
 <div class="powered-by">
 <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
   本站访客数:<span id="busuanzi_value_site_pv"></span>
@@ -915,7 +933,7 @@ Bored
 <div class="theme-info">
 
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共552字</span>
+  <span class="post-count">博客全站共613字</span>
 </div>
         
 
