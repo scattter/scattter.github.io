@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>资源</title>
+    <url>/scattter.github.io/2020/01/03/%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p>emjio网站： <a href="http://fuhao.tuwenla.com/" target="_blank" rel="noopener">http://fuhao.tuwenla.com/</a> </p>
+]]></content>
+  </entry>
+  <entry>
     <title>博客写作技巧</title>
     <url>/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p>本文借鉴 <a href="http://yearito.cn/posts/hexo-writing-skills.html" target="_blank" rel="noopener">http://yearito.cn/posts/hexo-writing-skills.html</a> </p>
@@ -63,12 +69,12 @@ Bored
 
 <h4 id="6-2-Aplayer-音频播放器"><a href="#6-2-Aplayer-音频播放器" class="headerlink" title="6.2 Aplayer 音频播放器"></a>6.2 Aplayer 音频播放器</h4><p><strong><em>1.使用本地文件</em></strong></p>
 
-        <div id="aplayer-LJGEmbaT" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-UdtqveTU" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-LJGEmbaT"),
+            element: document.getElementById("aplayer-UdtqveTU"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -86,12 +92,12 @@ Bored
 
 <p><strong><em>2.使用网络歌曲</em></strong></p>
 
-        <div id="aplayer-eEbGuVaH" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-SbfxEbKX" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-eEbGuVaH"),
+            element: document.getElementById("aplayer-SbfxEbKX"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -146,6 +152,27 @@ Bored
 <p>效果图：</p>
 <img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200102194900984.png" alt="image-20200102194900984" style="zoom:50%;">
 
+
+
+<p>左右箭头的更改：</p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103102554573.png" alt="image-20200103102554573"></p>
+<p><a href="https://blog.csdn.net/lihangll/article/details/103335246" target="_blank" rel="noopener">https://blog.csdn.net/lihangll/article/details/103335246</a></p>
+<p>改后为：</p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103102910727.png" alt="image-20200103102910727"></p>
+<p>页面最后的更改：</p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103102637772.png" alt="image-20200103102637772"></p>
+<p>改后为：</p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103102944268.png" alt="image-20200103102944268"></p>
+<p>改变作者图标：</p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103103117617.png" alt="image-20200103103117617"></p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103102821038.png" alt="image-20200103102821038"></p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103103246802.png" alt="image-20200103103246802"></p>
+<p>改后为：</p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103102844013.png" alt="image-20200103102844013"></p>
+<p>歌单： <a href="https://www.jianshu.com/p/f1005ae09e5a" target="_blank" rel="noopener">https://www.jianshu.com/p/f1005ae09e5a</a> </p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103103756995.png" alt="image-20200103103756995"></p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103103815246.png" alt="image-20200103103815246"></p>
+<p><img src="/scattter.github.io/2020/01/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-hexo/image-20200103103824668.png" alt="image-20200103103824668"></p>
 ]]></content>
       <categories>
         <category>技术学习</category>
@@ -154,61 +181,6 @@ Bored
         <tag>博客搭建</tag>
         <tag>hexo</tag>
         <tag>next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>输入和输出流拷贝</title>
-    <url>/scattter.github.io/2020/01/02/%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E6%B5%81%E6%8B%B7%E8%B4%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p>Java的输入和输出流</p>
-<p>Java的输入和输出流</p>
-<a id="more"></a>
-
-<h2 id="文件与文件夹的相互拷贝"><a href="#文件与文件夹的相互拷贝" class="headerlink" title="文件与文件夹的相互拷贝"></a>文件与文件夹的相互拷贝</h2><p>1.文件的相互拷贝</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFileCopy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		copy(<span class="string">"desk.jpg"</span>, <span class="string">"dest_copy.jpg"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copy</span><span class="params">(String srcPath,String destPath)</span> </span>&#123;</span><br><span class="line">		File src = <span class="keyword">new</span> File(srcPath);</span><br><span class="line">		File dest = <span class="keyword">new</span> File(destPath);</span><br><span class="line">		</span><br><span class="line">		InputStream is = <span class="keyword">null</span>;</span><br><span class="line">		OutputStream os = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			is = <span class="keyword">new</span> FileInputStream(src);</span><br><span class="line">			os = <span class="keyword">new</span> FileOutputStream(dest);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">byte</span>[] flush = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span> ((len=is.read(flush))!=-<span class="number">1</span>) &#123;</span><br><span class="line">				os.write(flush,<span class="number">0</span>,len);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"success"</span>);</span><br><span class="line">			os.flush();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">//哪个先打开哪个就先关闭</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">null</span>!=is) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					is.close();</span><br><span class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">null</span>!=os) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					os.close();</span><br><span class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.文件夹的拷贝</p>
-<p>在文件夹的拷贝里面用到了面向对象的设计方法（自己想的）</p>
-<blockquote>
-<p>1.对文件夹进行递归访问</p>
-<p>2.对文件进行复制</p>
-<p>3.创建新的目录</p>
-</blockquote>
-<p>程序构成：</p>
-<ul>
-<li>主函数</li>
-<li>目录的递归访问方法（参考文件递归访问）</li>
-<li>文件的copy方法（参考上程序）</li>
-</ul>
-<p>将文件夹的复制放在目录访问的方法内</p>
-<p><strong>主函数</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	String targ_path = <span class="string">"D:/java_project/work_place/IO_study/target"</span>;</span><br><span class="line">	String dest_path = <span class="string">"D:/java_project/work_place/IO_study/copy"</span>;</span><br><span class="line">    folderCopy(targ_path,dest_path);</span><br><span class="line">    </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">folderCopy</span><span class="params">(String targ_path,String dest_path)</span> </span>&#123;</span><br><span class="line">		File src = <span class="keyword">new</span> File(targ_path);</span><br><span class="line">		File dest = <span class="keyword">new</span> File(dest_path);</span><br><span class="line">		findFiles(src, dest);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>目录的递归访问</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">findFiles</span><span class="params">(File file1,File file2)</span> </span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"********"</span>);</span><br><span class="line">	System.out.println(file1.getPath()+<span class="string">"\n"</span>+file2.getAbsolutePath());</span><br><span class="line">	<span class="keyword">if</span> (file1 == <span class="keyword">null</span> || !file1.exists()) &#123;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span> (file1.isDirectory()) &#123;	</span><br><span class="line">		<span class="comment">//这里绝对路径是关键！！</span></span><br><span class="line">		File child= <span class="keyword">new</span> File(file2.getAbsoluteFile()+<span class="string">"/"</span>,file1.getName()+<span class="string">"_copy"</span>);</span><br><span class="line">		child.mkdir();<span class="comment">//创建目录</span></span><br><span class="line">		System.out.println(<span class="string">"mulu\t"</span>+child.getAbsolutePath());</span><br><span class="line">		<span class="keyword">for</span> (File temp:file1.listFiles()) &#123;</span><br><span class="line">			findFiles(temp, child);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span> (file1.isFile())&#123;</span><br><span class="line">		copy(file1.getPath(),file2.getPath()+<span class="string">"\\"</span>+file1.getName());</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里在文件夹的复制处需要注意：</p>
-<blockquote>
-<p>1.文件夹的复制是先new File(目录,文件夹名字)，然后对这个新的file对象调用mkdir()方法</p>
-<p>2.上述的复制需要注意目录选择绝对路径不然后续会出错</p>
-</blockquote>
-<p><strong>文件的复制</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copy</span><span class="params">(String srcPath,String destPath)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	File src = <span class="keyword">new</span> File(srcPath);</span><br><span class="line">	File dest = <span class="keyword">new</span> File(destPath);<span class="comment">//这里是创建写入的文件名字</span></span><br><span class="line">	System.out.println(<span class="string">"\t"</span>+dest.getAbsolutePath());</span><br><span class="line">		</span><br><span class="line">	InputStream is = <span class="keyword">null</span>;</span><br><span class="line">	OutputStream os = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		is = <span class="keyword">new</span> FileInputStream(src);</span><br><span class="line">		os = <span class="keyword">new</span> FileOutputStream(dest);</span><br><span class="line">		<span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">byte</span>[] flush = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];	</span><br><span class="line">		<span class="keyword">while</span> ((len=is.read(flush))!=-<span class="number">1</span>) &#123;</span><br><span class="line">			os.write(flush,<span class="number">0</span>,len);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"success"</span>);</span><br><span class="line">		os.flush();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">//哪个先打开哪个就先关闭</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span>!=is) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				is.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span>!=os) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				os.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里的文件复制需要注意：</p>
-<blockquote>
-<p>1.我们复制的时候需要有复制到的路径+名字，所以在调用copy时传入的实参需要添加文件名字，即下述粗体</p>
-<p>copy(file1.getPath(),<strong>file2.getPath()+”\“+file1.getName()</strong>);</p>
-<p>2.两个流哪个先打开哪个就先关闭</p>
-</blockquote>
-<p><strong>copy</strong>可以进行封装，形参封装为输入流和输出流。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-        <category>IO</category>
-      </categories>
-      <tags>
-        <tag>IO</tag>
-        <tag>Stream</tag>
       </tags>
   </entry>
   <entry>
@@ -270,6 +242,61 @@ Bored
       <tags>
         <tag>IO</tag>
         <tag>装饰模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>输入和输出流拷贝</title>
+    <url>/scattter.github.io/2020/01/02/%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E6%B5%81%E6%8B%B7%E8%B4%9D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\scattter.github.io\assets\css\APlayer.min.css"><script src="\scattter.github.io\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\scattter.github.io\assets\js\Meting.min.js"></script><p>Java的输入和输出流</p>
+<p>Java的输入和输出流</p>
+<a id="more"></a>
+
+<h2 id="文件与文件夹的相互拷贝"><a href="#文件与文件夹的相互拷贝" class="headerlink" title="文件与文件夹的相互拷贝"></a>文件与文件夹的相互拷贝</h2><p>1.文件的相互拷贝</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFileCopy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		copy(<span class="string">"desk.jpg"</span>, <span class="string">"dest_copy.jpg"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copy</span><span class="params">(String srcPath,String destPath)</span> </span>&#123;</span><br><span class="line">		File src = <span class="keyword">new</span> File(srcPath);</span><br><span class="line">		File dest = <span class="keyword">new</span> File(destPath);</span><br><span class="line">		</span><br><span class="line">		InputStream is = <span class="keyword">null</span>;</span><br><span class="line">		OutputStream os = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			is = <span class="keyword">new</span> FileInputStream(src);</span><br><span class="line">			os = <span class="keyword">new</span> FileOutputStream(dest);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">byte</span>[] flush = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span> ((len=is.read(flush))!=-<span class="number">1</span>) &#123;</span><br><span class="line">				os.write(flush,<span class="number">0</span>,len);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"success"</span>);</span><br><span class="line">			os.flush();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">//哪个先打开哪个就先关闭</span></span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">null</span>!=is) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					is.close();</span><br><span class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (<span class="keyword">null</span>!=os) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					os.close();</span><br><span class="line">				&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.文件夹的拷贝</p>
+<p>在文件夹的拷贝里面用到了面向对象的设计方法（自己想的）</p>
+<blockquote>
+<p>1.对文件夹进行递归访问</p>
+<p>2.对文件进行复制</p>
+<p>3.创建新的目录</p>
+</blockquote>
+<p>程序构成：</p>
+<ul>
+<li>主函数</li>
+<li>目录的递归访问方法（参考文件递归访问）</li>
+<li>文件的copy方法（参考上程序）</li>
+</ul>
+<p>将文件夹的复制放在目录访问的方法内</p>
+<p><strong>主函数</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	String targ_path = <span class="string">"D:/java_project/work_place/IO_study/target"</span>;</span><br><span class="line">	String dest_path = <span class="string">"D:/java_project/work_place/IO_study/copy"</span>;</span><br><span class="line">    folderCopy(targ_path,dest_path);</span><br><span class="line">    </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">folderCopy</span><span class="params">(String targ_path,String dest_path)</span> </span>&#123;</span><br><span class="line">		File src = <span class="keyword">new</span> File(targ_path);</span><br><span class="line">		File dest = <span class="keyword">new</span> File(dest_path);</span><br><span class="line">		findFiles(src, dest);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>目录的递归访问</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">findFiles</span><span class="params">(File file1,File file2)</span> </span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"********"</span>);</span><br><span class="line">	System.out.println(file1.getPath()+<span class="string">"\n"</span>+file2.getAbsolutePath());</span><br><span class="line">	<span class="keyword">if</span> (file1 == <span class="keyword">null</span> || !file1.exists()) &#123;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span> (file1.isDirectory()) &#123;	</span><br><span class="line">		<span class="comment">//这里绝对路径是关键！！</span></span><br><span class="line">		File child= <span class="keyword">new</span> File(file2.getAbsoluteFile()+<span class="string">"/"</span>,file1.getName()+<span class="string">"_copy"</span>);</span><br><span class="line">		child.mkdir();<span class="comment">//创建目录</span></span><br><span class="line">		System.out.println(<span class="string">"mulu\t"</span>+child.getAbsolutePath());</span><br><span class="line">		<span class="keyword">for</span> (File temp:file1.listFiles()) &#123;</span><br><span class="line">			findFiles(temp, child);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span> (file1.isFile())&#123;</span><br><span class="line">		copy(file1.getPath(),file2.getPath()+<span class="string">"\\"</span>+file1.getName());</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里在文件夹的复制处需要注意：</p>
+<blockquote>
+<p>1.文件夹的复制是先new File(目录,文件夹名字)，然后对这个新的file对象调用mkdir()方法</p>
+<p>2.上述的复制需要注意目录选择绝对路径不然后续会出错</p>
+</blockquote>
+<p><strong>文件的复制</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copy</span><span class="params">(String srcPath,String destPath)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	File src = <span class="keyword">new</span> File(srcPath);</span><br><span class="line">	File dest = <span class="keyword">new</span> File(destPath);<span class="comment">//这里是创建写入的文件名字</span></span><br><span class="line">	System.out.println(<span class="string">"\t"</span>+dest.getAbsolutePath());</span><br><span class="line">		</span><br><span class="line">	InputStream is = <span class="keyword">null</span>;</span><br><span class="line">	OutputStream os = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		is = <span class="keyword">new</span> FileInputStream(src);</span><br><span class="line">		os = <span class="keyword">new</span> FileOutputStream(dest);</span><br><span class="line">		<span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">byte</span>[] flush = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];	</span><br><span class="line">		<span class="keyword">while</span> ((len=is.read(flush))!=-<span class="number">1</span>) &#123;</span><br><span class="line">			os.write(flush,<span class="number">0</span>,len);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"success"</span>);</span><br><span class="line">		os.flush();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="comment">//哪个先打开哪个就先关闭</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span>!=is) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				is.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span>!=os) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				os.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的文件复制需要注意：</p>
+<blockquote>
+<p>1.我们复制的时候需要有复制到的路径+名字，所以在调用copy时传入的实参需要添加文件名字，即下述粗体</p>
+<p>copy(file1.getPath(),<strong>file2.getPath()+”\“+file1.getName()</strong>);</p>
+<p>2.两个流哪个先打开哪个就先关闭</p>
+</blockquote>
+<p><strong>copy</strong>可以进行封装，形参封装为输入流和输出流。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>IO</category>
+      </categories>
+      <tags>
+        <tag>IO</tag>
+        <tag>Stream</tag>
       </tags>
   </entry>
   <entry>
