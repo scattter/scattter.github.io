@@ -61,29 +61,40 @@
 
 
 <p>最后，附上大宋提刑官片尾曲的词：</p>
-<p><button class="button button-caution button-pill">满江红</button></p>
-<p>千古悠悠 <span class="label info">有多少冤魂嗟叹</span></p>
-<span class="label warning"> 空怅望人寰无限</span>丛生哀怨
+<center>
+    <a class="btn" href="#"><i class="fa fa-music"></i>满江红</a>  
+</center>
 
-<p>泣血蝇虫笑苍天 <span class="label info">孤帆叠影锁白链</span></p>
-<span class="label primary">残月升骤起烈烈风</span> 尽吹散
+<center>
+千古悠悠 <span class="label info">有多少冤魂嗟叹</span>  
 
-<p>尽吹散 <span class="label success">尽吹散</span></p>
-<span class="label danger">滂沱雨无底涧</span>涉激流登彼岸
+<span class="label warning">空怅望人寰无限</span>丛生哀怨  
 
-<p>奋力拨云间消得雾患<span class="label info"> 社稷安抚臣子心</span></p>
-<span class="label warning">长驱鬼魅不休战</span>看斜阳照大地阡陌
+<p>泣血蝇虫笑苍天 <span class="label info">孤帆叠影锁白链</span>  </p>
+<span class="label primary">残月升骤起烈烈风</span> 尽吹散  
 
-<span class="label primary"></span>从头转
+<p>尽吹散 <span class="label success">尽吹散</span>  </p>
+<span class="label danger">滂沱雨无底涧</span>涉激流登彼岸  
 
-<span class="label success">泣血蝇虫笑苍天</span>
+<p>奋力拨云间消得雾患<span class="label info">社稷安抚臣子心</span>  </p>
+<span class="label warning">长驱鬼魅不休战</span>看斜阳照大地阡陌  
 
-<span class="label danger">孤帆叠影锁白链</span> 残月升骤起烈烈风
+<span class="label primary">从头转</span>  
 
-<p>社稷安抚臣子心<span class="label primary"> 长驱鬼魅不休战</span></p>
-<span class="label success">看斜阳照大地阡陌</span>从头转
+<span class="label success">泣血蝇虫笑苍天</span>  
 
-<span class="label info">从头转</span>
+<span class="label danger">孤帆叠影锁白链</span> 残月升骤起烈烈风  
+
+<p>社稷安抚臣子心<span class="label primary">长驱鬼魅不休战</span>  </p>
+<span class="label success">看斜阳照大地阡陌</span> 从头转  
+
+<span class="label info">从头转</span>  
+
+</center>
+
+
+
+
 
 ]]></content>
       <categories>
