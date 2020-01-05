@@ -61,8 +61,7 @@
 
 
 <p>最后，附上大宋提刑官片尾曲的词：</p>
- <a class="btn" href="#"><i class="fa fa-music"></i>满江红</a>  
-
+<p><button class="button button-primary button-rounded button-small">满江红</button></p>
 <p>千古悠悠 <span class="label info">有多少冤魂嗟叹</span></p>
 <span class="label warning"> 空怅望人寰无限</span>丛生哀怨
 
@@ -84,7 +83,9 @@
 <p>社稷安抚臣子心<span class="label primary"> 长驱鬼魅不休战</span></p>
 <span class="label success">看斜阳照大地阡陌</span>从头转
 
-<span class="label info">从头转</span>]]></content>
+<span class="label info">从头转</span>
+
+]]></content>
       <categories>
         <category>周记</category>
         <category>2020</category>
