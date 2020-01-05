@@ -8,7 +8,6 @@
 <a id="more"></a>
 
 <blockquote class="blockquote-center">梦入江南水路，行尽江南、不与离人遇。</blockquote>
-
 <div class="note [info]"><h3 id="1-我这好看的购物袋"><a href="#1-我这好看的购物袋" class="headerlink" title="1.我这好看的购物袋"></a>1.我这好看的购物袋</h3></div>
 
 <img src="/scattter.github.io/2020/01/05/%E5%91%A8%E8%AE%B0-NO-1/5230a055fa9c7004b8abbbf4de4522f.jpg" alt="5230a055fa9c7004b8abbbf4de4522f" style="zoom:50%;">
@@ -62,28 +61,28 @@
 
 
 <p>最后，附上大宋提刑官片尾曲的词：</p>
- <a class="btn" href="#"><i class="fa fa-fa fa-music"></i>满江红</a>  
+ <a class="btn" href="#"><i class="fa fa-music"></i>满江红</a>  
 
-<p>千古悠悠 <span class="label default">有多少冤魂嗟叹</span></p>
-<span class="label info"> 空怅望人寰无限</span>丛生哀怨
+<p>千古悠悠 <span class="label info">有多少冤魂嗟叹</span></p>
+<span class="label warning"> 空怅望人寰无限</span>丛生哀怨
 
 <p>泣血蝇虫笑苍天 <span class="label info">孤帆叠影锁白链</span></p>
-<span class="label info">残月升骤起烈烈风</span> 尽吹散
+<span class="label primary">残月升骤起烈烈风</span> 尽吹散
 
-<p>尽吹散 <span class="label info">尽吹散</span></p>
-<span class="label info">滂沱雨无底涧</span>涉激流登彼岸
+<p>尽吹散 <span class="label success">尽吹散</span></p>
+<span class="label danger">滂沱雨无底涧</span>涉激流登彼岸
 
 <p>奋力拨云间消得雾患<span class="label info"> 社稷安抚臣子心</span></p>
-<span class="label info">长驱鬼魅不休战</span>看斜阳照大地阡陌
+<span class="label warning">长驱鬼魅不休战</span>看斜阳照大地阡陌
 
-<span class="label info"></span>从头转
+<span class="label primary"></span>从头转
 
-<span class="label info">泣血蝇虫笑苍天</span>
+<span class="label success">泣血蝇虫笑苍天</span>
 
-<span class="label info">孤帆叠影锁白链</span> 残月升骤起烈烈风
+<span class="label danger">孤帆叠影锁白链</span> 残月升骤起烈烈风
 
-<p>社稷安抚臣子心<span class="label info"> 长驱鬼魅不休战</span></p>
-<span class="label info">看斜阳照大地阡陌</span>从头转
+<p>社稷安抚臣子心<span class="label primary"> 长驱鬼魅不休战</span></p>
+<span class="label success">看斜阳照大地阡陌</span>从头转
 
 <span class="label info">从头转</span>]]></content>
       <categories>
@@ -445,12 +444,12 @@
 
 <h4 id="6-2-Aplayer-音频播放器"><a href="#6-2-Aplayer-音频播放器" class="headerlink" title="6.2 Aplayer 音频播放器"></a>6.2 Aplayer 音频播放器</h4><p><em>1.使用本地文件</em></p>
 
-        <div id="aplayer-UCObJfHU" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-tCTDjaIp" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-UCObJfHU"),
+            element: document.getElementById("aplayer-tCTDjaIp"),
             narrow: false,
             autoplay: false,
             showlrc: false,
@@ -468,12 +467,12 @@
 
 <p><em>2.使用网络歌曲</em></p>
 
-        <div id="aplayer-nVCVbWhL" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-NBddBJcK" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-nVCVbWhL"),
+            element: document.getElementById("aplayer-NBddBJcK"),
             narrow: false,
             autoplay: false,
             showlrc: false,
