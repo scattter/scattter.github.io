@@ -7,16 +7,22 @@
     (2019.8.3-2020.1.6)
 </blockquote>
 
-<h2 id="1-实验室工作-🏠"><a href="#1-实验室工作-🏠" class="headerlink" title="1.实验室工作  🏠"></a>1.实验室工作  🏠</h2><ul>
+<div class="note [warning]"><h2 id="1-实验室工作-🏠"><a href="#1-实验室工作-🏠" class="headerlink" title="1.实验室工作 🏠"></a>1.实验室工作 🏠</h2></div>
+
+<ul>
 <li><input checked disabled type="checkbox"> 毕业论文</li>
 <li><input checked disabled type="checkbox"> 中期考核</li>
 <li><input checked disabled type="checkbox"> 写专利</li>
 </ul>
-<h2 id="2-自我技能提升-🕺"><a href="#2-自我技能提升-🕺" class="headerlink" title="2.自我技能提升 🕺"></a>2.自我技能提升 🕺</h2><ul>
+<div class="note [success]"><h2 id="2-自我技能提升-🕺"><a href="#2-自我技能提升-🕺" class="headerlink" title="2.自我技能提升 🕺"></a>2.自我技能提升 🕺</h2></div>
+
+<ul>
 <li><input checked disabled type="checkbox"> 学习Java语言</li>
 <li><input checked disabled type="checkbox"> 搭建博客</li>
 </ul>
-<h2 id="3-未来短期规划-⛳"><a href="#3-未来短期规划-⛳" class="headerlink" title="3.未来短期规划 ⛳"></a>3.未来短期规划 ⛳</h2><ul>
+<div class="note [info]"><h2 id="3-未来短期规划-⛳"><a href="#3-未来短期规划-⛳" class="headerlink" title="3.未来短期规划 ⛳"></a>3.未来短期规划 ⛳</h2></div>
+
+<ul>
 <li><input disabled type="checkbox"> 完成毕业论文，顺利毕业</li>
 <li><input disabled type="checkbox"> 继续学习Java，为入职做准备</li>
 <li><input disabled type="checkbox"> 学习前端知识，为入职做准备</li>
