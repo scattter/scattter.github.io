@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://xxxxxxx.xxx"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+<style>
+    .pace .pace-progress {
+        background: #00FF7F; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/scattter.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/scattter.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/scattter.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/scattter.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/scattter.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/scattter.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/scattter.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.jQuery概述 1.1 JavaScriot库 即library  是一个封装好的特定的集合(方法和函数)   1.2 jQuery概念 jQuery封装了JavaScript常用的功能代码 优化了DOM操作 事件处理 动画设计  和Ajax交互 学习jQuery本质: 就是学习调用这些函数或方法   jQuery优点 轻量级。核心文件オ几十kb,不会影响页面加载速度 跨浏览器兼容。基本兼容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Study&#x2F;Javascript&#x2F;JQuery">
+<meta property="og:url" content="https://scattter.github.io/2020/07/15/Study/Javascript/JQuery/index.html">
+<meta property="og:site_name" content="翩若惊鸿">
+<meta property="og:description" content="1.jQuery概述 1.1 JavaScriot库 即library  是一个封装好的特定的集合(方法和函数)   1.2 jQuery概念 jQuery封装了JavaScript常用的功能代码 优化了DOM操作 事件处理 动画设计  和Ajax交互 学习jQuery本质: 就是学习调用这些函数或方法   jQuery优点 轻量级。核心文件オ几十kb,不会影响页面加载速度 跨浏览器兼容。基本兼容">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710100616749.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710102816552.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710102842383.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710105156583.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710105832992.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710110109486.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710171905872.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710172333780.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710172345101.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710172356541.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710173610400.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710220945461.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710221003535.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710175811711.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710180007106.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711001725765.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711140231179.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711143625868.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711152145565.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712105349108.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712150146130.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712150643559.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712151128574.png">
+<meta property="og:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200713100628943.png">
+<meta property="article:published_time" content="2020-07-15T03:54:53.446Z">
+<meta property="article:modified_time" content="2020-07-13T03:14:51.598Z">
+<meta property="article:author" content="Scatter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710100616749.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/scattter.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://scattter.github.io/2020/07/15/Study/Javascript/JQuery/"/>
+
+
+
+
+
+  <title>Study/Javascript/JQuery | 翩若惊鸿</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+	
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/scattter.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">翩若惊鸿</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">ᑋᵉᑊᑊᵒ ᵕ̈ ᑋᵉᑊᑊᵒ | 热情难得可贵</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/scattter.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/scattter.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/scattter.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/scattter.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-playlist">
+          <a href="/scattter.github.io/playlist/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br />
+            
+            歌单
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/scattter.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://scattter.github.io/scattter.github.io/2020/07/15/Study/Javascript/JQuery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Scatter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/scattter.github.io/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="翩若惊鸿">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Study/Javascript/JQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-15T11:54:53+08:00">
+                2020-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-jQuery概述"><a href="#1-jQuery概述" class="headerlink" title="1.jQuery概述"></a>1.jQuery概述</h3><ul>
+<li>1.1 JavaScriot库<ul>
+<li>即library  是一个封装好的特定的集合(方法和函数)</li>
+</ul>
+</li>
+<li>1.2 jQuery概念<ul>
+<li>jQuery封装了JavaScript常用的功能代码 优化了DOM操作 事件处理 动画设计  和Ajax交互</li>
+<li>学习jQuery本质: 就是学习调用这些函数或方法</li>
+</ul>
+</li>
+<li>jQuery优点<ul>
+<li>轻量级。核心文件オ几十kb,不会影响页面加载速度</li>
+<li>跨浏览器兼容。基本兼容了现在主流的浏览器</li>
+<li>链式编程、隐式迭代</li>
+<li>对事件、样式、动画支持,大大简化了DOM操作</li>
+<li>支持插件扩展开发,有着丰富的第三方的插件,例如:树形菜单、日期控件、轮播图等</li>
+<li>免费、开源</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-jQuery的基本使用"><a href="#2-jQuery的基本使用" class="headerlink" title="2.jQuery的基本使用"></a>2.jQuery的基本使用</h3><ul>
+<li><p>jQuery的入口函数</p>
+<ul>
+<li><p>等DOM结构渲染完毕即可执行内部代码  不必等到所有的外部资源加载完成   jQuery帮我们完成了封装</p>
+</li>
+<li><p><left><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710100616749.png" alt="image-20200710100616749" style="zoom:67%;"></left></p>
+</li>
+<li><p>相当于原生js中的DOMContentLoaded</p>
+</li>
+<li><p>不同于原生js中的load事件是等页面文档  外部的js文件  css文件  图片加载完毕才执行内部代码</p>
+</li>
+</ul>
+</li>
+<li><p>jQuery的顶级对象 $</p>
+<ul>
+<li>$ 是 jQuery的别称</li>
+<li>$ 是jQuery的顶级对象  相当于原生JavaScript中的window 把元素利用$ 包装成jQuery对象 就可以调用jQuery的方法</li>
+</ul>
+</li>
+<li><p>jQuery对象和DOM对象</p>
+<ul>
+<li>使用原生js获取来的对象就是DOM对象</li>
+<li>使用jQuery获取来的对象就是jQUery对象</li>
+<li>jQuery对象本质是 利用$ 对DOM对象包装后产生的对象(伪数组形式存储)</li>
+<li>jQuery只能使用jQuery方法  DOM对象只能使用原生js方法</li>
+</ul>
+</li>
+<li><p>两对象的转换</p>
+<ul>
+<li>不同对象想使用对方的属性或方法  所以需要转换</li>
+<li>DOM对象转为jQuery对象  $(DOM对象)</li>
+<li>jQuery对象转换为DOM对象<ul>
+<li>方式一  :  <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710102816552.png" alt="image-20200710102816552" style="zoom:80%;"></li>
+<li>方式二  :  <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710102842383.png" alt="image-20200710102842383" style="zoom:80%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-jQuery选择器"><a href="#3-jQuery选择器" class="headerlink" title="3.jQuery选择器"></a>3.jQuery选择器</h3><ul>
+<li><p>基础选择器</p>
+<ul>
+<li>$(‘选择器’)  //里面选择器直接写CSS选择器即可</li>
+<li>属性设置  <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710105156583.png" alt="image-20200710105156583" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><p>隐式迭代</p>
+</li>
+<li><p>遍历jQuery内部DOM元素的过程就叫做隐式迭代</p>
+</li>
+<li><p>筛选选择器</p>
+<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710105832992.png" alt="image-20200710105832992" style="zoom:80%;">
+</li>
+<li><p><strong>重点 :  筛选的方法</strong></p>
+<img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710110109486.png" alt="image-20200710110109486" style="zoom:80%;">
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-jQuery样式操作"><a href="#4-jQuery样式操作" class="headerlink" title="4.jQuery样式操作"></a>4.jQuery样式操作</h3><ul>
+<li>4.1 操作css方法<ul>
+<li>参数只写属性名 则是返回属性值<ul>
+<li>$(this).css(“color”)</li>
+</ul>
+</li>
+<li>参数是属性名,属性值,逗号分隔,是设置一组样式,属性必须加引号,值如果是数字可以不加引号<ul>
+<li>$(this).css(“color” , “red”)</li>
+</ul>
+</li>
+<li>参数也可以是对象形式  属性名和属性值用冒号隔开  属性可以不用加引号<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710171905872.png" alt="image-20200710171905872" style="zoom:80%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4.2 设置类样式方法<ul>
+<li>添加类<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710172333780.png" alt="image-20200710172333780"></li>
+</ul>
+</li>
+<li>删除类<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710172345101.png" alt="image-20200710172345101"></li>
+</ul>
+</li>
+<li>切换类<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710172356541.png" alt="image-20200710172356541"></li>
+</ul>
+</li>
+<li>链式编程<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710173610400.png" alt="image-20200710173610400" style="zoom:80%;">
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-jQuery效果"><a href="#5-jQuery效果" class="headerlink" title="5.jQuery效果"></a>5.jQuery效果</h3><ul>
+<li>显示隐藏<ul>
+<li>show()</li>
+<li>hide()</li>
+<li>toggle()</li>
+</ul>
+</li>
+<li>滑动<ul>
+<li>slideDown()</li>
+<li>slideUp()</li>
+<li>slideToggle()</li>
+</ul>
+</li>
+<li>淡入淡出<ul>
+<li>fadeIn()</li>
+<li>fadeOut()</li>
+<li>fadeToggle()</li>
+<li>fadeTo()</li>
+</ul>
+</li>
+<li>自定义动画<ul>
+<li>animate()<ul>
+<li>语法:<img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710220945461.png" alt="image-20200710220945461" style="zoom:80%;"></li>
+<li>参数:<img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710221003535.png" alt="image-20200710221003535" style="zoom:80%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>hover 事件切换   即鼠标经过和离开的复合写法<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710175811711.png" alt="image-20200710175811711" style="zoom:80%;"></li>
+<li>如果里面只写一个函数  那么鼠标经过和离开都会触发这个函数 如更简便的方法<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200710180007106.png" alt="image-20200710180007106" style="zoom:80%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动画队列及其停止排队方法<ul>
+<li>动画或效果队列<ul>
+<li>动画或者效果一旦触发就会自动执行,如果多次触发,就造成多个动画或者效果排队执行</li>
+</ul>
+</li>
+<li>停止排队<ul>
+<li>使用stop()</li>
+<li>该方法使用动画或者效果的前面  如$(this).stop().slideToggle()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-jQuery获取元素的固有属性"><a href="#6-jQuery获取元素的固有属性" class="headerlink" title="6.jQuery获取元素的固有属性"></a>6.jQuery获取元素的固有属性</h3><ul>
+<li>6.1 设置或获取元素固有属性值 prop()<ul>
+<li>即元素自身带有的属性  如a里面的href</li>
+<li>获取方法使用  element.prop(“属性名”)  即可</li>
+<li>设置属性值方法  element.prop(“属性名”,”属性值”)</li>
+</ul>
+</li>
+<li>6.2 设置或获取元素自定义属性值 attr()<ul>
+<li>其他方法和固有属性一样</li>
+</ul>
+</li>
+<li>6.3 数据缓存 data()<ul>
+<li>data() 方法可以在指定的元素上存取数据 并不会修改DOM元素结构,一旦页面刷新,之前存放的数据都会丢失</li>
+</ul>
+</li>
+<li>购物车案例思路<img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711001725765.png" alt="image-20200711001725765" style="zoom:80%;"></li>
+</ul>
+<h3 id="7-jQuery内容文本值"><a href="#7-jQuery内容文本值" class="headerlink" title="7.jQuery内容文本值"></a>7.jQuery内容文本值</h3><ul>
+<li>7.1 获取元素内容 <ul>
+<li>html()  </li>
+<li>类似于innerHtml   $(‘div’).html()</li>
+</ul>
+</li>
+<li>7.2 获取普通元素里面的文本内容  不包含html标签<ul>
+<li>text()</li>
+<li>类似于innerText()  $(‘div’).text()</li>
+</ul>
+</li>
+<li>7.3 获取表单值<ul>
+<li>val()</li>
+<li>$(‘div’).val()  </li>
+</ul>
+</li>
+<li>7.4 parents(‘选择器’)  可以返回指定祖先元素</li>
+<li>7.5 保留n位小数  toFixed(n)</li>
+</ul>
+<h3 id="8-jQuery元素操作"><a href="#8-jQuery元素操作" class="headerlink" title="8.jQuery元素操作"></a>8.jQuery元素操作</h3><p>主要是遍历 创建 添加 删除元素</p>
+<ul>
+<li>遍历    如果想给同一类元素做不同操作,需要用到遍历<ul>
+<li>语法1 : <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711140231179.png" alt="image-20200711140231179" style="zoom:80%;"><ul>
+<li>1.each() 方法遍历匹配的每一个元素  主要用DOM处理  each每一个</li>
+<li>2.里面的回调函数有2个参数  index是每个元素的索引号  domEle是每个DOM对象 不是jQuery对象</li>
+<li>3.如果想使用jQuery方法  需要将dom元素转为jQuery对象</li>
+</ul>
+</li>
+<li>语法2 : <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711143625868.png" alt="image-20200711143625868" style="zoom:80%;"><ul>
+<li>1.$.each() 方法可用于遍历任何对象  主要用于数据处理  比如数组  对象</li>
+<li>2.里面的函数有两个参数 : index是每个元素的索引号 element遍历内容</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建元素<ul>
+<li>语法 : <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200711152145565.png" alt="image-20200711152145565" style="zoom:80%;"></li>
+</ul>
+</li>
+<li>添加元素<ul>
+<li>内部添加<ul>
+<li>语法: element().append()  默认填加到内容的最后面  类似于appendChildren</li>
+<li>使用 prepend添加  放于内容的最前面</li>
+</ul>
+</li>
+<li>外部添加<ul>
+<li>element().before() 放于目标的前面</li>
+<li>after  放于目标的后面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>删除元素<ul>
+<li>element.remove()  删除匹配的元素</li>
+<li>element.empty()  删除匹配的元素集合中所有的子节点</li>
+<li>element.html(“”)    <strong>注意里面需要加一个空的字符串</strong> 清空匹配的元素内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-jQuery事件"><a href="#9-jQuery事件" class="headerlink" title="9.jQuery事件"></a>9.jQuery事件</h3><ul>
+<li>jQuery事件注册</li>
+<li>jQuery事件处理<ul>
+<li>on()事件绑定<ul>
+<li>on() 方法在匹配元素上绑定一个或多个事件的事件处理函数<ul>
+<li>语法 <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712105349108.png" alt="image-20200712105349108" style="zoom:80%;"></li>
+</ul>
+</li>
+<li><ol>
+<li>events : 一个或多个用空格分隔的事件类型 如click 或 keydown</li>
+<li>selector : 元素的子元素选择器</li>
+<li>fn : 回调函数 绑定到元素身上的侦听函数</li>
+</ol>
+</li>
+<li>如果里面只有一个函数  多个事件  那么这个函数会被多个事件执行</li>
+<li>on() 方法可以进行事件委派操作 <ul>
+<li>把原来加给子元素身上的事件绑定到父元素身上 就是把事件委派给父元素</li>
+</ul>
+</li>
+<li>on() 方法可以给动态创建的元素绑定事件<ul>
+<li>语法和上述一样</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件处理off() 解绑事件<ul>
+<li>可以移除通过on事件绑定的方法</li>
+<li>语法为 $(‘div’).off() 解绑所有事件</li>
+<li>$(‘div’).off(“事件名”) 解绑指定的事件</li>
+<li>$(‘div’).off(“事件名”,”绑定对象”) 解绑事件委托</li>
+</ul>
+</li>
+<li>one() 事件  只触发一次 不用解绑<ul>
+<li>语法为 $(“div”).one(“click”,function)</li>
+</ul>
+</li>
+<li>trigger()  自动触发事件<ul>
+<li>第一种 element.click()  第一种简写形式</li>
+<li>第二种 element.trigger() 另一种简写形式</li>
+<li>第三种 element.triggerHandler()  <strong>不会触发元素的默认行为</strong></li>
+<li>具体代码是:<img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712150146130.png" alt="image-20200712150146130" style="zoom:80%;"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>jQuery事件对象 <ul>
+<li>和webAPIs类似</li>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712150643559.png" alt="image-20200712150643559" style="zoom:80%;"></li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="10-jQuery其他对象"><a href="#10-jQuery其他对象" class="headerlink" title="10.jQuery其他对象"></a>10.jQuery其他对象</h3><ul>
+<li>jQuery拷贝对象<ul>
+<li>使用$.extend() 方法</li>
+<li>语法为 : <img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200712151128574.png" alt="image-20200712151128574" style="zoom:80%;"><ul>
+<li>1.deep为true为深拷贝  false为浅拷贝</li>
+<li>2.target 要拷贝的对象</li>
+<li>3.object1 待拷贝到的第一个对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多库共存<ul>
+<li>jQuery使用$ 作为标识符 随着jQuery的流行,其他js库也会用$作为标识符,这样一起使用会发生冲突</li>
+<li>jQuery解决方案<ul>
+<li>把里面的$符号统一改为jQuery</li>
+<li>jQuery变量$可以自己定义名字<ul>
+<li>语法为 var xx = $.noConflict()  此时 $符号即可用xx代替</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>jQuery插件        jQuery之家/jQuery插件库   网站下载<ul>
+<li>瀑布流</li>
+<li>图片懒加载      使用延迟加载 减轻服务器负载</li>
+<li>全屏滚动      fullpage.js</li>
+<li>bootstrap  JS插件  <ul>
+<li>其是依赖于jQuery开发的   所以也必须引入jQuery文件    </li>
+<li>组件  <ul>
+<li>如导航条  我们需要提前引入 bootstrap.min.css   然后复制代码即有一系列的样式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-todoList综合案例"><a href="#11-todoList综合案例" class="headerlink" title="11.todoList综合案例"></a>11.todoList综合案例</h3><h4 id="1-相关知识点"><a href="#1-相关知识点" class="headerlink" title="(1)相关知识点"></a>(1)相关知识点</h4><ul>
+<li>本地存储只能存储字符串的数据格式 需要把我们的数组对象转换为字符串格式 JSON.stringify()</li>
+<li>获取本地存储的数据我们需要把里面的字符串数据转换为对象格式JSON. parse()</li>
+<li>splice(i,n) 删除数组数据方法  从i开始 删除n个</li>
+</ul>
+<h3 id="12-jQuery尺寸-位置操作"><a href="#12-jQuery尺寸-位置操作" class="headerlink" title="12.jQuery尺寸 位置操作"></a>12.jQuery尺寸 位置操作</h3><ul>
+<li>12.1 jQuery尺寸<ul>
+<li><img src="/scattter.github.io/2020/07/15/Study/Javascript/JQuery/image-20200713100628943.png" alt="image-20200713100628943" style="zoom:80%;"></li>
+</ul>
+</li>
+<li>12.2 jQuery位置<ul>
+<li>offset() 元素离文档的距离  <strong>里面加参数即设置距离</strong></li>
+<li>position() 返回元素相对于带有定位的父级偏移坐标   <strong>该方法只能读取  不能设置</strong></li>
+<li>scrollTop() 元素被卷曲的头部   <strong>可以获取也可以设置</strong> </li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+	<div>
+      
+        
+      
+	</div>
+
+	<div>
+		
+		<div>
+    
+		<div style="text-align:center;color: #ccc;font-size:20px;">·ꙫ·</div>
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-heart" aria-hidden="true"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+	
+	
+	
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Scatter 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/scattter.github.io/2020/07/15/Study/Javascript/JavaScript%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="Study/Javascript/JavaScript面向对象">
+                <i class="fa fa-chevron-left"></i> Study/Javascript/JavaScript面向对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/scattter.github.io/2020/07/15/Study/Javascript/JS%E4%B8%8EWebAPI_BOM%E7%B3%BB%E5%88%97/" rel="prev" title="Study/Javascript/JS与WebAPI_BOM系列">
+                Study/Javascript/JS与WebAPI_BOM系列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/scattter.github.io/images/1.jpg"
+                alt="Scatter" />
+            
+              <p class="site-author-name" itemprop="name">Scatter</p>
+              <p class="site-description motion-element" itemprop="description">Python/Java/机器学习/闲谈</p>
+          </div>
+			
+          <nav class="site-state motion-element">
+			
+			
+            
+              <div class="site-state-item site-state-posts">
+              
+				<a href="/scattter.github.io/archives">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">归档</span>
+                </a>
+              </div>
+            
+			
+			
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/scattter.github.io/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/scattter.github.io/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/scattter/scattter.github.io" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://music.163.com/#/my/m/music/playlist?id=37979012" target="_blank" title="Music">
+                      
+                        <i class="fa fa-fw fa-headphones"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+		  
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-jQuery概述"><span class="nav-text">1.jQuery概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-jQuery的基本使用"><span class="nav-text">2.jQuery的基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jQuery选择器"><span class="nav-text">3.jQuery选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-jQuery样式操作"><span class="nav-text">4.jQuery样式操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-jQuery效果"><span class="nav-text">5.jQuery效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-jQuery获取元素的固有属性"><span class="nav-text">6.jQuery获取元素的固有属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-jQuery内容文本值"><span class="nav-text">7.jQuery内容文本值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-jQuery元素操作"><span class="nav-text">8.jQuery元素操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-jQuery事件"><span class="nav-text">9.jQuery事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-jQuery其他对象"><span class="nav-text">10.jQuery其他对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-todoList综合案例"><span class="nav-text">11.todoList综合案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-相关知识点"><span class="nav-text">(1)相关知识点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-jQuery尺寸-位置操作"><span class="nav-text">12.jQuery尺寸 位置操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--这里是引入Aplayer-->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/meting@1.0.1/dist/Meting.min.js"></script>
+-->
+
+
+<div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <!--这里是改变作者的图标-->
+  <span class="with-love" id="heart">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Scatter</span>
+
+  
+</div>
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("12/31/2019 20:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "☪本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 "; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+ <!-- 
+ <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+
+<div class="theme-info">
+
+  <div class="powered-by"></div>
+  <i class="fa fa-pencil"></i><span id="busuanzi_container_site_uv">
+  <span class="post-count">博客全站共63.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/scattter.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/scattter.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/scattter.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/scattter.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/scattter.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/scattter.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/scattter.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/scattter.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/scattter.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/scattter.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/scattter.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/scattter.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/scattter.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/scattter.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
