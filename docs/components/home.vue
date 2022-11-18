@@ -17,7 +17,7 @@
 import card from './card.vue'
 const cards = [
   {
-    type: 'custom card',
+    type: 'custom',
   },
   {
     topic: '🐕',
