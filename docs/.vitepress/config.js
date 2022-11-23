@@ -23,35 +23,6 @@ module.exports = {
       '/project/': sidebarProject(),
       '/devops/': sidebarDevops(),
     },
-    // sidebar: [
-    //   {
-    //     text: 'Projects',
-    //     collapsible: true,
-    //     items: [
-    //       {
-    //         text: 'mr-notice',
-    //         collapsible: true,
-    //         items: [
-    //           { text: '项目部署', link: `${MR_NOTICE_PATH}/auto-deploy` }
-    //         ]
-    //       },
-    //       {
-    //         text: 'demo',
-    //         collapsible: true,
-    //         items: [
-    //           { text: '首页', link: `${MR_NOTICE_PATH}/demo` }
-    //         ]
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     text: 'test',
-    //     collapsible: true,
-    //     items: [
-    //       { text: 'test', link: '/project/test/test' }
-    //     ]
-    //   }
-    // ],
   },
 }
 
@@ -69,6 +40,11 @@ function nav() {
           link: '/project/mr-notice/auto-deploy',
           activeMatch: '/project/'
         },
+        {
+          text: '50projects50days',
+          link: '/project/50projects50days/scrollAnimation',
+          activeMatch: '/project/'
+        }
       ]
     },
     {

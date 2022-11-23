@@ -1,9 +1,10 @@
 const MR_NOTICE_PATH = '/project/mr-notice'
+const _50_PROJECTS_50_DAYS = '/project/50projects50days'
 
 function sidebarProject() {
   return [
     {
-      text: 'Projects',
+      text: 'self projects',
       collapsible: true,
       items: [
         {
@@ -12,6 +13,16 @@ function sidebarProject() {
           items: [
             { text: '项目部署', link: `${MR_NOTICE_PATH}/auto-deploy` }
           ]
+        },
+      ]
+    },
+    {
+      text: '50projects50days',
+      collapsible: true,
+      items: [
+        {
+          text: 'Scroll Animation',
+          link: `${_50_PROJECTS_50_DAYS}/scrollAnimation`
         },
       ]
     },
