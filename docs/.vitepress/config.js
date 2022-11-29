@@ -44,6 +44,11 @@ function nav() {
           text: '50projects50days',
           link: '/project/50projects50days/scrollAnimation',
           activeMatch: '/project/'
+        },
+        {
+          text: 'Typescript study',
+          link: '/project/typescript-study/home',
+          activeMatch: '/project/'
         }
       ]
     },

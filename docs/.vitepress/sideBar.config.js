@@ -1,10 +1,11 @@
 const MR_NOTICE_PATH = '/project/mr-notice'
 const _50_PROJECTS_50_DAYS = '/project/50projects50days'
+const TYPESCRIPT_STUDY = '/project/typescript-study'
 
 function sidebarProject() {
   return [
     {
-      text: 'self projects',
+      text: 'Self projects',
       collapsible: true,
       items: [
         {
@@ -23,6 +24,36 @@ function sidebarProject() {
         {
           text: 'Scroll Animation',
           link: `${_50_PROJECTS_50_DAYS}/scrollAnimation`
+        },
+      ]
+    },
+    {
+      text: 'Typescript study',
+      collapsible: true,
+      items: [
+        {
+          text: 'Typescript学习与记录',
+          link: `${TYPESCRIPT_STUDY}/home`
+        },
+        {
+          text: '01-函数间ts的交互使用',
+          link: `${TYPESCRIPT_STUDY}/01-函数间ts的交互使用`
+        },
+        {
+          text: '02-ts实现函数重载',
+          link: `${TYPESCRIPT_STUDY}/02-ts实现函数重载`
+        },
+        {
+          text: '03-ts对简单的可选参数处理',
+          link: `${TYPESCRIPT_STUDY}/03-ts对简单的可选参数处理`
+        },
+        {
+          text: '04-ts中元组的简单使用',
+          link: `${TYPESCRIPT_STUDY}/04-ts中元组的简单使用`
+        },
+        {
+          text: '05-ts中泛型的简单使用',
+          link: `${TYPESCRIPT_STUDY}/05-ts中泛型的简单使用`
         },
       ]
     },
