@@ -25,6 +25,10 @@ function sidebarProject() {
           text: 'Scroll Animation',
           link: `${_50_PROJECTS_50_DAYS}/scrollAnimation`
         },
+        {
+          text: 'More Context Tip Animation',
+          link: `${_50_PROJECTS_50_DAYS}/moreContextTipAnimation.md`
+        },
       ]
     },
     {
