@@ -1,5 +1,5 @@
 <template>
-  <div class="main-area view-component">
+  <div class="main-area view-demo-component">
     <h1 style="text-align: center">Scroll Animation</h1>
     <div class="contexts">
       <div class="context">Node 1</div>
@@ -45,9 +45,6 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .main-area {
-  width: 100%;
-  height: 60vh;
-  background-color: antiquewhite;
   overflow-x: hidden;
   overflow-y: auto;
 }
