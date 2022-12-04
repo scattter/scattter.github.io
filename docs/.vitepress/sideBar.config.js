@@ -87,6 +87,7 @@ function sidebarDevops() {
           items: [
             { text: 'express中配置log4js', link: `${DEVOPS_OTHERS_PATH}/express中配置log4js` },
             { text: '物理机安装Linux同时实现内网穿透', link: `${DEVOPS_OTHERS_PATH}/物理机安装Linux同时实现内网穿透` },
+            { text: 'Centos分区合并', link: `${DEVOPS_OTHERS_PATH}/Centos分区合并` },
           ]
         }
       ]
