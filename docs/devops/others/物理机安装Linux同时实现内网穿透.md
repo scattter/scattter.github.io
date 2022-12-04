@@ -19,6 +19,7 @@
 
 
 ## 1. 安装Centos
+> 自己搭建系统后要注意看22端口是否正常开启使用, 没有正常开启会影响后面的ssh连接
 
 1. 下载系统
 
@@ -225,3 +226,12 @@ Host ssh.xxx.xxx
 
 8. 测试穿透
 访问自己在上面配置的域名, 验证是否可以得到正常响应
+
+
+
+
+## 补充: ssh连接服务端(以tabby为例)
+
+![image-20221204205427024](https://cdn.jsdelivr.net/gh/scattter/blogweb/images/image-20221204205427024.png)
+
+使用tabby的时候可以配置Proxy command方式进行连接, 命令就是`4.6` 部分的`/opt/homebrew/bin/cloudflared access ssh --hostname <你的ssh地址>` 命令行
