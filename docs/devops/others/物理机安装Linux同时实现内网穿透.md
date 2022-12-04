@@ -199,17 +199,15 @@ ingress:
 
 - 注意如果是想使用ssh服务, 客户端也需要登录`cloudflare`
 
-在host里面进行相应的配置
-
+在客户端的ssh配置里面进行相应的配置, mac的为 `/etc/ssh/config`
+添加下面配置
 ```
 Host ssh.xxx.xxx
-  ProxyCommand /root/cloudflared access ssh --hostname %h
+  ProxyCommand /opt/homebrew/bin/cloudflared access ssh --hostname %h
 ```
 
-ssh登录就可以使用
-
+随后客户端ssh登录就可以使用
 `ssh root@default.xxx.xxx `密码登录
-
 
 
 7. 配置为系统服务且设置自启动
