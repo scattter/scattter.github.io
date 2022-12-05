@@ -197,7 +197,7 @@ ingress:
 ```
 
 
-
+> ssh服务推荐使用Zerotier进行搭建连接, 自己实测速度很快
 - 注意如果是想使用ssh服务, 客户端也需要登录`cloudflare`
 
 在客户端的ssh配置里面进行相应的配置, mac的为 `/etc/ssh/config`
@@ -230,8 +230,33 @@ Host ssh.xxx.xxx
 
 
 
-## 补充: ssh连接服务端(以tabby为例)
+## 补充: SSH相关
+1. ssh连接服务端(以tabby为例)
 
 ![image-20221204205427024](https://cdn.jsdelivr.net/gh/scattter/blogweb/images/image-20221204205427024.png)
 
 使用tabby的时候可以配置Proxy command方式进行连接, 命令就是`4.6` 部分的`/opt/homebrew/bin/cloudflared access ssh --hostname <你的ssh地址>` 命令行
+
+
+2. Zerotier穿透
+> 搭建流程可以在网上百度一下, 比较简单
+> https://blog.csdn.net/never_late/article/details/127329225
+> https://baijiahao.baidu.com/s?id=1738840233744208152&wfr=spider&for=pc
+
+经过自己测试, 发现使用Zerotier进行ssh连接速度十分快, 相比于cloudflared有了3倍多的提升, 下面是对比图
+
+- cloudflared的延迟
+
+平均219ms
+
+![image-20221205165425151](https://cdn.jsdelivr.net/gh/scattter/blogweb/images/image-20221205165425151.png)
+
+- Zerotier的延迟
+
+平均56ms的延迟
+
+![image-20221205165317433](https://cdn.jsdelivr.net/gh/scattter/blogweb/images/image-20221205165317433.png)
+
+除此之外, 使用Zerotier穿透后可以直接用该ip在客户端访问服务器端其他端口服务, 如宝塔面板等
+
+其他DDNSTO这种方案后续有需要了再研究下
