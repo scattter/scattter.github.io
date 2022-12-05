@@ -39,7 +39,7 @@ wget https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.xz
 # 解压
 tar xvf node-v16.14.0-linux-x64.tar.xz
 # 改名便于后续操作
-mv node-v16.14.0-linux-x64.tar.xz nodejs
+mv node-v16.14.0-linux-x64 ./nodejs
 # 软链接(以便可以在任意目录下使用 node 和 npm 命令, 类似在windows上配置全局环境变量)
 ln -s /root/nodejs/bin/node /usr/local/bin/node
 ln -s /root/nodejs/bin/npm /usr/local/bin/npm
@@ -56,7 +56,7 @@ npm -v
 # 安装
 npm i -g pm2
 # 软链
-sudo ln -s /download/nodejs/bin/npx /usr/bin/npx
+sudo ln -s /root/nodejs/bin/pm2 /usr/local/bin
 # 验证
 pm2 -v
 ```
@@ -70,7 +70,7 @@ docker run -d --name=mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
 docker exec -it mysql bash
 # (如果登录以及CREATE步骤报错Operation CREATE USER failed for 'root'@'%', 那么使用这个命令)
 # drop user 'root';
-bash-4.2# mysql -u root -p 123456
+bash-4.2# mysql -u root -p
 # 授权
 mysql>CREATE USER 'root'@'%' IDENTIFIED BY 'root';
 mysql>GRANT ALL ON *.* TO 'root'@'%';
@@ -141,7 +141,7 @@ fi;
 docker pull nginx
 docker run -itd --name=nginx -p 80:80 nginx
 # 复制挂载文件模板到宿主机中
-mkdir nginx
+mkdir conf
 docker cp [容器id]:/etc/nginx/nginx.conf ./
 docker cp [容器id]:/etc/nginx/conf.d/default.conf ./conf/
 # 删除标准容器
