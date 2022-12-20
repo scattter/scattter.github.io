@@ -60,6 +60,14 @@ function sidebarProject() {
           text: '05-ts中泛型的简单使用',
           link: `${TYPESCRIPT_STUDY}/05-ts中泛型的简单使用`
         },
+        {
+          text: '06-ts练习(reduce)',
+          link: `${TYPESCRIPT_STUDY}/06-ts练习(reduce)`
+        },
+        {
+          text: '07-ts泛型中的keyof',
+          link: `${TYPESCRIPT_STUDY}/07-ts泛型中的keyof`
+        },
       ]
     },
     {
