@@ -49,6 +49,11 @@ function nav() {
           text: 'Typescript study',
           link: '/project/typescript-study/home',
           activeMatch: '/project/'
+        },
+        {
+          text: '其他项目相关',
+          link: '/project/others/生成脚本执行记录并发布npm包',
+          activeMatch: '/project/'
         }
       ]
     },

@@ -1,6 +1,7 @@
 const MR_NOTICE_PATH = '/project/mr-notice'
 const _50_PROJECTS_50_DAYS = '/project/50projects50days'
 const TYPESCRIPT_STUDY = '/project/typescript-study'
+const OTHER_PROJECTS = '/project/others'
 
 function sidebarProject() {
   return [
@@ -58,6 +59,16 @@ function sidebarProject() {
         {
           text: '05-ts中泛型的简单使用',
           link: `${TYPESCRIPT_STUDY}/05-ts中泛型的简单使用`
+        },
+      ]
+    },
+    {
+      text: '其他项目相关',
+      collapsible: true,
+      items: [
+        {
+          text: '生成脚本执行记录并发布npm包',
+          link: `${OTHER_PROJECTS}/生成脚本执行记录并发布npm包`
         },
       ]
     },
