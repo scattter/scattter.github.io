@@ -50,7 +50,7 @@ const DEFAULT_SCRIPTS_PATH = './scripts'
 // 默认的log信息路径
 const DEFAULT_LOGS_PATH = './logs'
 // 默认的完成log信息文件
-const DEFAULT_SUMMARY_LOG_PATH = './logs/all.yml'
+const DEFAULT_SUMMARY_LOG_PATH = '/all.yml'
 // 默认的node读取文件配置(如果文件不存在那就新建文件)
 const DEFAULT_READ_FILE_OPTION = {
   flag: 'a+',
@@ -100,7 +100,7 @@ const DEFAULT_READ_FILE_OPTION = {
 
 ```javascript
 function generateLogs(logsFolderPath = DEFAULT_LOGS_PATH, scriptsFolderPath = DEFAULT_SCRIPTS_PATH, ...options) {
-  const { summaryLogPath = DEFAULT_SUMMARY_LOG_PATH, readFileOption = DEFAULT_READ_FILE_OPTION } = options || {}
+  const { summaryLogPath = `${logsFolderPath}${DEFAULT_SUMMARY_LOG_PATH}`, readFileOption = DEFAULT_READ_FILE_OPTION } = options || {}
   let readDirs = fs.readdirSync(scriptsFolderPath);
   let allLogs = fs.readFileSync(summaryLogPath, readFileOption);
   let parsedLogs = YAML.parse(allLogs)
