@@ -68,6 +68,38 @@ function sidebarProject() {
           text: '07-ts泛型中的keyof',
           link: `${TYPESCRIPT_STUDY}/07-ts泛型中的keyof`
         },
+        {
+          text: '08-ts中的utility-types',
+          link: `${TYPESCRIPT_STUDY}/08-ts中的utility-types`
+        },
+        {
+          text: '09-ts中的Readonly和不可改属性',
+          link: `${TYPESCRIPT_STUDY}/09-ts中的Readonly和不可改属性`
+        },
+        {
+          text: '10-ts中的Enum和literal',
+          link: `${TYPESCRIPT_STUDY}/10-ts中的Enum和literal`
+        },
+        {
+          text: '11-ts中class的implement与属性可见性',
+          link: `${TYPESCRIPT_STUDY}/11-ts中class的implement与属性可见性`
+        },
+        {
+          text: '12-ts中的mapped types',
+          link: `${TYPESCRIPT_STUDY}/12-ts中的mapped types.md`
+        },
+        {
+          text: '13-ts中的readonly和static',
+          link: `${TYPESCRIPT_STUDY}/13-ts中的readonly和static`
+        },
+        {
+          text: '14-ts中class的abstract',
+          link: `${TYPESCRIPT_STUDY}/14-ts中class的abstract`
+        },
+        {
+          text: '15-ts中实现Mixin函数',
+          link: `${TYPESCRIPT_STUDY}/15-ts中实现Mixin函数`
+        },
       ]
     },
     {
