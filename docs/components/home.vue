@@ -1,35 +1,77 @@
 <template>
   <div class="home">
     <div class="banner">WELCOME</div>
-    <div class="cards">
-      <card class="home-card" :class="{'custom-card': item.type && item.type === 'custom'}" v-for="item in cards" :key="item.title" :info="item">
-        <template v-if="item.type && item.type === 'custom'" v-slot:custom>
-          <p class="title">Learning Plan</p>
-          <p>1. solidity</p>
-          <p>2. 50 days 50 projects</p>
-          <p>3. update before docs to website</p>
+    <div class="cards intro">
+      <cardWrapper class="home-card" :data="context['aboutMe']">
+        <template v-slot:contextSlot>
+          <div class="about-context">
+            <img class="about-img" src="../public/logo.jpeg" />
+            <span class="about-intro">
+              A Boy, 前端开发工程师, 工作经验2年+, 技术栈主要为vue2, 在用vue3实现自己构想的项目<strong>《soft work》</strong>,
+              目前主要在学Typescript, 对Koa, docker, 自动部署, 项目工程化等都有相应实践;
+              同时我也在关注Solidity, Rust等技术, 有任何文档我会及时更新到本站.
+            </span>
+            <div class="about-intro-more">本站内容为自己学习过程中文档的记录, 再次欢迎大家!</div>
+          </div>
         </template>
-      </card>
+      </cardWrapper>
+      <cardWrapper class="home-card" :data="context['recentWork']">
+        <template v-slot:contextSlot>
+          <li>Typescript study</li>
+          <li>50 days 50 projects</li>
+          <li>soft work</li>
+          <li>common utils repo</li>
+          <li>solidity study (low-level)</li>
+        </template>
+      </cardWrapper>
+      <cardWrapper class="home-card" :data="context['recentUpdate']">
+        <template v-slot:contextSlot>
+          <li>Typescript 最新学习章节</li>
+          <li>实现简单的脚本记录生成项目</li>
+          <li>服务器搭建和内网穿透实践</li>
+          <li>实现More text tip animation样式</li>
+        </template>
+      </cardWrapper>
+    </div>
+    <div class="cards code">
+      <cardWrapper class="home-card" :data="context['recentProject']">
+        <template v-slot:contextSlot>
+          待更新
+        </template>
+      </cardWrapper>
+      <cardWrapper class="home-card" :data="context['recentCommit']">
+        <template v-slot:contextSlot>
+          待更新
+        </template>
+      </cardWrapper>
     </div>
   </div>
 </template>
 <script setup>
-import card from './card.vue'
-const cards = [
-  {
-    type: 'custom',
+import cardWrapper from './cardWrapper.vue'
+
+const context = {
+  'aboutMe': {
+    title: '关于我',
+    subTitle: 'about',
   },
-  {
-    topic: '🐕',
-    title: 'zkk',
-    detail: 'a boy'
+  'recentWork': {
+    title: '最近在做',
+    subTitle: 'work',
   },
-  {
-    topic: '🦊',
-    title: 'sww',
-    detail: 'a cool girl'
+  'recentUpdate': {
+    title: '最近更新',
+    subTitle: 'update'
   },
-]
+  'recentProject': {
+    title: '最近项目',
+    subTitle: 'projects',
+  },
+  'recentCommit': {
+    title: 'Github提交',
+    subTitle: 'commits'
+  }
+}
 </script>
 <style lang="scss" scoped>
 .home {
@@ -62,14 +104,21 @@ const cards = [
     .home-card {
       height: auto;
     }
-    .custom-card {
-      p:nth-of-type(n+2) {
-        margin: 2px 0;
-        color: var(--vp-c-text-2);
+    .about-context {
+      .about-img {
+        float: left;
+        // 设置该值可以让图片和右侧文字在同一水平线
+        width: 114px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        margin-top: 2px;
+        margin-right: 6px;
       }
-      .title {
-        font-weight: 600;
-        margin-bottom: 10px;
+      .about-intro-more {
+        margin-top: 2px;
+        font-size: 14px;
+        color: var(--vp-c-text-4);
       }
     }
   }
