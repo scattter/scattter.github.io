@@ -49,15 +49,17 @@ const { title, subTitle, context } = props.data
         color: var(--vp-c-text-4);
       }
     }
-    .wrapper-context {
-      .text-context {
-        flex-grow: 1;
-        padding-top: 8px;
-        line-height: 24px;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--vp-c-text-2);
-      }
+  }
+  .wrapper-context {
+    width: 100%;
+    height: 100%;
+    .text-context {
+      flex-grow: 1;
+      padding-top: 8px;
+      line-height: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--vp-c-text-2);
     }
   }
 }

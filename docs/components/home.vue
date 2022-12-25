@@ -5,7 +5,7 @@
       <cardWrapper class="home-card" :data="context['aboutMe']">
         <template v-slot:contextSlot>
           <div class="about-context">
-            <img class="about-img" src="../public/logo.jpeg" />
+            <img class="about-img" src="../public/logo.jpeg" alt="" />
             <span class="about-intro">
               A Boy, 前端开发工程师, 工作经验2年+, 技术栈主要为vue2, 在用vue3实现自己构想的项目<strong>《soft work》</strong>,
               目前主要在学Typescript, 对Koa, docker, 自动部署, 项目工程化等都有相应实践;
@@ -36,12 +36,22 @@
     <div class="cards code">
       <cardWrapper class="home-card" :data="context['recentProject']">
         <template v-slot:contextSlot>
-          待更新
+          <div class="recent-project">
+            <div v-for="repo in repos" :key="repo" class="project">
+              <strong>{{ repo }}</strong>
+            </div>
+          </div>
         </template>
       </cardWrapper>
       <cardWrapper class="home-card" :data="context['recentCommit']">
         <template v-slot:contextSlot>
-          待更新
+          <div class="recent-commit">
+            <li v-for="commit in state.recentCommits" :key="commit.sha" class="commits">
+              <strong>Repo: {{ commit.repoName }}</strong>
+              <p class="commit-message">{{ commit.message }}</p>
+              <p class="commit-date">{{ commit.committer.date }}</p>
+            </li>
+          </div>
         </template>
       </cardWrapper>
     </div>
@@ -49,6 +59,13 @@
 </template>
 <script setup>
 import cardWrapper from './cardWrapper.vue'
+import { getAllCommitsByMultiRepo } from '../api/github.ts'
+import {onMounted, reactive } from 'vue'
+import { orderBy } from 'lodash'
+
+const state = reactive({
+  recentCommits: []
+})
 
 const context = {
   'aboutMe': {
@@ -65,13 +82,22 @@ const context = {
   },
   'recentProject': {
     title: '最近项目',
-    subTitle: 'projects',
+    subTitle: '4 projects',
   },
   'recentCommit': {
     title: 'Github提交',
-    subTitle: 'commits'
+    subTitle: '30 commits'
   }
 }
+const repos = ['common-utils', 'soft-work-frontend', 'soft-work-backend', 'scattter.github.io']
+
+onMounted(() => {
+  // 各个仓库最近10条commit
+  getAllCommitsByMultiRepo(repos).then(res => {
+    // 根据提交时间倒序排列
+    state.recentCommits = orderBy(res, 'committer.date', 'desc')
+  })
+})
 </script>
 <style lang="scss" scoped>
 .home {
@@ -92,18 +118,19 @@ const context = {
     display: flex;
     justify-content: space-between;
     margin: 0 -10px;
-    @media  screen and (max-width: 400px) {
+    @media screen and (max-width: 400px) {
       flex-direction: column;
       .home-card {
         width: auto;
       }
     }
-    @media  screen and (min-width: 400px) {
+    @media screen and (min-width: 400px) {
       flex-direction: row;
     }
     .home-card {
       height: auto;
     }
+
     .about-context {
       .about-img {
         float: left;
@@ -119,6 +146,49 @@ const context = {
         margin-top: 2px;
         font-size: 14px;
         color: var(--vp-c-text-4);
+      }
+    }
+
+    .recent-project {
+      display: flex;
+      justify-content: space-between;
+      align-content: space-between;
+      flex-wrap: wrap;
+      @media screen and (min-width: 300px) {
+        height: 300px;
+      }
+      @media screen and (max-width: 300px) {
+        height: 100%;
+      }
+      .project {
+        //width: 48%;
+        //height: 45%;
+        border-radius: 8px;
+        padding: 4px 8px;
+        border: 2px solid var(--vp-c-text-4);
+        @media screen and (min-width: 800px) {
+          width: 48%;
+          height: 45%;
+        }
+        @media screen and (max-width: 800px) {
+          width: 100%;
+          height: 20%;
+        }
+      }
+    }
+
+    .recent-commit {
+      max-height: 300px;
+      overflow-y: auto;
+      .commits {
+        margin-bottom: 8px;
+      }
+      p {
+        margin-left: 22px;
+      }
+      .commit-date {
+        font-size: 12px;
+        color: var(--vp-c-text-2);
       }
     }
   }
