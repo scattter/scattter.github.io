@@ -61,7 +61,7 @@
 import cardWrapper from './cardWrapper.vue'
 import { getAllCommitsByMultiRepo } from '../api/github.ts'
 import {onMounted, reactive } from 'vue'
-import { orderBy } from 'lodash'
+import _ from 'lodash'
 
 const state = reactive({
   recentCommits: []
@@ -95,7 +95,7 @@ onMounted(() => {
   // 各个仓库最近10条commit
   getAllCommitsByMultiRepo(repos).then(res => {
     // 根据提交时间倒序排列
-    state.recentCommits = orderBy(res, 'committer.date', 'desc')
+    state.recentCommits = _.orderBy(res, 'committer.date', 'desc')
   })
 })
 </script>
