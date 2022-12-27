@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup>
-import AMapLoader from '@amap/amap-jsapi-loader';
+// import AMapLoader from '@amap/amap-jsapi-loader';
 import { onMounted } from 'vue'
 import { shallowRef } from '@vue/reactivity'
 
@@ -36,30 +36,35 @@ const positionOptions = {
 let map = shallowRef(null);
 
 const initMap = () => {
-  AMapLoader.load({
-    key:"3003cca968b1aed5bf0002b2fdc3e774",             // 申请好的Web端开发者Key，首次调用 load 时必填
-    version:"2.0",      // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
-    plugins:['AMap.Geolocation'],       // 需要使用的的插件列表，如比例尺'AMap.Scale', 'AMap.Geolocation'等
-  }).then((AMap)=>{
-    //设置地图容器id
-    map = new AMap.Map("container", {
-      viewMode: "3D",    //是否为3D地图模式
-      zoom: 10,           //初始化地图级别
-      // center:[105.602725,37.076636], // 初始化地图中心点位置, 不填默认是当前城市
-    });
-    AMap.plugin('AMap.Geolocation', function() {
-      const geolocation = new AMap.Geolocation(positionOptions)
-      map.addControl(geolocation)
-      geolocation.getCurrentPosition(function(status,result) {
-        if(status === 'complete'){
-          onComplete(result)
-        }else{
-          onError(result)
-        }
+  // use dynamically import to render map
+  // https://github.com/vuejs/vitepress/issues/1689
+  // https://vitepress.vuejs.org/guide/using-vue#browser-api-access-restrictions
+  import('@amap/amap-jsapi-loader').then((AMapLoader) => {
+    AMapLoader.load({
+      key:"3003cca968b1aed5bf0002b2fdc3e774",             // 申请好的Web端开发者Key，首次调用 load 时必填
+      version:"2.0",      // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+      plugins:['AMap.Geolocation'],       // 需要使用的的插件列表，如比例尺'AMap.Scale', 'AMap.Geolocation'等
+    }).then((AMap)=>{
+      //设置地图容器id
+      map = new AMap.Map("container", {
+        viewMode: "3D",    //是否为3D地图模式
+        zoom: 10,           //初始化地图级别
+        // center:[105.602725,37.076636], // 初始化地图中心点位置, 不填默认是当前城市
       });
+      AMap.plugin('AMap.Geolocation', function() {
+        const geolocation = new AMap.Geolocation(positionOptions)
+        map.addControl(geolocation)
+        geolocation.getCurrentPosition(function(status,result) {
+          if(status === 'complete'){
+            onComplete(result)
+          }else{
+            onError(result)
+          }
+        });
+      })
+    }).catch(e=>{
+      onError(e)
     })
-  }).catch(e=>{
-    onError(e)
   })
 }
 
