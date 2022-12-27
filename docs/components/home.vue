@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="banner">WELCOME</div>
+    <mapContainer />
     <div class="cards intro">
       <cardWrapper class="home-card" :data="context['aboutMe']">
         <template v-slot:contextSlot>
@@ -59,6 +60,7 @@
 </template>
 <script setup>
 import cardWrapper from './cardWrapper.vue'
+import mapContainer from './amap/mapContainer.vue'
 import { getAllCommitsByMultiRepo } from '../api/github.ts'
 import {onMounted, reactive } from 'vue'
 import _ from 'lodash'

@@ -13,6 +13,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "axios": "^1.2.1",
     "dayjs": "^1.11.7",
     "lodash": "^4.17.21"

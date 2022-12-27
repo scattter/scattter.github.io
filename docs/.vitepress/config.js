@@ -3,6 +3,7 @@ const { sidebarDevops, sidebarProject } = require('./sideBar.config')
 
 module.exports = {
   title: 'Scatter Site',
+  head: [],
   description: 'self write',
   lastUpdated: true,
   markdown: {
