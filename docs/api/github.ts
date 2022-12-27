@@ -1,5 +1,6 @@
 import axios from "axios";
-import * as dayjs from "dayjs";
+// @ts-ignore
+import dayjs from "dayjs";
 
 const DEFAULT_PAGE_CONFIG = {
   page: 1,
