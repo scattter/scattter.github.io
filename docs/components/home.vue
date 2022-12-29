@@ -39,9 +39,14 @@
         <template v-slot:contextSlot>
           <div class="recent-project">
             <div v-for="repo in repos" :key="repo" class="project">
-              <strong>{{ repo }}</strong>
+              <strong class="recent-project-title">
+                <a :href="'https://github.com/scattter/' + repo" target="_blank">{{ repo }}</a>
+              </strong>
             </div>
           </div>
+        </template>
+        <template v-slot:extendTitleSlot>
+          <a class="recent-project-more" href="https://github.com/scattter" target="_blank">查看更多</a>
         </template>
       </cardWrapper>
       <cardWrapper class="home-card" :data="context['recentCommit']">
@@ -88,7 +93,7 @@ const context = {
   },
   'recentCommit': {
     title: 'Github提交',
-    subTitle: '30 commits'
+    subTitle: 'last 30 commits'
   }
 }
 const repos = ['common-utils', 'soft-work-frontend', 'soft-work-backend', 'scattter.github.io']
@@ -102,6 +107,8 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
+@import "docs/.vitepress/theme/scss/mixin.scss";
+
 .home {
   padding: 5px 10px;
   .banner {
@@ -176,6 +183,19 @@ onMounted(() => {
           width: 100%;
           height: 20%;
         }
+      }
+      .recent-project-title {
+        &:hover {
+          @include commonHover;
+          border-bottom: 1px solid $hoverColor;
+        }
+      }
+    }
+
+    .recent-project-more {
+      color: var(--vp-c-text-4);
+      &:hover {
+        @include commonHover;
       }
     }
 

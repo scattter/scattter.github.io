@@ -1,0 +1,6 @@
+@import "./variables.scss";
+
+@mixin commonHover {
+  cursor: pointer;
+  color: $hoverColor;
+}

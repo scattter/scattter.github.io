@@ -1,0 +1,57 @@
+// base color
+$blue:#324157;
+$light-blue:#3A71A8;
+$red:#C03639;
+$pink: #E65D6E;
+$green: #30B08F;
+$tiffany: #4AB7BD;
+$yellow:#FEC171;
+$panGreen: #30B08F;
+$white: #fff;
+$black: #00102f;
+$grey: #ccc;
+
+$primary: $light-blue;
+// font
+$fontColor: #00102F;
+$errorColor: #F95F5B;
+$linkColor: #409EFF;
+$hoverColor: #0046FF;
+
+// status
+$success: $green;
+$failed: $red;
+
+
+// font-size
+$fs-big: 18px;
+$fs-normal: 14px;
+$fs-small: 12px;
+
+$icon-color: $primary;
+$icon-color2: $light-blue;
+
+//navbar
+$navBg: #f5f6f7;
+
+// sidebar
+$menuText:rgb(0, 16, 47);
+$menuActiveText:rgb(0, 109, 255);
+$subMenuActiveText:rgb(0, 109, 255); // https://github.com/ElemeFE/element/issues/12951
+
+$menuBg:rgb(255, 255, 255);
+$menuHover:#9ea0a5;
+
+$subMenuBg:rgb(255, 255, 255);
+$subMenuHover:rgb(255, 255, 255);
+
+$sideBarWidth: 200px;
+$subSideBarWidth: 100%;
+$subSideBarHeight: 100%;
+
+$normalFontColor: rgba(0, 11, 63, 0.65);
+$bolderFontColor: #24324C;
+$midBolderFontColor: rgba(0, 16, 47, 0.85);
+$slightBolderFontColor: rgba(0, 16, 47, 0.65);
+
+$splitBorderColor: #F0F1F3;
