@@ -30,6 +30,14 @@ function sidebarProject() {
           text: 'More Context Tip Animation',
           link: `${_50_PROJECTS_50_DAYS}/moreContextTipAnimation.md`
         },
+        {
+          text: 'Sound btn',
+          link: `${_50_PROJECTS_50_DAYS}/soundBtn.md`
+        },
+        {
+          text: 'Blurry Loading',
+          link: `${_50_PROJECTS_50_DAYS}/BlurryLoading.md`
+        },
       ]
     },
     {
