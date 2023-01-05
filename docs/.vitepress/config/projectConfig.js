@@ -24,6 +24,10 @@ const _50ProjectsItems = [
     text: 'Blurry Loading',
     link: `${_50_PROJECTS_50_DAYS}/BlurryLoading.md`
   },
+  {
+    text: 'Ripple Effect',
+    link: `${_50_PROJECTS_50_DAYS}/RippleEffect.md`
+  },
 ]
 
 const typescriptStudyItems = [
