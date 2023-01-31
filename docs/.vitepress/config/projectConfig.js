@@ -28,6 +28,10 @@ const _50ProjectsItems = [
     text: 'Ripple Effect',
     link: `${_50_PROJECTS_50_DAYS}/RippleEffect.md`
   },
+  {
+    text: 'Drag N Drop',
+    link: `${_50_PROJECTS_50_DAYS}/DragNDrop.md`
+  },
 ]
 
 const typescriptStudyItems = [
