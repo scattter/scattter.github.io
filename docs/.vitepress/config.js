@@ -36,5 +36,9 @@ function nav() {
     },
     navProject,
     navDevops,
+    {
+      text: 'About Me',
+      link: '/about'
+    }
   ]
 }
