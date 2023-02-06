@@ -106,6 +106,10 @@ const otherProjectItems = [
     text: '生成脚本执行记录并发布npm包',
     link: `${OTHER_PROJECTS}/生成脚本执行记录并发布npm包`
   },
+  {
+    text: '前端语音识别探索',
+    link: `${OTHER_PROJECTS}/前端语音识别探索`
+  },
 ]
 
 function sidebarProject() {
