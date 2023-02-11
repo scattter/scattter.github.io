@@ -144,10 +144,10 @@ function sidebarProject() {
 }
 
 const navProject = {
-  text: 'Project',
+  text: 'Projects',
   items: [
     {
-      text: 'mr-notice',
+      text: 'soft-work',
       link: '/project/mr-notice/auto-deploy',
       activeMatch: '/project/'
     },

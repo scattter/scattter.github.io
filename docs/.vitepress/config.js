@@ -1,5 +1,6 @@
 const { sidebarProject, navProject } = require("./config/projectConfig");
 const { sidebarDevops, navDevops } = require("./config/devopsConfig");
+const { sidebarJsConfig, navJsConfig } = require("./config/jsConfig");
 
 
 module.exports = {
@@ -24,6 +25,7 @@ module.exports = {
     sidebar: {
       '/project/': sidebarProject,
       '/devops/': sidebarDevops,
+      '/js/': sidebarJsConfig,
     },
   },
 }
@@ -36,6 +38,7 @@ function nav() {
     },
     navProject,
     navDevops,
+    navJsConfig,
     {
       text: 'About Me',
       link: '/about'
