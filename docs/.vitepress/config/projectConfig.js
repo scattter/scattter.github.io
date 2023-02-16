@@ -110,6 +110,10 @@ const otherProjectItems = [
     text: '前端语音识别探索',
     link: `${OTHER_PROJECTS}/前端语音识别探索`
   },
+  {
+    text: '24小时直播推流探索',
+    link: `${OTHER_PROJECTS}/24小时直播推流`
+  },
 ]
 
 function sidebarProject() {
