@@ -71,3 +71,25 @@ export function getAllCommits(): Promise<Array<GithubCommitsWithEventResponse>> 
     }
   )
 }
+
+interface RepoInfoInterface {
+  id: string
+  name: string
+  full_name: string
+  owner: object
+  description: string
+  language: string
+  topics: string[]
+}
+
+export function getRepoInfo(repoNames: string[]): Promise<Record<string, Partial<RepoInfoInterface>>> {
+  return axios.get(`https://api.github.com/users/scattter/repos`)
+    .then(res => {
+      const data: Array<Partial<RepoInfoInterface>> = res.data
+      let results = {}
+      repoNames.map((repoName: string) => {
+        results[repoName] = data.filter(item => item.name === repoName)?.[0] ?? {}
+      })
+      return results
+    })
+}
