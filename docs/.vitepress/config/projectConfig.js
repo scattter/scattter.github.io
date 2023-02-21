@@ -114,6 +114,14 @@ const otherProjectItems = [
     text: '24小时直播推流探索',
     link: `${OTHER_PROJECTS}/24小时直播推流`
   },
+  {
+    text: '软路由探索',
+    link: `${OTHER_PROJECTS}/软路由探索`
+  },
+  {
+    text: '家用摄像头本地存储和查看',
+    link: `${OTHER_PROJECTS}/家用摄像头本地存储和查看`
+  },
 ]
 
 function sidebarProject() {
