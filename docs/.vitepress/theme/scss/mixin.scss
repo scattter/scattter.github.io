@@ -4,3 +4,17 @@
   cursor: pointer;
   color: $hoverColor;
 }
+
+@mixin textOverflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin multiLineOverflow {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
