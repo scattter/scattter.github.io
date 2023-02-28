@@ -8,7 +8,8 @@ function sidebarDevops() {
       collapsible: true,
       items: [
         { text: 'eslint和prettier配置', link: `${DEVOPS_FRONT_PATH}/eslint和prettier配置` },
-        { text: 'arco-design简单使用记录', link: `${DEVOPS_FRONT_PATH}/arco-design简单使用记录` }
+        { text: 'arco-design简单使用记录', link: `${DEVOPS_FRONT_PATH}/arco-design简单使用记录` },
+        { text: '前端项目部署方案', link: `${DEVOPS_FRONT_PATH}/前端项目部署方案` }
       ]
     },
     {
