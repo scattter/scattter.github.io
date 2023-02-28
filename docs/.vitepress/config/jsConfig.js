@@ -10,6 +10,7 @@ function sidebarJsConfig() {
         { text: '发布订阅模式', link: `${JS_CONFIG_PATTERNS_PATH}/event/index` },
         { text: '观察者模式', link: `${JS_CONFIG_PATTERNS_PATH}/observe/index` },
         { text: '代理模式', link: `${JS_CONFIG_PATTERNS_PATH}/proxy/index` },
+        { text: '广播模式', link: `${JS_CONFIG_PATTERNS_PATH}/provide/index` },
       ]
     },
   ]
