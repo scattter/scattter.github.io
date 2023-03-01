@@ -39,8 +39,8 @@
               </strong>
               <p class="project-desc">{{ state.reposInfo[repo]?.description }}</p>
               <div class="project-language">
-                <div class="language-tag" />
-                {{ state.reposInfo[repo]?.language || 'Nothing' }}
+                <div class="language-tag" :class="state.reposInfo[repo]?.language?.toString().toLowerCase()" />
+                {{ state.reposInfo[repo]?.language || '' }}
               </div>
             </div>
           </div>
@@ -129,6 +129,7 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 @import "docs/.vitepress/theme/scss/mixin.scss";
+@import "docs/.vitepress/theme/scss/variables.scss";
 
 .home {
   padding: 5px 10px;
@@ -254,7 +255,12 @@ onMounted(() => {
             height: 16px;
             margin-right: 5px;
             border-radius: 50%;
-            background-color: #f1e05a;
+          }
+          .language-tag.vue {
+            background-color: $vueTag;
+          }
+          .language-tag.javascript {
+            background-color: $jsTag;
           }
         }
       }

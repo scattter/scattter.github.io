@@ -99,6 +99,10 @@ const typescriptStudyItems = [
     text: '15-ts中实现Mixin函数',
     link: `${TYPESCRIPT_STUDY}/15-ts中实现Mixin函数`
   },
+  {
+    text: '16-ts中的条件类型',
+    link: `${TYPESCRIPT_STUDY}/16-ts中的条件类型`
+  },
 ]
 
 const otherProjectItems = [
