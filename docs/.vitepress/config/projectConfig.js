@@ -103,6 +103,10 @@ const typescriptStudyItems = [
     text: '16-ts中的条件类型',
     link: `${TYPESCRIPT_STUDY}/16-ts中的条件类型`
   },
+  {
+    text: '17-ts中的相关操作符',
+    link: `${TYPESCRIPT_STUDY}/17-ts中的相关操作符`
+  },
 ]
 
 const otherProjectItems = [
