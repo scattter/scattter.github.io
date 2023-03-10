@@ -5,6 +5,13 @@
   color: $hoverColor;
 }
 
+
+@mixin commonBtnHover {
+  cursor: pointer;
+  color: $hoverColor;
+  background-color: $btnBgColor;
+}
+
 @mixin textOverflow {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -17,4 +24,11 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+}
+
+@mixin commonCardWrapper {
+  box-shadow: $commonBoxShadow;
+  margin: 5px 0;
+  background-color: white;
+  border-radius: 4px;
 }

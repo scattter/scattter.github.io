@@ -32,6 +32,10 @@ const _50ProjectsItems = [
     text: 'Drag N Drop',
     link: `${_50_PROJECTS_50_DAYS}/DragNDrop.md`
   },
+  {
+    text: 'Calendar',
+    link: `${_50_PROJECTS_50_DAYS}/Calendar.md`
+  },
 ]
 
 const typescriptStudyItems = [
