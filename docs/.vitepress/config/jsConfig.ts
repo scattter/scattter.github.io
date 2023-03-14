@@ -1,7 +1,9 @@
+import { VitePressConfig } from '@/types/common'
+
 const JS_CONFIG_PATTERNS_PATH = '/js/designPatterns'
 
 
-function sidebarJsConfig() {
+export function sidebarJsConfig(): VitePressConfig[] {
   return [
     {
       text: '设计模式',
@@ -17,7 +19,7 @@ function sidebarJsConfig() {
   ]
 }
 
-const navJsConfig = {
+export const navJsConfig: VitePressConfig = {
   text: 'Javascript',
   items: [
     {
@@ -26,9 +28,4 @@ const navJsConfig = {
       activeMatch: '/js/'
     },
   ]
-}
-
-module.exports = {
-  sidebarJsConfig: sidebarJsConfig(),
-  navJsConfig,
 }

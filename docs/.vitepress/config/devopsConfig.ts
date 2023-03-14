@@ -1,7 +1,9 @@
+import { VitePressConfig } from '@/types/common'
+
 const DEVOPS_FRONT_PATH = '/devops/frontend'
 const DEVOPS_OTHERS_PATH = '/devops/others'
 
-function sidebarDevops() {
+export function sidebarDevops(): VitePressConfig[] {
   return [
     {
       text: '前端配置',
@@ -26,7 +28,7 @@ function sidebarDevops() {
   ]
 }
 
-const navDevops = {
+export const navDevops: VitePressConfig = {
   text: 'Devops',
   items: [
     {
@@ -40,9 +42,4 @@ const navDevops = {
       activeMatch: '/devops/'
     },
   ]
-}
-
-module.exports = {
-  sidebarDevops: sidebarDevops(),
-  navDevops,
 }

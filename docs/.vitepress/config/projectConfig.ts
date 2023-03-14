@@ -1,3 +1,5 @@
+import { VitePressConfig } from '@/types/common'
+
 const SOFT_WORK_PATH = '/project/mr-notice'
 const _50_PROJECTS_50_DAYS = '/project/50projects50days'
 const TYPESCRIPT_STUDY = '/project/typescript-study'
@@ -136,7 +138,7 @@ const otherProjectItems = [
   },
 ]
 
-function sidebarProject() {
+export function sidebarProject(): VitePressConfig[] {
   return [
     {
       text: 'Self projects',
@@ -167,7 +169,7 @@ function sidebarProject() {
   ]
 }
 
-const navProject = {
+export const navProject: VitePressConfig = {
   text: 'Projects',
   items: [
     {
@@ -191,9 +193,4 @@ const navProject = {
       activeMatch: '/project/'
     }
   ]
-}
-
-module.exports = {
-  sidebarProject: sidebarProject(),
-  navProject,
 }

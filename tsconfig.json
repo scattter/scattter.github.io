@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["docs/*"],
+      "@viewComponents/*": ["docs/project/50projects50days/viewComponent/*"],
+    },
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+  },
+  "exclude": ["node_modules"]
+}
