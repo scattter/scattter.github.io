@@ -193,13 +193,14 @@ onMounted(() => {
 
     .recent-work {
       max-height: 150px;
+      padding-left: 4px;
       overflow-y: auto;
       .recent-work-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 30px;
-        margin: 4px 0;
+        margin: 10px 0;
         .recent-work-msg {
           @include multiLineOverflow;
           flex: 1;
