@@ -1,7 +1,7 @@
-import { DirectiveBinding, ElType } from '@/types/common'
+import { DirectiveBinding } from '@/types/common'
 
-type BindingElType = ElType & {
-  parentNode?: HTMLElement
+interface BindingElType extends HTMLElement {
+  parentNode: HTMLElement
   __tip?: any
 }
 
@@ -14,7 +14,7 @@ export const tooltip = {
     const initEle = () => {
       if (tooltipEle) tooltipEle = null
       el.parentNode.style.position = 'relative'
-      const { left, top, width } = el.getBoundingClientRect()
+      const { width } = el.getBoundingClientRect()
       tooltipEle = document.createElement('span')
       tooltipEle.innerHTML = el.__tip
       tooltipEle.style.position = 'absolute'

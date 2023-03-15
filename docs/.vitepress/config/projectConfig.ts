@@ -1,4 +1,4 @@
-import { VitePressConfig } from '@/types/common'
+import { VitePressConfig, VitePressNav } from '@/types/common'
 
 const SOFT_WORK_PATH = '/project/mr-notice'
 const _50_PROJECTS_50_DAYS = '/project/50projects50days'
@@ -169,7 +169,7 @@ export function sidebarProject(): VitePressConfig[] {
   ]
 }
 
-export const navProject: VitePressConfig = {
+export const navProject: VitePressNav = {
   text: 'Projects',
   items: [
     {

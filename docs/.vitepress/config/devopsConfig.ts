@@ -1,4 +1,4 @@
-import { VitePressConfig } from '@/types/common'
+import { VitePressConfig, VitePressNav } from '@/types/common'
 
 const DEVOPS_FRONT_PATH = '/devops/frontend'
 const DEVOPS_OTHERS_PATH = '/devops/others'
@@ -28,7 +28,7 @@ export function sidebarDevops(): VitePressConfig[] {
   ]
 }
 
-export const navDevops: VitePressConfig = {
+export const navDevops: VitePressNav = {
   text: 'Devops',
   items: [
     {

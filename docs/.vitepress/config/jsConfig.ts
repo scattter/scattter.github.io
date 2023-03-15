@@ -1,4 +1,4 @@
-import { VitePressConfig } from '@/types/common'
+import { VitePressConfig, VitePressNav } from '@/types/common'
 
 const JS_CONFIG_PATTERNS_PATH = '/js/designPatterns'
 
@@ -19,7 +19,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
   ]
 }
 
-export const navJsConfig: VitePressConfig = {
+export const navJsConfig: VitePressNav = {
   text: 'Javascript',
   items: [
     {

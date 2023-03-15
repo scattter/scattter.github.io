@@ -168,6 +168,11 @@
   resolved "https://mirrors.cloud.tencent.com/npm/@esbuild%2flinux-loong64/-/linux-loong64-0.15.13.tgz#64e8825bf0ce769dac94ee39d92ebe6272020dfc"
   integrity sha512-+BoyIm4I8uJmH/QDIH0fu7MG0AEx9OXEDXnqptXCwKOlOqZiS4iraH1Nr7/ObLMokW3sOCeBNyD68ATcV9b9Ag==
 
+"@types/node@^18.15.3":
+  version "18.15.3"
+  resolved "https://mirrors.cloud.tencent.com/npm/@types/node/-/node-18.15.3.tgz#f0b991c32cfc6a4e7f3399d6cb4b8cf9a0315014"
+  integrity sha512-p6ua9zBxz5otCmbpb5D3U4B5Nanw6Pk3PPyX05xnxbB/fRv71N7CPmORg7uAD5P70T0xmx1pzAx/FUfa5X+3cw==
+
 "@types/web-bluetooth@^0.0.16":
   version "0.0.16"
   resolved "https://mirrors.cloud.tencent.com/npm/@types%2fweb-bluetooth/-/web-bluetooth-0.0.16.tgz#1d12873a8e49567371f2a75fe3e7f7edca6662d8"

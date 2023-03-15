@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress"
+import { VitePressNav } from "@/types/common";
 import { sidebarProject, navProject } from "./config/projectConfig"
 import { sidebarDevops, navDevops } from "./config/devopsConfig"
 import { sidebarJsConfig, navJsConfig } from "./config/jsConfig"
@@ -45,7 +46,7 @@ export default defineConfig({
   },
 })
 
-function nav() {
+function nav(): VitePressNav[] {
   return [
     {
       text: '首页',

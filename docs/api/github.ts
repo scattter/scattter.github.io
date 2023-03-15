@@ -32,6 +32,29 @@ interface CustomCommitInfo {
   message: string
 }
 
+interface GithubEventResponse {
+  id: string
+  type: string
+  repo: {
+    id: number
+    name: string
+    url: string
+  }
+  payload: {
+    commits: {
+      sha?: string
+      author?: {
+        email: string
+        name: string
+      }
+      message: string
+      url: string
+    }[]
+  }
+  public: boolean
+  created_at: string
+}
+
 // 返回的是[ CustomCommitInfo, CustomCommitInfo ] 这种格式的数据
 export function getAllCommitsByMultiRepo(repos: string[]): Promise<Array<CustomCommitInfo>> {
   return axios.all(repos.map(repo => {
@@ -61,9 +84,9 @@ export function getAllCommitsByMultiRepo(repos: string[]): Promise<Array<CustomC
 export function getAllCommits(): Promise<Array<GithubCommitsWithEventResponse>> {
   return axios.get('https://api.github.com/users/scattter/events').then(
     ({ data }) => {
-      return data.filter(item => item.type === 'PushEvent')
+      return data.filter((item: GithubEventResponse) => item.type === 'PushEvent')
         .reduce(
-          (total, item) => {
+          (total: GithubEventResponse['payload']['commits'], item: GithubEventResponse) => {
             total = [...total, ...item.payload.commits]
             return total
           },[]
@@ -86,7 +109,7 @@ export function getRepoInfo(repoNames: string[]): Promise<Record<string, Partial
   return axios.get(`https://api.github.com/users/scattter/repos`)
     .then(res => {
       const data: Array<Partial<RepoInfoInterface>> = res.data
-      let results = {}
+      let results: Record<string, Partial<RepoInfoInterface>> = {}
       repoNames.map((repoName: string) => {
         results[repoName] = data.filter(item => item.name === repoName)?.[0] ?? {}
       })
