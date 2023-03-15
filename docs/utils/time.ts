@@ -2,9 +2,8 @@
 import dayjs from "dayjs";
 
 export const calcTimeToDiffDayLabel = (time: string | Date): string => {
-  const curDay = dayjs().format('YYYY-MM-DD HH:mm:ss')
-  const targetDay = dayjs(time).format('YYYY-MM-DD HH:mm:ss')
-  let label = '无定义'
+  const curDay = dayjs().format('YYYY-MM-DD')
+  const targetDay = dayjs(time).format('YYYY-MM-DD')
   const diff: number = dayjs(curDay).diff(targetDay, 'day')
   if (diff === 0) {
     label = '今天'
