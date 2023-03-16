@@ -74,6 +74,13 @@ const handleNextMonth = () => {
 @import "docs/.vitepress/theme/scss/variables.scss";
 @import "docs/.vitepress/theme/scss/mixin.scss";
 
+.dark {
+  .calendar-wrapper {
+    color: white;
+    @include commonCardWrapper($darkModeColor)
+  }
+}
+
 .calendar-wrapper {
   color: rgb(96, 98, 102);
   @include commonCardWrapper

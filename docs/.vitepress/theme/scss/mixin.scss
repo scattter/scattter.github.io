@@ -26,9 +26,9 @@
   text-overflow: ellipsis;
 }
 
-@mixin commonCardWrapper {
+@mixin commonCardWrapper($bgColor: 'white') {
   box-shadow: $commonBoxShadow;
   margin: 5px 0;
-  background-color: white;
+  background-color: $bgColor;
   border-radius: 4px;
 }

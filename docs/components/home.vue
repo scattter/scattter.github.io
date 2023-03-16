@@ -408,4 +408,10 @@ onMounted(() => {
     }
   }
 }
+
+.dark .banner {
+  border: 1px solid var(--vp-c-bg-mute);
+  color: $white;
+  background-color: $darkModeColor;
+}
 </style>

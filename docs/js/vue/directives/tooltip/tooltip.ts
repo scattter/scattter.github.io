@@ -25,8 +25,13 @@ export const tooltip = {
       tooltipEle.style.left = '0'
       tooltipEle.style.boxShadow = '0px 4px 8px 0px rgba(41,48,64,0.4)'
       tooltipEle.style.borderRadius = '4px'
-      tooltipEle.style.backgroundColor = '#fff'
       tooltipEle.style.padding = '4px 8px'
+      if (document.documentElement.classList.contains('dark')) {
+        tooltipEle.style.backgroundColor = '#9ea0a5'
+        tooltipEle.style.color = '#242424'
+      } else {
+        tooltipEle.style.backgroundColor = '#fff'
+      }
       el.parentNode.appendChild(tooltipEle)
     }
     el.addEventListener('mouseenter', () => {
