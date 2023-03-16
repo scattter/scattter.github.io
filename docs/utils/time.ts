@@ -6,17 +6,28 @@ export const calcTimeToDiffDayLabel = (time: string | Date): string => {
   const targetDay = dayjs(time).format('YYYY-MM-DD')
   const diff: number = dayjs(curDay).diff(targetDay, 'day')
   if (diff === 0) {
-    label = '今天'
+    return '今天'
   } else if (diff === 1) {
-    label = '昨天'
+    return '昨天'
   } else if (diff === 2) {
-    label = '前天'
+    return '前天'
   } else if (diff < 4) {
-    label = '三天内'
+    return '三天内'
   } else if (diff < 7) {
-    label = '一周内'
+    return '一周内'
   } else {
-    label = '一周前'
+    return '一周前'
   }
-  return label
+}
+
+interface DateTime {
+  year: number
+  month: number
+  day?: unknown
+}
+
+export const isToday = (date: DateTime, carry: number = 0) => {
+  if (typeof date.day !== 'number') return false
+  const { year, month, day } = date
+  return dayjs().isSame(dayjs(`${year}-${month + carry}-${day}`), 'day')
 }

@@ -17,6 +17,7 @@ export const tooltip = {
       const { width } = el.getBoundingClientRect()
       tooltipEle = document.createElement('span')
       tooltipEle.innerHTML = el.__tip
+      tooltipEle.classList.add('v-tooltip')
       tooltipEle.style.position = 'absolute'
       tooltipEle.style.width = width + 'px'
       tooltipEle.style.height = el.scrollHeight + 'px'

@@ -1,7 +1,7 @@
 <template>
   <div class="calendar-wrapper" :class="{'extra-wrapper': hasExtraSlot}">
     <div class="wrapper">
-      <slot v-if="hasHeaderSlot" name="header" :data="{year, month, handlePrevMonth, handleNextMonth}"></slot>
+      <slot v-if="hasHeaderSlot" name="header" :data="{ year, month, handlePrevMonth, handleNextMonth }"></slot>
       <div v-else class="header">
         <div class="switch">
           <button class="btn" @click="handlePrevMonth">{{ prev }}</button>
@@ -13,11 +13,11 @@
         <div class="calendar-row" v-for="(item, index) in Array(totalRows)">
           <div
               class="calendar-item"
-              :class="{'header-item': index === 0, today: isToday(item, month, year)}"
-              v-for="item in totalDays.slice(index * WEEKDAYS, (index + 1) * WEEKDAYS)"
+              :class="{ 'header-item': index === 0 }"
+              v-for="day in totalDays.slice(index * WEEKDAYS, (index + 1) * WEEKDAYS)"
           >
-            <span v-if="!hasDaySlot">{{ item }}</span>
-            <slot v-else name="day" :data="item" />
+            <span v-if="!hasDaySlot" :class="{ today: isToday({ year, month, day }) }">{{ day }}</span>
+            <slot v-else name="day" :data="{ year, month, day }" />
           </div>
         </div>
       </div>
@@ -27,7 +27,8 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref, computed, useSlots } from "vue";
-import { setupDays } from './calc.ts';
+import { isToday } from '@/utils/time'
+import { setupDays } from './calc';
 
 const WEEKDAYS = 7
 const BEGIN_DAYS = 0
@@ -41,12 +42,14 @@ const hasDaySlot = !!useSlots().day
 const hasHeaderSlot = !!useSlots().header
 const hasExtraSlot = !!useSlots().extra
 
-let totalDays = ref([])
+let totalDays = ref<(string | number)[]>([])
 const totalRows = computed(() => Math.ceil(totalDays.value.length / WEEKDAYS))
 
 onMounted(() => {
   totalDays.value = setupDays(BEGIN_DAYS, now)
 })
+
+const emit = defineEmits(['handlePrevMonth', 'handleNextMonth'])
 
 const handlePrevMonth = () => {
   if (month.value === 0) {
@@ -54,6 +57,7 @@ const handlePrevMonth = () => {
   }
   month.value = month.value === 0 ? 11 : --month.value
   totalDays.value = setupDays(BEGIN_DAYS, new Date(year.value, month.value))
+  emit('handlePrevMonth', year.value, month.value)
 }
 
 const handleNextMonth = () => {
@@ -62,12 +66,7 @@ const handleNextMonth = () => {
   }
   month.value = month.value === 11 ? 0 : ++month.value
   totalDays.value = setupDays(BEGIN_DAYS, new Date(year.value, month.value))
-}
-
-const isToday = (day: number | undefined | string, month: number, year: number) => {
-  if (typeof day !== 'number') return false
-  const cur = new Date()
-  return day === cur.getDate() && month === cur.getMonth() && year === cur.getFullYear()
+  emit('handleNextMonth', year.value, month.value)
 }
 
 </script>
@@ -127,13 +126,13 @@ const isToday = (day: number | undefined | string, month: number, year: number) 
     display: flex;
     .calendar-item {
       display: inline-block;
-      width: calc(100% / 7);
+      width: calc((100% - 28px) / 7);
       height: 30px;
       line-height: 30px;
       text-align: center;
       box-sizing: border-box;
       cursor: pointer;
-      margin: 4px 0;
+      margin: 4px 2px;
     }
     .header-item {
       border-bottom: 1px solid rgb(235, 238, 245);

@@ -56,9 +56,9 @@ interface GithubEventResponse {
 }
 
 // 返回的是[ CustomCommitInfo, CustomCommitInfo ] 这种格式的数据
-export function getAllCommitsByMultiRepo(repos: string[]): Promise<Array<CustomCommitInfo>> {
+export function getAllCommitsByMultiRepo(repos: string[], params?: Object): Promise<Array<CustomCommitInfo>> {
   return axios.all(repos.map(repo => {
-    return axios.get(`https://api.github.com/repos/scattter/${repo}/commits`, { params: DEFAULT_PAGE_CONFIG })
+    return axios.get(`https://api.github.com/repos/scattter/${repo}/commits`, { params: { ...DEFAULT_PAGE_CONFIG, ...params } })
       .then(({ data }) => (data as []).map((commitRep: GithubCommitsWithRepoResponse) => {
         const { commit: commitInfo } = commitRep
         return {

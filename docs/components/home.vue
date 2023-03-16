@@ -3,16 +3,16 @@
     <div class="banner">WELCOME</div>
     <mapContainer />
     <div class="cards intro">
-      <cardWrapper class="home-card" :data="context['aboutMe']">
+      <cardWrapper class="home-card about-me" :data="context['aboutMe']">
         <template v-slot:contextSlot>
           <div class="about-context">
             <img class="about-img" src="../public/logo.jpeg" alt="" />
             <div class="about-text">
               <span class="about-intro">
-              A Boy, 前端开发工程师, 工作经验2年+, 技术栈主要为vue2, 在用vue3实现自己构想的项目<strong>《soft work》</strong>,
-              目前主要在学Typescript, 对Koa, docker, 自动部署, 项目工程化等都有相应实践;
-              同时我也在关注Solidity, Rust等各种新奇技术, 有任何文档我会及时更新到本站.
-            </span>
+                A Boy, 前端开发工程师, 工作经验2年+, 技术栈主要为vue2, 在用vue3实现自己构想的项目<strong>《soft work》</strong>,
+                目前主要在学Typescript, 对Koa, docker, 自动部署, 项目工程化等都有相应实践;
+                同时我也在关注Solidity, Rust等各种新奇技术, 有任何文档我会及时更新到本站.
+              </span>
               <div class="about-intro-more">本站内容为自己学习过程中文档的记录!</div>
             </div>
           </div>
@@ -20,11 +20,27 @@
       </cardWrapper>
       <cardWrapper class="home-card" :data="context['recentWork']">
         <template v-slot:contextSlot>
-          <div class="recent-work">
-            <li v-for="commit in state.curSiteCommits" :key="commit.sha" class="recent-work-item">
-              <div v-tooltip="commit.message" class="recent-work-msg">⏺ {{ commit.message }}</div>
-              <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
-            </li>
+          <div class="recent-work-wrapper">
+            <Calendar @handlePrevMonth="handleChangeMonth" @handleNextMonth="handleChangeMonth">
+              <template v-slot:day="{ data }">
+                <div
+                    v-if="isNeedRenderDay(data)"
+                    v-tooltip.force="findCurDayCommit(data)"
+                    class="has-commit"
+                >
+                  <span class="commit-day" :class="{ today: isToday(data, 1) }">
+                    {{ data.day }}
+                  </span>
+                </div>
+                <span v-else :class="{ today: isToday(data, 1) }">{{ data.day }}</span>
+              </template>
+            </Calendar>
+            <div class="recent-work">
+              <li v-for="commit in state.curSiteCommits" :key="commit.sha" class="recent-work-item">
+                <div v-tooltip="commit.message" class="recent-work-msg">⏺ {{ commit.message }}</div>
+                <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
+              </li>
+            </div>
           </div>
         </template>
       </cardWrapper>
@@ -74,22 +90,29 @@
     </div>
   </div>
 </template>
-<script setup>
+<script lang="jsx" setup>
+import { onMounted, reactive, defineComponent } from 'vue'
+import dayjs from "dayjs"
+import _ from 'lodash'
+
+import Calendar from '@/project/50projects50days/viewComponent/Calendar/index.vue'
+import { isToday } from '@/utils/time'
+
 import cardWrapper from './cardWrapper.vue'
 import mapContainer from './amap/mapContainer.vue'
 import { calcTimeToDiffDayLabel } from '../utils/time'
 import { tooltip } from "../js/vue/directives/tooltip/tooltip";
-import { getAllCommitsByMultiRepo, getRepoInfo } from '../api/github.ts'
-import { onMounted, reactive } from 'vue'
-import _ from 'lodash'
+import { getAllCommitsByMultiRepo, getRepoInfo } from '../api/github'
 
 const vTooltip = tooltip
 const state = reactive({
   recentCommits: [],
   curSiteCommits: [],
+  curSiteCommitDays: [],
   reposInfo: {}
 })
 
+const MAX_PER_PAGE = 100
 const context = {
   'aboutMe': {
     title: '关于我',
@@ -97,7 +120,7 @@ const context = {
   },
   'recentWork': {
     title: '本站更新',
-    subTitle: 'work',
+    subTitle: 'current month update',
   },
   'recentUpdate': {
     title: '所有更新',
@@ -114,12 +137,52 @@ const context = {
 }
 const repos = ['common-utils', 'soft-work-frontend', 'soft-work-backend', 'scattter.github.io']
 
+const isNeedRenderDay = ({ year, month, day }) =>
+    state.curSiteCommitDays.includes(dayjs(`${year}-${month + 1}-${day}`).format('YYYY-MM-DD'))
+
+const findCurDayCommit = ({ year, month, day }) => {
+  return state.curSiteCommits
+      .filter(
+          commit => {
+            return dayjs(commit.committer.date).isSame(dayjs(`${year}-${month + 1}-${day}`), 'day')
+          }
+      ).length
+}
+
+const getCurSiteMonthCommits = (year, month) => {
+  const initTimeFormat = `${year}-${month}-01`
+  const since = dayjs(initTimeFormat).format('YYYY-MM-DDTHH:MM:SSZ')
+  const util = dayjs(initTimeFormat).add(1, 'month').format('YYYY-MM-DDTHH:MM:SSZ')
+  // 因为比较少见, 所以暂时未处理当月commit超过100条的情况, 此处可以使用递归处理
+  getAllCommitsByMultiRepo(
+      ['scattter.github.io'],
+      {
+        since,
+        util,
+        per_page: MAX_PER_PAGE,
+      }
+  ).then(res => {
+    // 过滤满足条件的commits
+    state.curSiteCommits = _.orderBy(res, 'committer.date', 'desc')
+        .filter(commit => {
+          return dayjs(commit.committer.date).isBefore(dayjs(initTimeFormat).add(1, 'month'), 'day')
+        })
+    state.curSiteCommitDays = state.curSiteCommits.map(commit => dayjs(commit.committer.date).format('YYYY-MM-DD'))
+  })
+}
+
+const handleChangeMonth = (year, month) => {
+  getCurSiteMonthCommits(year, month + 1)
+}
+
 onMounted(() => {
+  // 查询当前站点当月commits
+  const cur = dayjs()
+  getCurSiteMonthCommits(cur.year(), cur.month() + 1)
   // 各个仓库最近10条commit
-  getAllCommitsByMultiRepo(repos).then(res => {
+  getAllCommitsByMultiRepo(repos.slice(0, 3)).then(res => {
     // 根据提交时间倒序排列
     state.recentCommits = _.orderBy(res, 'committer.date', 'desc')
-    state.curSiteCommits = res.filter(commit => commit.repoName === 'scattter.github.io')
   })
   getRepoInfo(repos).then(res => {
     // 根据提交时间倒序排列
@@ -149,14 +212,18 @@ onMounted(() => {
     display: flex;
     justify-content: space-between;
     margin: 0 -10px;
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 600px) {
       flex-direction: column;
       .home-card {
         width: auto;
       }
     }
-    @media screen and (min-width: 400px) {
+    @media screen and (min-width: 600px) {
       flex-direction: row;
+      .about-me {
+        width: 40%;
+        overflow-y: auto;
+      }
     }
     .home-card {
       height: auto;
@@ -164,6 +231,7 @@ onMounted(() => {
 
     .about-context {
       display: flex;
+      flex-direction: column;
       align-items: center;
       height: 100%;
       .about-img {
@@ -181,7 +249,8 @@ onMounted(() => {
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
-        max-height: 150px;
+        margin-top: 20px;
+        //max-height: 150px;
         overflow-y: auto;
       }
       .about-intro-more {
@@ -191,9 +260,47 @@ onMounted(() => {
       }
     }
 
+    .recent-work-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      @media screen and (max-width: 970px) {
+        flex-direction: column;
+        margin-left: 0;
+      }
+
+      :deep(.calendar-wrapper) {
+        box-shadow: none;
+        .v-tooltip {
+          margin-bottom: 5px;
+        }
+      }
+      .today {
+        display: inline-block;
+        width: 32px;
+        font-weight: bolder;
+        color: $white;
+        border-radius: 50%;
+        background-color: $linkColor;
+      }
+      .has-commit {
+        .commit-day {
+          display: inline-block;
+          width: 32px;
+          border: 1px solid $linkColor;
+          border-radius: 50%;
+        }
+      }
+    }
+
     .recent-work {
-      max-height: 150px;
-      padding-left: 4px;
+      width: 100%;
+      max-height: 320px;
+      //padding-left: 4px;
+      margin-left: 20px;
+      padding-right: 15px;
       overflow-y: auto;
       .recent-work-item {
         display: flex;
