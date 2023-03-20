@@ -36,6 +36,9 @@
               </template>
             </Calendar>
             <div class="recent-work">
+              <div class="recent-work-empty" v-if="state.curSiteCommits.length === 0">
+                暂无数据
+              </div>
               <li v-for="commit in state.curSiteCommits" :key="commit.sha" class="recent-work-item">
                 <div v-tooltip="commit.message" class="recent-work-msg">⏺ {{ commit.message }}</div>
                 <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
@@ -302,6 +305,12 @@ onMounted(() => {
       margin-left: 20px;
       padding-right: 15px;
       overflow-y: auto;
+      .recent-work-empty {
+        text-align: center;
+        font-size: 32px;
+        line-height: 32px;
+        color: var(--vp-c-text-4);
+      }
       .recent-work-item {
         display: flex;
         justify-content: space-between;
