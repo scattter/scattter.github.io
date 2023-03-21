@@ -1,4 +1,6 @@
 interface ObserverType {
+  name: string
+  subject: SubjectType | undefined
   update: () => void
 }
 
@@ -10,7 +12,9 @@ interface SubjectType {
 
 
 // 发布者和观察者的逻辑处理
-class Observe implements ObserverType{
+class Observe implements ObserverType {
+  public name: string;
+  public subject: SubjectType | undefined;
   constructor(name: string, subject: SubjectType) {
     this.name = name
     if (subject) {
@@ -24,6 +28,7 @@ class Observe implements ObserverType{
 }
 
 class Subject implements SubjectType{
+  public observes: ObserverType[];
   constructor() {
     this.observes = []
   }

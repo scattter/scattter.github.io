@@ -14,6 +14,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
         { text: '代理模式', link: `${JS_CONFIG_PATTERNS_PATH}/proxy/index` },
         { text: '广播模式', link: `${JS_CONFIG_PATTERNS_PATH}/provide/index` },
         { text: '原型链模式', link: `${JS_CONFIG_PATTERNS_PATH}/prototype/index` },
+        { text: '模块模式', link: `${JS_CONFIG_PATTERNS_PATH}/module/index` },
       ]
     },
   ]
