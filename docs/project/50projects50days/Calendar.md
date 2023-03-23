@@ -4,7 +4,7 @@
 <div class="view-demo-component">
   <Calendar>
     <template v-slot:day="{data}">
-      <span>{{ data }}</span>    
+      <span>{{ data.day }}</span>    
     </template>
     <template v-slot:extra="{data}">
       <div class="extra-context">

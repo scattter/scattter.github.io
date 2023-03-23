@@ -38,6 +38,10 @@ const _50ProjectsItems = [
     text: 'Calendar',
     link: `${_50_PROJECTS_50_DAYS}/Calendar.md`
   },
+  {
+    text: 'Drawing Board',
+    link: `${_50_PROJECTS_50_DAYS}/DrawingBoard.md`
+  },
 ]
 
 const typescriptStudyItems = [
