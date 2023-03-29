@@ -42,6 +42,10 @@ const _50ProjectsItems = [
     text: 'Drawing Board',
     link: `${_50_PROJECTS_50_DAYS}/DrawingBoard.md`
   },
+  {
+    text: 'Kinetic Loader',
+    link: `${_50_PROJECTS_50_DAYS}/KineticLoader.md`
+  },
 ]
 
 const typescriptStudyItems = [
