@@ -9,8 +9,8 @@
             <img class="about-img" src="../public/logo.jpeg" alt="" />
             <div class="about-text">
               <span class="about-intro">
-                A Boy, 前端开发工程师, 工作经验2年+, 技术栈主要为vue2, 在用vue3实现自己构想的项目<strong>《soft work》</strong>,
-                目前主要在学Typescript, 对Koa, docker, 自动部署, 项目工程化等都有相应实践;
+                A Boy, 前端开发工程师, 工作经验2年+, 近期技术栈主要为vue, 也有react项目实战经验, 有用vue3实现自己构想的项目<strong>《soft work》</strong>.
+                目前主要在学Three.js, 对Koa, docker, 自动部署, 项目工程化等都有相应实践;
                 同时我也在关注Solidity, Rust等各种新奇技术, 有任何文档我会及时更新到本站.
               </span>
               <div class="about-intro-more">本站内容为自己学习过程中文档的记录!</div>
@@ -71,10 +71,13 @@
       <cardWrapper class="home-card" :data="context['recentUpdate']">
         <template v-slot:contextSlot>
           <div class="recent-update">
-            <li v-for="commit in state.recentCommits" :key="commit.sha">
-              <strong>Repo: {{ commit.repoName }}</strong>
-              <p class="commit-message">{{ commit.message }}</p>
-              <p class="commit-date">{{ commit.committer.date }}</p>
+            <li v-for="commit in state.recentCommits" :key="commit.sha" class="recent-update-item">
+              <div class="recent-work-item-wrapper">
+                <strong>⏺ Repo: {{ commit.repoName }}</strong>
+                <div class="recent-work-msg">{{ commit.message }}</div>
+                <div class="commit-date">{{ commit.committer.date }}</div>
+              </div>
+              <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
             </li>
           </div>
         </template>
@@ -126,7 +129,7 @@ const context = {
     subTitle: 'current month update',
   },
   'recentUpdate': {
-    title: '所有更新',
+    title: '其他更新',
     subTitle: 'last 30 commits'
   },
   'recentProject': {
@@ -316,7 +319,7 @@ onMounted(() => {
         justify-content: space-between;
         align-items: center;
         height: 30px;
-        margin: 10px 0;
+        margin: 10px 0 10px 6px;
         .recent-work-msg {
           @include multiLineOverflow;
           flex: 1;
@@ -404,15 +407,36 @@ onMounted(() => {
         max-height: 400px;
       }
       overflow-y: auto;
+      .recent-update-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        .recent-work-item-wrapper {
+          height: 80px;
+          margin-right: 10px;
+          flex: 1;
+          .recent-work-msg {
+            @include multiLineOverflow;
+          }
+          div {
+            margin-left: 20px;
+          }
+          .commit-date {
+            font-size: 12px;
+            color: var(--vp-c-text-2);
+          }
+        }
+        .recent-work-date {
+          width: auto;
+          color: var(--vp-c-text-2);
+          padding: 2px 4px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+        }
+      }
       .commits {
         margin-bottom: 8px;
-      }
-      p {
-        margin-left: 22px;
-      }
-      .commit-date {
-        font-size: 12px;
-        color: var(--vp-c-text-2);
       }
     }
   }
