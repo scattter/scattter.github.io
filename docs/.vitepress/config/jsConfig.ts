@@ -19,6 +19,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
         { text: '混入模式', link: `${JS_CONFIG_PATTERNS_PATH}/mixin/index` },
         { text: '单例模式', link: `${JS_CONFIG_PATTERNS_PATH}/singleton/index` },
         { text: '装饰器模式', link: `${JS_CONFIG_PATTERNS_PATH}/decorator/index` },
+        { text: '工厂模式', link: `${JS_CONFIG_PATTERNS_PATH}/factory/index` },
       ]
     },
     {
