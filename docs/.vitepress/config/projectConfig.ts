@@ -46,6 +46,10 @@ const _50ProjectsItems = [
     text: 'Kinetic Loader',
     link: `${_50_PROJECTS_50_DAYS}/KineticLoader.md`
   },
+  {
+    text: 'Placeholder',
+    link: `${_50_PROJECTS_50_DAYS}/Placeholder.md`
+  },
 ]
 
 const typescriptStudyItems = [
