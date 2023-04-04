@@ -3,3 +3,12 @@
   height: 60vh;
   background-color: antiquewhite;
 }
+
+.v-tooltip {
+  position: fixed;
+  padding: 4px 8px;
+  line-height: 30px;
+  box-shadow: 0 4px 8px 0 rgba(41,48,64,0.4);
+  border-radius: 4px;
+  z-index: 99;
+}

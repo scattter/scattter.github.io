@@ -13,26 +13,27 @@ export const tooltip = {
     el.__tip = binding.value
     const initEle = () => {
       if (tooltipEle) tooltipEle = null
-      el.parentNode.style.position = 'relative'
-      const { width } = el.getBoundingClientRect()
-      tooltipEle = document.createElement('span')
+      const { width, left, top } = el.getBoundingClientRect()
+      tooltipEle = document.createElement('div')
       tooltipEle.innerHTML = el.__tip
       tooltipEle.classList.add('v-tooltip')
-      tooltipEle.style.position = 'absolute'
-      tooltipEle.style.width = width + 'px'
-      tooltipEle.style.height = el.scrollHeight + 'px'
-      tooltipEle.style.bottom = 30 + 'px'
-      tooltipEle.style.left = '0'
-      tooltipEle.style.boxShadow = '0px 4px 8px 0px rgba(41,48,64,0.4)'
-      tooltipEle.style.borderRadius = '4px'
-      tooltipEle.style.padding = '4px 8px'
+      tooltipEle.style.width = `${width}px`
+      tooltipEle.style.left = `${left}px`
+      // 判断是否超出页面上边界 超出上边界那么就在下面展示 (视图很小的极端情况暂不考虑)
+      // 下面的数字20和数字40都是为了更好展示tooltip的buffer
+      if (top - el.scrollHeight - 20 < 0) {
+        tooltipEle.style.top = top + 40 + 'px'
+      } else {
+        tooltipEle.style.top = top - el.scrollHeight - 20 + 'px'
+      }
+      // 适配暗色模式
       if (document.documentElement.classList.contains('dark')) {
         tooltipEle.style.backgroundColor = '#9ea0a5'
         tooltipEle.style.color = '#242424'
       } else {
         tooltipEle.style.backgroundColor = '#fff'
       }
-      el.parentNode.appendChild(tooltipEle)
+      document.body.appendChild(tooltipEle)
     }
     el.addEventListener('mouseenter', () => {
       if (
@@ -54,4 +55,7 @@ export const tooltip = {
   updated(el: BindingElType, binding: DirectiveBinding) {
     el.__tip = binding.value
   },
+  beforeUnmount() {
+    tooltipEle && tooltipEle.remove()
+  }
 }

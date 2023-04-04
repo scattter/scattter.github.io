@@ -269,7 +269,7 @@ onMounted(() => {
     .recent-work-wrapper {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       width: 100%;
 
       @media screen and (max-width: 970px) {
