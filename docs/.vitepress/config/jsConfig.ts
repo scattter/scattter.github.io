@@ -27,6 +27,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
       collapsible: true,
       items: [
         { text: 'tooltip指令', link: `${JS_CONFIG_VUE_PATH}/directives/tooltip/index` },
+        { text: 'ClickOutside指令', link: `${JS_CONFIG_VUE_PATH}/directives/clickoutside/index` },
       ]
     },
   ]
