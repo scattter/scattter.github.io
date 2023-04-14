@@ -26,14 +26,6 @@ let startClick: Event
 // 保存监听节点
 let nodeLists: CustomHTML[] = []
 
-// 全局监听鼠标行为
-// 记录触发元素
-on(document, 'mousedown', (e: Event) => (startClick = e))
-// 初始化当前节点的触发函数(如popoverElm这种, 将其绑定在指令节点上)
-on(document, 'mouseup', (e: Event) => {
-  nodeLists.forEach(node => node[ctx]!.documentHandler(e, startClick))
-})
-
 // 指令处理函数, 即判断什么情况去触发函数执行
 const createDocumentHandler = (el: CustomHTML, binding: DirectiveBinding) => {
   // 返回闭包 在mouseup的时候传入相应事件
@@ -47,6 +39,9 @@ const createDocumentHandler = (el: CustomHTML, binding: DirectiveBinding) => {
     const isTargetExists = !mouseupElm || !mousedownElm
     // el是当前DOM元素
     const isClickSelf = el === mouseupElm
+    // 判断是否被当前元素所包含
+    const isContainedByEl =
+      el.contains(mouseupElm) || el.contains(mousedownElm)
     // 如果想自定义不触发outside的逻辑  可以自己在上下文里面添加popoverRef属性进行相应控制
     const popoverElm = binding.instance?.$refs.popoverRef as HTMLElement
     const isContainedByPopper =
@@ -55,9 +50,8 @@ const createDocumentHandler = (el: CustomHTML, binding: DirectiveBinding) => {
     // 如果满足下面条件之一, 那么就不触发指令绑定的函数
     if (isBound ||
       isTargetExists ||
-      el.contains(mouseupElm) ||
-      el.contains(mousedownElm) ||
-      el === mouseupElm ||
+      isContainedByEl ||
+      isClickSelf ||
       isContainedByPopper
     ) return
 
@@ -67,6 +61,15 @@ const createDocumentHandler = (el: CustomHTML, binding: DirectiveBinding) => {
 
 // 用来挂载和卸载节点的时候初始化节点
 const ClickOutside = {
+  beforeMount() {
+    // 全局监听鼠标行为
+    // 记录触发元素
+    on(document, 'mousedown', (e: Event) => (startClick = e))
+    // 初始化当前节点的触发函数(如popoverElm这种, 将其绑定在指令节点上)
+    on(document, 'mouseup', (e: Event) => {
+      nodeLists.forEach(node => node[ctx]!.documentHandler(e, startClick))
+    })
+  },
   mounted(el: CustomHTML, binding: DirectiveBinding) {
     // 加入对应的数组中, handle多个outside情况
     nodeLists.push(el)
