@@ -35,20 +35,25 @@ export const tooltip = {
       }
       document.body.appendChild(tooltipEle)
     }
-    el.addEventListener('mouseenter', () => {
-      if (
-        el.scrollWidth > el.offsetWidth ||
-        binding.modifiers.show ||
-        el.scrollHeight > el.offsetHeight ||
-        binding.modifiers.force
-      ) {
+    if (
+      el.scrollWidth > el.offsetWidth ||
+      binding.modifiers.show ||
+      el.scrollHeight > el.offsetHeight ||
+      binding.modifiers.force
+    ) {
+      el.addEventListener('mouseenter', () => {
         el.style.cursor = 'pointer'
         initEle()
-      }
-    })
-    el.addEventListener('mouseleave', () => {
-      tooltipEle && tooltipEle.remove()
-    })
+        const removeELe = () => {
+          tooltipEle && tooltipEle.remove()
+        }
+        const scrollParent = findScrollParent(el)
+        scrollParent && scrollParent.addEventListener('scroll', removeELe)
+      })
+      el.addEventListener('mouseleave', () => {
+        tooltipEle && tooltipEle.remove()
+      })
+    }
   },
   // 在绑定元素的父组件
   // 及他自己的所有子节点都更新后调用
@@ -57,5 +62,16 @@ export const tooltip = {
   },
   beforeUnmount() {
     tooltipEle && tooltipEle.remove()
+  }
+}
+
+const findScrollParent = (el: HTMLElement) => {
+  if (!el || !el.parentElement) return null
+  const parent = el.parentElement
+  const overflow = window.getComputedStyle(parent, null)["overflow"]
+  if (parent.scrollWidth > parent.clientHeight && (overflow === 'auto' || overflow === 'scroll')) {
+    return parent
+  } else {
+    findScrollParent(parent)
   }
 }
