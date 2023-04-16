@@ -28,6 +28,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
       items: [
         { text: 'tooltip指令', link: `${JS_CONFIG_VUE_PATH}/directives/tooltip/index` },
         { text: 'ClickOutside指令', link: `${JS_CONFIG_VUE_PATH}/directives/clickoutside/index` },
+        { text: 'placeholder指令', link: `${JS_CONFIG_VUE_PATH}/directives/placeholder/index` },
       ]
     },
   ]
