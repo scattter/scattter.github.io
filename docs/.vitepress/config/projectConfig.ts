@@ -50,6 +50,10 @@ const _50ProjectsItems = [
     text: 'Placeholder',
     link: `${_50_PROJECTS_50_DAYS}/Placeholder.md`
   },
+  {
+    text: 'Print Text',
+    link: `${_50_PROJECTS_50_DAYS}/PrintText.md`
+  },
 ]
 
 const typescriptStudyItems = [
