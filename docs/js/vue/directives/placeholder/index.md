@@ -70,7 +70,7 @@ vue文件代码: `placeholder.vue`, 其中注释代码是静态渲染部分
 <template>
   <div class="view-demo-component">
     <div v-for="(item, index) in state.numbers" :key="item.id" v-tooltip="item" v-placeholder:[tip]="item.name" class="item">
-      {{ item.name || '暂无数据' }}
+      {{ item.name }}
     </div>
 <!--    <div class="item" v-placeholder="state.numbers[0].name">{{ state.numbers[0].name }}</div>-->
 <!--    <div class="item" v-placeholder="state.numbers[1].name">{{ state.numbers[1].name }}</div>-->
