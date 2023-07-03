@@ -43,6 +43,10 @@ const _50ProjectsItems = [
     link: `${_50_PROJECTS_50_DAYS}/DrawingBoard.md`
   },
   {
+    text: 'Scratch Ticket',
+    link: `${_50_PROJECTS_50_DAYS}/ScratchTicket.md`
+  },
+  {
     text: 'Kinetic Loader',
     link: `${_50_PROJECTS_50_DAYS}/KineticLoader.md`
   },
