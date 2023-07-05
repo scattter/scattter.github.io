@@ -133,6 +133,10 @@ const typescriptStudyItems = [
     text: '17-ts中的相关操作符',
     link: `${TYPESCRIPT_STUDY}/17-ts中的相关操作符`
   },
+  {
+    text: '18-ts中装饰器的一些应用',
+    link: `${TYPESCRIPT_STUDY}/18-ts中装饰器的一些应用`
+  },
 ]
 
 const otherProjectItems = [
