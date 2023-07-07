@@ -23,6 +23,7 @@ export function sidebarDevops(): VitePressConfig[] {
         { text: 'Centos分区合并', link: `${DEVOPS_OTHERS_PATH}/Centos分区合并` },
         { text: 'Centos挂载硬盘', link: `${DEVOPS_OTHERS_PATH}/Centos挂载硬盘` },
         { text: 'Github常用api', link: `${DEVOPS_OTHERS_PATH}/Github常用api` },
+        { text: '常用docker配置', link: `${DEVOPS_OTHERS_PATH}/常用docker配置` },
       ]
     }
   ]
