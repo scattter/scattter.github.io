@@ -4,8 +4,9 @@ import { sidebarProject, navProject } from "./config/projectConfig"
 import { sidebarDevops, navDevops } from "./config/devopsConfig"
 import { sidebarJsConfig, navJsConfig } from "./config/jsConfig"
 import { resolve } from 'path'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
-export default defineConfig({
+export default withMermaid({
   vite: {
     resolve: {
       alias: [
