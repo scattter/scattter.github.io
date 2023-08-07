@@ -6,7 +6,7 @@ import { sidebarJsConfig, navJsConfig } from "./config/jsConfig"
 import { resolve } from 'path'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 
-export default withMermaid({
+export default withMermaid(defineConfig({
   vite: {
     resolve: {
       alias: [
@@ -45,7 +45,7 @@ export default withMermaid({
       '/js/': sidebarJsConfig(),
     },
   },
-})
+}))
 
 function nav(): VitePressNav[] {
   return [
