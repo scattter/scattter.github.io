@@ -9,16 +9,13 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 export default withMermaid(defineConfig({
   vite: {
     resolve: {
-      alias: [
-        {
-          find: '@',
-          replacement: resolve(__dirname, '../../docs'), // 这里拆分配置后根目录发生了变化
-        },
-        {
-          find: '@viewComponents',
-          replacement: resolve(__dirname, '../../docs/project/50projects50days/viewComponent'), // 这里拆分配置后根目录发生了变化
-        },
-      ],
+      alias: {
+        "@": resolve(__dirname, "../../docs"), // 这里拆分配置后根目录发生了变化
+        "@viewComponents": resolve(
+          __dirname,
+          "../../docs/project/50projects50days/viewComponent"
+        ), // 这里拆分配置后根目录发生了变化
+      },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json']
     },
   },
