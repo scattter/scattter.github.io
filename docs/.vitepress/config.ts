@@ -20,7 +20,9 @@ export default withMermaid(defineConfig({
     },
   },
   title: 'Scatter Site',
-  head: [],
+  head: [
+    ['meta', { name: 'google-site-verification', content: 'pe2Js8d1Jm4CaobO0Wg5Ij5cBBYN177ph1_-uJYdMLo' }],
+  ],
   description: 'self write',
   lastUpdated: true,
   markdown: {
