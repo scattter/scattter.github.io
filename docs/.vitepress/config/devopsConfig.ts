@@ -25,6 +25,7 @@ export function sidebarDevops(): VitePressConfig[] {
         { text: 'Centos挂载硬盘', link: `${DEVOPS_OTHERS_PATH}/Centos挂载硬盘` },
         { text: 'Github常用api', link: `${DEVOPS_OTHERS_PATH}/Github常用api` },
         { text: '常用docker配置', link: `${DEVOPS_OTHERS_PATH}/常用docker配置` },
+        { text: '公网访问(DDNS+IPV6)', link: `${DEVOPS_OTHERS_PATH}/公网访问(DDNS+IPV6)` },
       ]
     }
   ]
