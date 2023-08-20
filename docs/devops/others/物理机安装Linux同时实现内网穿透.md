@@ -244,6 +244,7 @@ Host ssh.xxx.xxx
 > https://baijiahao.baidu.com/s?id=1738840233744208152&wfr=spider&for=pc
 
 经过自己测试, 发现使用Zerotier进行ssh连接速度十分快, 相比于cloudflared有了3倍多的提升, 下面是对比图
+(补充: Zerotier速度快的原因是在一个局域网, 如果不在一个局域网, 且隧道两端不能直连, 访问速度也不会很快)
 
 - cloudflared的延迟
 
@@ -259,4 +260,4 @@ Host ssh.xxx.xxx
 
 除此之外, 使用Zerotier穿透后可以直接用该ip在客户端访问服务器端其他端口服务, 如宝塔面板等
 
-其他DDNSTO这种方案后续有需要了再研究下
+其他DDNS这种方案后续有需要了再研究下
