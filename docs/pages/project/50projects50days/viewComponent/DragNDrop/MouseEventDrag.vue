@@ -137,13 +137,13 @@ onMounted(() => {
   height: 18%;
   opacity: 0.3;
   border: 4px solid #000;
-  background: #4E5969 url("../../../../public/logo.jpeg") center/cover no-repeat;
+  background: #4E5969 url("../../../../../public/logo.jpeg") center/cover no-repeat;
 }
 .active {
   border: 4px dashed white;
   background: #4E5969 center/cover no-repeat;
 }
 .target {
-  background: url("../../../../public/logo.jpeg") center/cover no-repeat;
+  background: url("../../../../../public/logo.jpeg") center/cover no-repeat;
 }
 </style>

@@ -93,7 +93,7 @@ body {
 .target {
   width: 100%;
   height: 100%;
-  background: url("../../../../public/logo.jpeg") center/cover no-repeat;
+  background: url("../../../../../public/logo.jpeg") center/cover no-repeat;
 }
 .hold {
   border: solid 4px #000;

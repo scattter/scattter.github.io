@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "mermaid": "^10.3.0",
+    "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.56.0",
     "vitepress": "^1.0.0-alpha.27",
     "vitepress-plugin-mermaid": "^2.0.13"

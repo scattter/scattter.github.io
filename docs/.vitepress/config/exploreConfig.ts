@@ -1,0 +1,67 @@
+import { VitePressConfig, VitePressNav } from '@/types/common'
+
+const EXPLORE_FRONT_PATH = '/pages/explore/frontend'
+const EXPLORE_OTHERS_PATH = '/pages/explore/others'
+
+const otherExploreItems = [
+  { text: 'express中配置log4js', link: `${EXPLORE_OTHERS_PATH}/express中配置log4js` },
+  { text: '物理机安装Linux同时实现内网穿透', link: `${EXPLORE_OTHERS_PATH}/物理机安装Linux同时实现内网穿透` },
+  { text: 'Centos分区合并', link: `${EXPLORE_OTHERS_PATH}/Centos分区合并` },
+  { text: 'Centos挂载硬盘', link: `${EXPLORE_OTHERS_PATH}/Centos挂载硬盘` },
+  { text: 'Github常用api', link: `${EXPLORE_OTHERS_PATH}/Github常用api` },
+  { text: '常用docker配置', link: `${EXPLORE_OTHERS_PATH}/常用docker配置`},
+  { text: '公网访问(DDNS+IPV6)', link: `${EXPLORE_OTHERS_PATH}/公网访问(DDNS+IPV6)`},
+  {
+    text: '前端语音识别探索',
+    link: `${EXPLORE_OTHERS_PATH}/前端语音识别探索`
+  },
+  {
+    text: '24小时直播推流探索',
+    link: `${EXPLORE_OTHERS_PATH}/24小时直播推流`
+  },
+  {
+    text: '软路由探索',
+    link: `${EXPLORE_OTHERS_PATH}/软路由探索`
+  },
+  {
+    text: '家用摄像头本地存储和查看',
+    link: `${EXPLORE_OTHERS_PATH}/家用摄像头本地存储和查看`
+  },
+]
+
+export function sidebarExplore(): VitePressConfig[] {
+  return [
+    {
+      text: '前端探索',
+      collapsible: true,
+      items: [
+        { text: 'eslint和prettier配置', link: `${EXPLORE_FRONT_PATH}/eslint和prettier配置` },
+        { text: '生成脚本执行记录并发布npm包', link: `${EXPLORE_OTHERS_PATH}/生成脚本执行记录并发布npm包` },
+        { text: 'arco-design简单使用记录', link: `${EXPLORE_FRONT_PATH}/arco-design简单使用记录` },
+        { text: '前端项目部署方案', link: `${EXPLORE_FRONT_PATH}/前端项目部署方案` },
+        { text: '同构渲染', link: `${EXPLORE_FRONT_PATH}/同构渲染` }
+      ]
+    },
+    {
+      text: '其他探索',
+      collapsible: true,
+      items: otherExploreItems,
+    }
+  ]
+}
+
+export const navExplore: VitePressNav = {
+  text: 'Explore',
+  items: [
+    {
+      text: '前端探索',
+      link: '/pages/explore/frontend/eslint和prettier配置',
+      activeMatch: '/pages/explore/'
+    },
+    {
+      text: '其他探索',
+      link: '/pages/explore/others/express中配置log4js',
+      activeMatch: '/pages/explore/'
+    },
+  ]
+}

@@ -7,9 +7,11 @@
 我感觉这个demo更多的是扩展开发对音频播放的了解, 因为在做这个demo之前, 我自己是没有接触过`audio` 这个组件的, 更不用说音频的播放和暂停了, 所以这里更新了自己的知识范围, 代码比较简单.
 
 html代码
+
 ```html
-<audio class="tada" src="./viewComponent/SoundBtn/tada.mp3"></audio>
-<audio class="wrong" src="./viewComponent/SoundBtn/wrong.mp3"></audio>
+
+<audio class="tada" src="viewComponent/SoundBtn/tada.mp3"></audio>
+<audio class="wrong" src="viewComponent/SoundBtn/wrong.mp3"></audio>
 <button class="btn btn1" value="tada">click me listen tada music</button>
 <button class="btn btn2" value="wrong">click me listen wrong music</button>
 ```

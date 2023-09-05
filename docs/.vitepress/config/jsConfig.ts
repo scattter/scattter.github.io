@@ -1,7 +1,7 @@
 import { VitePressConfig, VitePressNav } from '@/types/common'
 
-const JS_CONFIG_PATTERNS_PATH = '/js/designPatterns'
-const JS_CONFIG_VUE_PATH = '/js/vue'
+const JS_CONFIG_PATTERNS_PATH = '/pages/js/designPatterns'
+const JS_CONFIG_VUE_PATH = '/pages/js/vue'
 
 
 export function sidebarJsConfig(): VitePressConfig[] {
@@ -39,13 +39,13 @@ export const navJsConfig: VitePressNav = {
   items: [
     {
       text: '设计模式',
-      link: '/js/designPatterns/index',
-      activeMatch: '/js/'
+      link: '/pages/js/designPatterns/index',
+      activeMatch: '/pages/js/'
     },
     {
       text: 'vue相关',
       link: `${JS_CONFIG_VUE_PATH}/directives/tooltip/index`,
-      activeMatch: '/js/'
+      activeMatch: '/pages/js/'
     },
   ]
 }

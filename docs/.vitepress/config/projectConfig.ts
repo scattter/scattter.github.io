@@ -1,9 +1,8 @@
 import { VitePressConfig, VitePressNav } from '@/types/common'
 
-const SOFT_WORK_PATH = '/project/mr-notice'
-const _50_PROJECTS_50_DAYS = '/project/50projects50days'
-const TYPESCRIPT_STUDY = '/project/typescript-study'
-const OTHER_PROJECTS = '/project/others'
+const SOFT_WORK_PATH = '/pages/project/mr-notice'
+const _50_PROJECTS_50_DAYS = '/pages/project/50projects50days'
+const TYPESCRIPT_STUDY = '/pages/project/typescript-study'
 
 const softWorkItems = [
   { text: '项目部署', link: `${SOFT_WORK_PATH}/auto-deploy` }
@@ -139,29 +138,6 @@ const typescriptStudyItems = [
   },
 ]
 
-const otherProjectItems = [
-  {
-    text: '生成脚本执行记录并发布npm包',
-    link: `${OTHER_PROJECTS}/生成脚本执行记录并发布npm包`
-  },
-  {
-    text: '前端语音识别探索',
-    link: `${OTHER_PROJECTS}/前端语音识别探索`
-  },
-  {
-    text: '24小时直播推流探索',
-    link: `${OTHER_PROJECTS}/24小时直播推流`
-  },
-  {
-    text: '软路由探索',
-    link: `${OTHER_PROJECTS}/软路由探索`
-  },
-  {
-    text: '家用摄像头本地存储和查看',
-    link: `${OTHER_PROJECTS}/家用摄像头本地存储和查看`
-  },
-]
-
 export function sidebarProject(): VitePressConfig[] {
   return [
     {
@@ -183,12 +159,8 @@ export function sidebarProject(): VitePressConfig[] {
     {
       text: 'Typescript study',
       collapsible: true,
+      collapsed: true,
       items: typescriptStudyItems,
-    },
-    {
-      text: '其他项目相关',
-      collapsible: true,
-      items: otherProjectItems,
     },
   ]
 }
@@ -198,23 +170,18 @@ export const navProject: VitePressNav = {
   items: [
     {
       text: 'soft-work',
-      link: '/project/mr-notice/auto-deploy',
-      activeMatch: '/project/'
+      link: '/pages/project/mr-notice/auto-deploy',
+      activeMatch: '/pages/project/'
     },
     {
       text: '50projects50days',
-      link: '/project/50projects50days/scrollAnimation',
-      activeMatch: '/project/'
+      link: '/pages/project/50projects50days/scrollAnimation',
+      activeMatch: '/pages/project/'
     },
     {
       text: 'Typescript study',
-      link: '/project/typescript-study/home',
-      activeMatch: '/project/'
-    },
-    {
-      text: '其他项目相关',
-      link: '/project/others/生成脚本执行记录并发布npm包',
-      activeMatch: '/project/'
+      link: '/pages/project/typescript-study/home',
+      activeMatch: '/pages/project/'
     }
   ]
 }

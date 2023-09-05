@@ -1,10 +1,11 @@
 import { defineConfig } from "vitepress"
 import { VitePressNav } from "@/types/common";
 import { sidebarProject, navProject } from "./config/projectConfig"
-import { sidebarDevops, navDevops } from "./config/devopsConfig"
+import { sidebarExplore, navExplore } from "./config/exploreConfig"
 import { sidebarJsConfig, navJsConfig } from "./config/jsConfig"
 import { resolve } from 'path'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import { visualizer } from "rollup-plugin-visualizer";
 
 export default withMermaid(defineConfig({
   vite: {
@@ -13,11 +14,20 @@ export default withMermaid(defineConfig({
         "@": resolve(__dirname, "../../docs"), // 这里拆分配置后根目录发生了变化
         "@viewComponents": resolve(
           __dirname,
-          "../../docs/project/50projects50days/viewComponent"
+          "../../docs/pages/project/50projects50days/viewComponent"
         ), // 这里拆分配置后根目录发生了变化
       },
       extensions: ['.js', '.ts', '.jsx', '.tsx', '.json']
     },
+    plugins: [
+      visualizer({
+        gzipSize: true,
+        brotliSize: true,
+        emitFile: false,
+        filename: "test.html", //分析图生成的文件名
+        open: false //如果存在本地服务端口，将在打包后自动展示
+      }),
+    ],
   },
   title: 'Scatter Site',
   head: [
@@ -39,9 +49,9 @@ export default withMermaid(defineConfig({
     outline: [2,3],
     nav: nav(),
     sidebar: {
-      '/project/': sidebarProject(),
-      '/devops/': sidebarDevops(),
-      '/js/': sidebarJsConfig(),
+      '/pages/project/': sidebarProject(),
+      '/pages/explore/': sidebarExplore(),
+      '/pages/js/': sidebarJsConfig(),
     },
   },
 }))
@@ -53,7 +63,7 @@ function nav(): VitePressNav[] {
       link: '/',
     },
     navProject,
-    navDevops,
+    navExplore,
     navJsConfig,
     {
       text: 'About Me',

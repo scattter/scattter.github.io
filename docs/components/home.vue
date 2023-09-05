@@ -6,19 +6,31 @@
       <cardWrapper class="home-card about-me" :data="context['aboutMe']">
         <template v-slot:contextSlot>
           <div class="about-context">
-            <img class="about-img" src="../public/logo.jpeg" alt="" />
+            <img class="about-img" src="/logo.jpeg" alt="" />
             <div class="about-text">
               <span class="about-intro">
                 A Boy, 前端开发工程师, 工作经验2年+, 近期技术栈主要为vue, 也有react项目实战经验, 有用vue3实现自己构想的项目<strong>《soft work》</strong>.
-                目前主要在学Three.js, 对Koa, docker, 自动部署, 项目工程化等都有相应实践;
-                同时我也在关注Solidity, Rust等各种新奇技术, 有任何文档我会及时更新到本站.
               </span>
               <div class="about-intro-more">本站内容为自己学习过程中文档的记录!</div>
             </div>
           </div>
         </template>
       </cardWrapper>
-      <cardWrapper class="home-card" :data="context['recentWork']">
+      <cardWrapper class="home-card" :data="context['recentUpdate']">
+        <template v-slot:contextSlot>
+          <div class="recent-update">
+            <li v-for="commit in state.recentCommits" :key="commit.sha" class="recent-update-item">
+              <div class="recent-work-item-wrapper">
+                <strong>⏺ Repo: {{ commit.repoName }}</strong>
+                <div class="recent-work-msg">{{ commit.message }}</div>
+                <div class="commit-date">{{ commit.committer.date }}</div>
+              </div>
+              <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
+            </li>
+          </div>
+        </template>
+      </cardWrapper>
+      <cardWrapper v-if="false" class="home-card" :data="context['recentWork']">
         <template v-slot:contextSlot>
           <div class="recent-work-wrapper">
             <Calendar @handlePrevMonth="handleChangeMonth" @handleNextMonth="handleChangeMonth">
@@ -49,7 +61,7 @@
       </cardWrapper>
     </div>
     <div class="cards code">
-      <cardWrapper class="home-card" :data="context['recentProject']">
+      <cardWrapper v-if="false" class="home-card" :data="context['recentProject']">
         <template v-slot:contextSlot>
           <div class="recent-project">
             <div v-for="repo in repos" :key="repo" class="project">
@@ -66,20 +78,6 @@
         </template>
         <template v-slot:extendTitleSlot>
           <a class="recent-project-more" href="https://github.com/scattter" target="_blank">查看更多</a>
-        </template>
-      </cardWrapper>
-      <cardWrapper class="home-card" :data="context['recentUpdate']">
-        <template v-slot:contextSlot>
-          <div class="recent-update">
-            <li v-for="commit in state.recentCommits" :key="commit.sha" class="recent-update-item">
-              <div class="recent-work-item-wrapper">
-                <strong>⏺ Repo: {{ commit.repoName }}</strong>
-                <div class="recent-work-msg">{{ commit.message }}</div>
-                <div class="commit-date">{{ commit.committer.date }}</div>
-              </div>
-              <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
-            </li>
-          </div>
         </template>
       </cardWrapper>
       <cardWrapper v-if="false" class="home-card" :data="context['recentCommit']">
@@ -101,14 +99,14 @@ import { onMounted, reactive, defineComponent } from 'vue'
 import dayjs from "dayjs"
 import _ from 'lodash'
 
-import Calendar from '@/project/50projects50days/viewComponent/Calendar/index.vue'
+import Calendar from '@/pages/project/50projects50days/viewComponent/Calendar/index.vue'
 import { isToday } from '@/utils/time'
 
 import cardWrapper from './cardWrapper.vue'
 import mapContainer from './amap/mapContainer.vue'
-import { calcTimeToDiffDayLabel } from '../utils/time'
-import { tooltip } from "../js/vue/directives/tooltip/tooltip";
-import { getAllCommitsByMultiRepo, getRepoInfo } from '../api/github'
+import { calcTimeToDiffDayLabel } from '@/utils/time'
+import { tooltip } from "@/pages/js/vue/directives/tooltip/tooltip";
+import { getAllCommitsByMultiRepo, getRepoInfo } from '@/api/github'
 
 const vTooltip = tooltip
 const state = reactive({
@@ -129,7 +127,7 @@ const context = {
     subTitle: 'current month update',
   },
   'recentUpdate': {
-    title: '其他更新',
+    title: 'Github更新',
     subTitle: 'last 30 commits'
   },
   'recentProject': {
@@ -186,7 +184,7 @@ onMounted(() => {
   const cur = dayjs()
   getCurSiteMonthCommits(cur.year(), cur.month() + 1)
   // 各个仓库最近10条commit
-  getAllCommitsByMultiRepo(repos.slice(0, 3)).then(res => {
+  getAllCommitsByMultiRepo(repos).then(res => {
     // 根据提交时间倒序排列
     state.recentCommits = _.orderBy(res, 'committer.date', 'desc')
   })

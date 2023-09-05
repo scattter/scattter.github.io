@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper view-demo-component">
-    <img src="@/public/logo.jpeg" width="500" height="500" alt="" style="position: absolute; z-index: 1; top: 180px">
+    <img src="../../../../public/logo.jpeg" width="500" height="500" alt="" style="position: absolute; z-index: 1; top: 180px">
     <canvas id="scratch" width="500" height="500" style="z-index: 2"></canvas>
     <div class="opera">
       <div class="width">
