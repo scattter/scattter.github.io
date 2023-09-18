@@ -22,7 +22,7 @@
             <li v-for="commit in state.recentCommits" :key="commit.sha" class="recent-update-item">
               <div class="recent-work-item-wrapper">
                 <strong>⏺ Repo: {{ commit.repoName }}</strong>
-                <div class="recent-work-msg">{{ commit.message }}</div>
+                <div class="recent-work-msg" v-tooltip="commit.message">{{ commit.message }}</div>
                 <div class="commit-date">{{ commit.committer.date }}</div>
               </div>
               <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
@@ -53,6 +53,7 @@
               </div>
               <li v-for="article in state.articles" :key="article.createTime" class="recent-work-item">
                 <div v-tooltip="article.name" class="recent-work-msg">⏺ {{ article.name }}</div>
+                <div class="recent-work-date">{{ calcTimeToDiffDayLabel(article.createTime) }}</div>
               </li>
             </div>
           </div>
