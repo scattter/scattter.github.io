@@ -53,7 +53,6 @@
               </div>
               <li v-for="article in state.articles" :key="article.createTime" class="recent-work-item">
                 <div v-tooltip="article.name" class="recent-work-msg">⏺ {{ article.name }}</div>
-                <div class="recent-work-date">{{ calcTimeToDiffDayLabel(article.createTime) }}</div>
               </li>
             </div>
           </div>
@@ -125,7 +124,7 @@ const context = {
     subTitle: 'about',
   },
   'recentWork': {
-    title: '本站更新',
+    title: '本站文章',
     subTitle: `total ${state.articles.length} articles`,
   },
   'recentUpdate': {
@@ -305,10 +304,11 @@ onMounted(() => {
       width: 100%;
       max-height: 320px;
       //padding-left: 4px;
-      margin-left: 20px;
+      //margin-left: 20px;
       padding-right: 15px;
       overflow-y: auto;
       .recent-work-empty {
+        margin-top: 50%;
         text-align: center;
         font-size: 32px;
         line-height: 32px;
