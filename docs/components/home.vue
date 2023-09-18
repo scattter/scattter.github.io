@@ -30,30 +30,30 @@
           </div>
         </template>
       </cardWrapper>
-      <cardWrapper v-if="false" class="home-card" :data="context['recentWork']">
+      <cardWrapper class="home-card" :data="context['recentWork']">
         <template v-slot:contextSlot>
           <div class="recent-work-wrapper">
-            <Calendar @handlePrevMonth="handleChangeMonth" @handleNextMonth="handleChangeMonth">
-              <template v-slot:day="{ data }">
-                <div
-                    v-if="isNeedRenderDay(data)"
-                    v-tooltip.force="findCurDayCommit(data)"
-                    class="has-commit"
-                >
-                  <span class="commit-day" :class="{ today: isToday(data, 1) }">
-                    {{ data.day }}
-                  </span>
-                </div>
-                <span v-else :class="{ today: isToday(data, 1) }">{{ data.day }}</span>
-              </template>
-            </Calendar>
+<!--            <Calendar @handlePrevMonth="handleChangeMonth" @handleNextMonth="handleChangeMonth">-->
+<!--              <template v-slot:day="{ data }">-->
+<!--                <div-->
+<!--                    v-if="isNeedRenderDay(data)"-->
+<!--                    v-tooltip.force="findCurDayCommit(data)"-->
+<!--                    class="has-commit"-->
+<!--                >-->
+<!--                  <span class="commit-day" :class="{ today: isToday(data, 1) }">-->
+<!--                    {{ data.day }}-->
+<!--                  </span>-->
+<!--                </div>-->
+<!--                <span v-else :class="{ today: isToday(data, 1) }">{{ data.day }}</span>-->
+<!--              </template>-->
+<!--            </Calendar>-->
             <div class="recent-work">
-              <div class="recent-work-empty" v-if="state.curSiteCommits.length === 0">
+              <div class="recent-work-empty" v-if="state.articles && state.articles.length === 0">
                 暂无数据
               </div>
-              <li v-for="commit in state.curSiteCommits" :key="commit.sha" class="recent-work-item">
-                <div v-tooltip="commit.message" class="recent-work-msg">⏺ {{ commit.message }}</div>
-                <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
+              <li v-for="article in state.articles" :key="article.createTime" class="recent-work-item">
+                <div v-tooltip="article.name" class="recent-work-msg">⏺ {{ article.name }}</div>
+                <div class="recent-work-date">{{ calcTimeToDiffDayLabel(article.createTime) }}</div>
               </li>
             </div>
           </div>
@@ -106,14 +106,16 @@ import cardWrapper from './cardWrapper.vue'
 import mapContainer from './amap/mapContainer.vue'
 import { calcTimeToDiffDayLabel } from '@/utils/time'
 import { tooltip } from "@/pages/js/vue/directives/tooltip/tooltip";
-import { getAllCommitsByMultiRepo, getRepoInfo } from '@/api/github'
+import { getAllCommitsByMultiRepo, getRepoInfo } from '@/api/github';
+import articles from '@/public/asserts/articles.json';
 
 const vTooltip = tooltip
 const state = reactive({
   recentCommits: [],
   curSiteCommits: [],
   curSiteCommitDays: [],
-  reposInfo: {}
+  reposInfo: {},
+  articles,
 })
 
 const MAX_PER_PAGE = 100
@@ -124,7 +126,7 @@ const context = {
   },
   'recentWork': {
     title: '本站更新',
-    subTitle: 'current month update',
+    subTitle: `total ${state.articles.length} articles`,
   },
   'recentUpdate': {
     title: 'Github更新',

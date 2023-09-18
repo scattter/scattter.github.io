@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "husky": "^8.0.3",
     "mermaid": "^10.3.0",
     "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.56.0",
@@ -13,7 +14,8 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "docs:summary": "node ./docs/utils/findAllArticles.js"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
