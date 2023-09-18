@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "husky": "^8.0.3",
     "mermaid": "^10.3.0",
     "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.56.0",
