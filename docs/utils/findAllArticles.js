@@ -28,6 +28,7 @@ const findMarkdownFiles = async (folderPath) => {
 
 const handleFileInfo = (stats, fileName, folderPath) => {
   const info = {
+    timestamp: dayjs(stats.ctime).unix(),
     createTime: dayjs(stats.ctime).format('YYYY-MM-DD HH:mm:ss'),
     lastTime: dayjs(stats.mtime).format('YYYY-MM-DD HH:mm:ss'),
   }
@@ -47,9 +48,9 @@ const handleFileInfo = (stats, fileName, folderPath) => {
 
 findMarkdownFiles('docs/pages').then(async () => {
   try {
-    _.sortBy(markdownFiles, ['createTime'], ['desc']);
+    const res = _.orderBy(markdownFiles, ['timestamp'], 'desc');
     // 更新文章列表
-    await fs.writeFile('docs/public/asserts/articles.json', JSON.stringify(markdownFiles))
+    await fs.writeFile('docs/public/asserts/articles.json', JSON.stringify(res))
   } catch (err) {
     console.error(err);
   }

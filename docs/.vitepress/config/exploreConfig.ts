@@ -39,7 +39,8 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: '生成脚本执行记录并发布npm包', link: `${EXPLORE_OTHERS_PATH}/生成脚本执行记录并发布npm包` },
         { text: 'arco-design简单使用记录', link: `${EXPLORE_FRONT_PATH}/arco-design简单使用记录` },
         { text: '前端项目部署方案', link: `${EXPLORE_FRONT_PATH}/前端项目部署方案` },
-        { text: '同构渲染', link: `${EXPLORE_FRONT_PATH}/同构渲染` }
+        { text: '同构渲染', link: `${EXPLORE_FRONT_PATH}/同构渲染` },
+        { text: '浏览器和服务器间交互', link: `${EXPLORE_FRONT_PATH}/浏览器和服务器间交互` }
       ]
     },
     {
