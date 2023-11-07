@@ -27,6 +27,10 @@ const otherExploreItems = [
     text: '家用摄像头本地存储和查看',
     link: `${EXPLORE_OTHERS_PATH}/家用摄像头本地存储和查看`
   },
+  {
+    text: '客户端控制服务端下电影',
+    link: `${EXPLORE_OTHERS_PATH}/客户端控制服务端下电影`
+  }
 ]
 
 export function sidebarExplore(): VitePressConfig[] {
