@@ -2,6 +2,7 @@ import { VitePressConfig, VitePressNav } from '@/types/common'
 
 const EXPLORE_FRONT_PATH = '/pages/explore/frontend'
 const EXPLORE_OTHERS_PATH = '/pages/explore/others'
+const EXPLORE_OPTIMIZE_PATH = '/pages/explore/optimize'
 
 const otherExploreItems = [
   { text: 'express中配置log4js', link: `${EXPLORE_OTHERS_PATH}/express中配置log4js` },
@@ -49,6 +50,13 @@ export function sidebarExplore(): VitePressConfig[] {
       ]
     },
     {
+      text: '性能优化',
+      collapsible: true,
+      items: [
+        { text: 'eslint和prettier配置', link: `${EXPLORE_OPTIMIZE_PATH}/工厂模式缓存函数调用` },
+      ]
+    },
+    {
       text: '其他探索',
       collapsible: true,
       items: otherExploreItems,
@@ -62,6 +70,11 @@ export const navExplore: VitePressNav = {
     {
       text: '前端探索',
       link: '/pages/explore/frontend/eslint和prettier配置',
+      activeMatch: '/pages/explore/'
+    },
+    {
+      text: '性能优化',
+      link: '/pages/explore/optimize/工厂模式缓存函数调用',
       activeMatch: '/pages/explore/'
     },
     {
