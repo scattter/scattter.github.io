@@ -47,15 +47,16 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: '同构渲染', link: `${EXPLORE_FRONT_PATH}/同构渲染` },
         { text: '浏览器和服务器间交互', link: `${EXPLORE_FRONT_PATH}/浏览器和服务器间交互` },
         { text: '基于AST的循环引用检测', link: `${EXPLORE_FRONT_PATH}/基于AST的循环引用检测` },
-        { text: '处理主题包切换主题多余刷新', link: `${EXPLORE_FRONT_PATH}/处理主题包切换主题多余刷新` },
-        { text: '项目打包资源底层替换', link: `${EXPLORE_FRONT_PATH}/项目打包资源底层替换` }
       ]
     },
     {
-      text: '性能优化',
+      text: '开发记录&性能优化',
       collapsible: true,
       items: [
-        { text: 'eslint和prettier配置', link: `${EXPLORE_OPTIMIZE_PATH}/工厂模式缓存函数调用` },
+        { text: '处理主题包切换主题多余刷新', link: `${EXPLORE_OPTIMIZE_PATH}/处理主题包切换主题多余刷新` },
+        { text: '项目打包资源底层替换', link: `${EXPLORE_OPTIMIZE_PATH}/项目打包资源底层替换` },
+        { text: '工厂模式缓存函数调用', link: `${EXPLORE_OPTIMIZE_PATH}/工厂模式缓存函数调用` },
+        { text: '首页图片资源懒加载优化', link: `${EXPLORE_OPTIMIZE_PATH}/首页图片资源懒加载优化` },
       ]
     },
     {
