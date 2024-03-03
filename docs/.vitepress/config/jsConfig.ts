@@ -2,6 +2,7 @@ import { VitePressConfig, VitePressNav } from '@/types/common'
 
 const JS_CONFIG_PATTERNS_PATH = '/pages/js/designPatterns'
 const JS_CONFIG_VUE_PATH = '/pages/js/vue'
+const JS_CONFIG_SHARE_PATH = '/pages/js/share'
 
 
 export function sidebarJsConfig(): VitePressConfig[] {
@@ -31,6 +32,13 @@ export function sidebarJsConfig(): VitePressConfig[] {
         { text: 'placeholder指令', link: `${JS_CONFIG_VUE_PATH}/directives/placeholder/index` },
       ]
     },
+    {
+      text: 'share',
+      collapsible: true,
+      items: [
+        { text: 'JS内置深拷贝函数介绍', link: `${JS_CONFIG_SHARE_PATH}/deepClone/JS内置深拷贝函数介绍` }
+      ]
+    }
   ]
 }
 
@@ -45,6 +53,12 @@ export const navJsConfig: VitePressNav = {
     {
       text: 'vue相关',
       link: `${JS_CONFIG_VUE_PATH}/directives/tooltip/index`,
+      activeMatch: '/pages/js/'
+    },
+
+    {
+      text: 'share',
+      link: `${JS_CONFIG_SHARE_PATH}/deepClone/JS内置深拷贝函数介绍`,
       activeMatch: '/pages/js/'
     },
   ]
