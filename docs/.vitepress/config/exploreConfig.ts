@@ -47,6 +47,7 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: '同构渲染', link: `${EXPLORE_FRONT_PATH}/同构渲染` },
         { text: '浏览器和服务器间交互', link: `${EXPLORE_FRONT_PATH}/浏览器和服务器间交互` },
         { text: '基于AST的循环引用检测', link: `${EXPLORE_FRONT_PATH}/基于AST的循环引用检测` },
+        { text: '前端业务埋点实现', link: `${EXPLORE_FRONT_PATH}/前端业务埋点实现` },
       ]
     },
     {
