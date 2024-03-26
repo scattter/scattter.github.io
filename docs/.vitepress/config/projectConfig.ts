@@ -57,6 +57,10 @@ const _50ProjectsItems = [
     text: 'Print Text',
     link: `${_50_PROJECTS_50_DAYS}/PrintText.md`
   },
+  {
+    text: 'Cursor Hover',
+    link: `${_50_PROJECTS_50_DAYS}/CursorHover.md`
+  },
 ]
 
 const typescriptStudyItems = [
