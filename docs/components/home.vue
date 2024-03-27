@@ -25,7 +25,7 @@
                 <div class="recent-work-msg" v-tooltip="commit.message">{{ commit.message }}</div>
                 <div class="commit-date">{{ commit.committer.date }}</div>
               </div>
-              <div class="recent-work-date">{{ calcTimeToDiffDayLabel(commit.committer.date) }}</div>
+              <div class="recent-work-date">{{ format(commit.committer.date, 'zh_CN') }}</div>
             </li>
           </div>
         </template>
@@ -53,7 +53,7 @@
               </div>
               <li v-for="article in state.articles" :key="article.createTime" class="recent-work-item">
                 <div v-tooltip="article.name" class="recent-work-msg">⏺ {{ article.name }}</div>
-                <div class="recent-work-date">{{ calcTimeToDiffDayLabel(article.createTime) }}</div>
+                <div class="recent-work-date">{{ format(article.createTime, 'zh_CN') }}</div>
               </li>
             </div>
           </div>
@@ -104,10 +104,10 @@ import { isToday } from '@/utils/time'
 
 import cardWrapper from './cardWrapper.vue'
 import mapContainer from './amap/mapContainer.vue'
-import { calcTimeToDiffDayLabel } from '@/utils/time'
 import { tooltip } from "@/pages/js/vue/directives/tooltip/tooltip";
 import { getAllCommitsByMultiRepo, getRepoInfo } from '@/api/github';
 import articles from '@/public/asserts/articles.json';
+import { format } from "timeago.js";
 
 const vTooltip = tooltip
 const state = reactive({
