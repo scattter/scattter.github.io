@@ -1,0 +1,1 @@
+const n=["\u65E5","\u4E00","\u4E8C","\u4E09","\u56DB","\u4E94","\u516D"],r=n.concat(n),u=(e=0)=>r.slice(e,e+7),D=(e=new Date)=>(e.setDate(1),e.getDay()),E=(e=new Date)=>new Date(e.getFullYear(),e.getMonth()+1,0).getDate(),y=(e=0,t=new Date)=>{const s=u(e),a=new Array(D(t)-e),c=[...Array(E(t)).keys()].map(o=>o+=1);return s.concat(a).concat(c)};export{y as s};
