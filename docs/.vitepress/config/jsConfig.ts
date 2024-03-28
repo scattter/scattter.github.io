@@ -36,7 +36,8 @@ export function sidebarJsConfig(): VitePressConfig[] {
       text: 'share',
       collapsible: true,
       items: [
-        { text: 'JS内置深拷贝函数介绍', link: `${JS_CONFIG_SHARE_PATH}/deepClone/JS内置深拷贝函数介绍` }
+        { text: 'JS内置深拷贝函数介绍', link: `${JS_CONFIG_SHARE_PATH}/deepClone/JS内置深拷贝函数介绍` },
+        { text: '基于Grid的栅格化布局', link: `${JS_CONFIG_SHARE_PATH}/基于Grid的栅格化布局` }
       ]
     }
   ]
