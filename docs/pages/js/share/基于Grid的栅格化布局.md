@@ -87,7 +87,7 @@ export interface IGridConfig {
 
 ### 2.4 前台实现
 
-```react
+```
 // mock数据
 const gridInfo = {
 	gutter: 24,
