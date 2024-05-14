@@ -186,6 +186,14 @@
     khroma "^2.0.0"
     non-layered-tidy-tree-layout "^2.0.2"
 
+"@splinetool/runtime@^1.3.2":
+  version "1.3.2"
+  resolved "https://mirrors.cloud.tencent.com/npm/@splinetool/runtime/-/runtime-1.3.2.tgz#7d0d8d2f681cf729ff7d51dab0736f27a7dbb251"
+  integrity sha512-v9nF01fejndz6nyiDX47HnwELHeWQb7QKkXVYlhntbp2ZuKx3QUqGA1kz4D2SFkbxuZzD9VBEgyoHR0PJmuoig==
+  dependencies:
+    on-change "^4.0.0"
+    semver-compare "^1.0.0"
+
 "@types/d3-scale-chromatic@^3.0.0":
   version "3.0.0"
   resolved "https://mirrors.cloud.tencent.com/npm/@types/d3-scale-chromatic/-/d3-scale-chromatic-3.0.0.tgz#103124777e8cdec85b20b51fd3397c682ee1e954"
@@ -1451,6 +1459,11 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "https://mirrors.cloud.tencent.com/npm/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
+on-change@^4.0.0:
+  version "4.0.2"
+  resolved "https://mirrors.cloud.tencent.com/npm/on-change/-/on-change-4.0.2.tgz#838129790f09dc2ed04284944bda6e82b92c10b8"
+  integrity sha512-cMtCyuJmTx/bg2HCpHo3ZLeF7FZnBOapLqZHr2AlLeJ5Ul0Zu2mUJJz051Fdwu/Et2YW04ZD+TtU+gVy0ACNCA==
+
 open@^8.4.0:
   version "8.4.2"
   resolved "https://mirrors.cloud.tencent.com/npm/open/-/open-8.4.2.tgz#5b5ffe2a8f793dcd2aad73e550cb87b59cb084f9"
@@ -1562,6 +1575,11 @@ sass@^1.56.0:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
+
+semver-compare@^1.0.0:
+  version "1.0.0"
+  resolved "https://mirrors.cloud.tencent.com/npm/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
+  integrity sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==
 
 shiki@^0.11.1:
   version "0.11.1"

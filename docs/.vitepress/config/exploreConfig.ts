@@ -49,6 +49,7 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: '基于AST的循环引用检测', link: `${EXPLORE_FRONT_PATH}/基于AST的循环引用检测` },
         { text: '前端业务埋点实现', link: `${EXPLORE_FRONT_PATH}/前端业务埋点实现` },
         { text: '前端路由状态保持', link: `${EXPLORE_FRONT_PATH}/前端路由状态保持` },
+        { text: 'Spline交互新尝试', link: `${EXPLORE_FRONT_PATH}/Spline交互新尝试` },
       ]
     },
     {
