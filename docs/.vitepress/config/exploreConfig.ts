@@ -51,6 +51,7 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: '前端路由状态保持', link: `${EXPLORE_FRONT_PATH}/前端路由状态保持` },
         { text: 'Spline交互新尝试', link: `${EXPLORE_FRONT_PATH}/Spline交互新尝试` },
         { text: '前端控制并发上传请求个数', link: `${EXPLORE_FRONT_PATH}/前端控制并发上传请求个数` },
+        { text: 'Canvas绘制图片与下载', link: `${EXPLORE_FRONT_PATH}/Canvas绘制图片与下载` },
       ]
     },
     {
