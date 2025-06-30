@@ -3,6 +3,7 @@ import { VitePressConfig, VitePressNav } from '@/types/common'
 const EXPLORE_FRONT_PATH = '/pages/explore/frontend'
 const EXPLORE_OTHERS_PATH = '/pages/explore/others'
 const EXPLORE_OPTIMIZE_PATH = '/pages/explore/optimize'
+const EXPLORE_SHARE_PATH = '/pages/explore/share'
 
 const otherExploreItems = [
   { text: 'express中配置log4js', link: `${EXPLORE_OTHERS_PATH}/express中配置log4js` },
@@ -65,6 +66,13 @@ export function sidebarExplore(): VitePressConfig[] {
       ]
     },
     {
+      text: '相关分享',
+      collapsible: true,
+      items: [
+        { text: '6.28 杭州AI嘉年华简短感受', link: `${EXPLORE_SHARE_PATH}/6.28 杭州AI嘉年华简短感受` },
+      ]
+    },
+    {
       text: '其他探索',
       collapsible: true,
       items: otherExploreItems,
@@ -83,6 +91,11 @@ export const navExplore: VitePressNav = {
     {
       text: '性能优化',
       link: '/pages/explore/optimize/工厂模式缓存函数调用',
+      activeMatch: '/pages/explore/'
+    },
+    {
+      text: '相关分享',
+      link: '/pages/explore/share/6.28 杭州AI嘉年华简短感受',
       activeMatch: '/pages/explore/'
     },
     {
