@@ -1,11 +1,12 @@
 import { VitePressConfig, VitePressNav } from '@/types/common'
 
-const SOFT_WORK_PATH = '/pages/project/mr-notice'
+const SOFT_WORK_PATH = '/pages/project'
 const _50_PROJECTS_50_DAYS = '/pages/project/50projects50days'
 const TYPESCRIPT_STUDY = '/pages/project/typescript-study'
 
 const softWorkItems = [
-  { text: '项目部署', link: `${SOFT_WORK_PATH}/auto-deploy` }
+  { text: 'Gitlab项目部署通知', link: `${SOFT_WORK_PATH}/mr-notice/auto-deploy` },
+  { text: '云盘下载', link: `${SOFT_WORK_PATH}/cloudDownload/index.md` },
 ]
 
 const _50ProjectsItems = [
@@ -149,7 +150,7 @@ export function sidebarProject(): VitePressConfig[] {
       collapsible: true,
       items: [
         {
-          text: 'soft work',
+          text: 'have a try',
           collapsible: true,
           items: softWorkItems
         },
