@@ -70,6 +70,8 @@ export function sidebarExplore(): VitePressConfig[] {
       collapsible: true,
       items: [
         { text: '6.28 杭州AI嘉年华简短感受', link: `${EXPLORE_SHARE_PATH}/6.28 杭州AI嘉年华简短感受` },
+        { text: 'Transform模型初步探索', link: `${EXPLORE_SHARE_PATH}/Transform模型初步探索` },
+        { text: '大模型体验记录', link: `${EXPLORE_SHARE_PATH}/大模型体验记录` },
       ]
     },
     {
