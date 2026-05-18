@@ -222,6 +222,7 @@ onMounted(() => {
   }
   .cards {
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
     margin: 0 -10px;
     @media screen and (max-width: 600px) {
@@ -239,6 +240,40 @@ onMounted(() => {
     }
     .home-card {
       height: auto;
+    }
+
+    &.intro {
+      --intro-height: 320px;
+
+      @media screen and (max-width: 800px) {
+        --intro-height: 400px;
+      }
+
+      .home-card {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+
+      @media screen and (min-width: 600px) {
+        .about-me {
+          flex: 0 1 28%;
+          width: auto;
+          overflow: hidden;
+        }
+      }
+
+      :deep(.wrapper-context) {
+        flex: 1;
+        min-height: 0;
+      }
+
+      .about-context,
+      .recent-work-wrapper,
+      .recent-work,
+      .recent-update {
+        height: var(--intro-height);
+        max-height: var(--intro-height);
+      }
     }
 
     .about-context {
@@ -422,8 +457,9 @@ onMounted(() => {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 100%;
+        min-height: 80px;
         .recent-work-item-wrapper {
+          min-width: 0;
           height: 80px;
           margin-right: 10px;
           flex: 1;
@@ -443,11 +479,30 @@ onMounted(() => {
           }
         }
         .recent-work-date {
+          flex-shrink: 0;
           width: auto;
+          white-space: nowrap;
           color: var(--vp-c-text-2);
           padding: 2px 4px;
           border: 1px solid #ccc;
           border-radius: 6px;
+        }
+      }
+
+      @media screen and (max-width: 1100px) {
+        .recent-update-item {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 8px 0;
+          .recent-work-item-wrapper {
+            width: 100%;
+            height: auto;
+            margin-right: 0;
+          }
+          .recent-work-date {
+            margin-top: 4px;
+            margin-left: 20px;
+          }
         }
       }
       .commits {

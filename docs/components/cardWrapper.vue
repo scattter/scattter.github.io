@@ -56,6 +56,8 @@ const { title, subTitle, context, titleLink } = props.data
     }
   }
   .wrapper-context {
+    flex: 1;
+    min-height: 0;
     width: 100%;
     height: 100%;
     .text-context {
