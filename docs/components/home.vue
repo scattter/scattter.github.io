@@ -9,24 +9,12 @@
             <img class="about-img" src="/logo.jpeg" alt="" />
             <div class="about-text">
               <span class="about-intro">
-                A Boy, 前端开发工程师, 工作经验2年+, 近期技术栈主要为vue, 也有react项目实战经验, 有用vue3实现自己构想的项目<strong>《soft work》</strong>.
+                前端开发者, 主要关注 Vue、TypeScript、工程化和性能优化, 也会把工作里遇到的埋点、部署、资源治理、浏览器通信等问题沉淀成文章.
               </span>
-              <div class="about-intro-more">本站内容为自己学习过程中文档的记录!</div>
-            </div>
-          </div>
-        </template>
-      </cardWrapper>
-      <cardWrapper class="home-card" :data="context['recentUpdate']">
-        <template v-slot:contextSlot>
-          <div class="recent-update">
-            <li v-for="commit in state.recentCommits" :key="commit.sha" class="recent-update-item">
-              <div class="recent-work-item-wrapper">
-                <strong>⏺ Repo: {{ commit.repoName }}</strong>
-                <div class="recent-work-msg" v-tooltip="commit.message">{{ commit.message }}</div>
-                <div class="commit-date">{{ commit.committer.date }}</div>
+              <div class="about-intro-more">
+                Github 上会做一些小工具和实验项目, 比如个人站点、前端 utils、Vue/React 模板、ONVIF 工具、基金工具、AI 爬虫和组件库模板. 平时也会折腾家用网络、软硬件产品、AI 应用和自动化脚本, 更偏向把想法做成可以运行的东西.
               </div>
-              <div class="recent-work-date">{{ format(commit.committer.date, 'zh_CN') }}</div>
-            </li>
+            </div>
           </div>
         </template>
       </cardWrapper>
@@ -52,10 +40,26 @@
                 暂无数据
               </div>
               <li v-for="article in state.articles" :key="article.createTime" class="recent-work-item">
-                <div v-tooltip="article.name" class="recent-work-msg">⏺ {{ article.name }}</div>
+                <a v-tooltip="article.name" class="recent-work-msg" :href="article.link" target="_blank" rel="noopener">
+                  ⏺ {{ article.name }}
+                </a>
                 <div class="recent-work-date">{{ format(article.createTime, 'zh_CN') }}</div>
               </li>
             </div>
+          </div>
+        </template>
+      </cardWrapper>
+      <cardWrapper class="home-card" :data="context['recentUpdate']">
+        <template v-slot:contextSlot>
+          <div class="recent-update">
+            <li v-for="commit in state.recentCommits" :key="commit.sha" class="recent-update-item">
+              <a class="recent-work-item-wrapper" :href="commit.html_url" target="_blank" rel="noopener">
+                <strong>⏺ Repo: {{ commit.repoName }}</strong>
+                <div class="recent-work-msg" v-tooltip="commit.message">{{ commit.message }}</div>
+                <div class="commit-date">{{ commit.committer.date }}</div>
+              </a>
+              <div class="recent-work-date">{{ format(commit.committer.date, 'zh_CN') }}</div>
+            </li>
           </div>
         </template>
       </cardWrapper>
@@ -127,10 +131,12 @@ const context = {
   'recentWork': {
     title: '本站文章',
     subTitle: `total ${state.articles.length} articles`,
+    titleLink: state.articles[0]?.link,
   },
   'recentUpdate': {
     title: 'Github更新',
-    subTitle: 'last 30 commits'
+    subTitle: 'last 30 commits',
+    titleLink: 'https://github.com/scattter',
   },
   'recentProject': {
     title: '最近项目',
@@ -327,6 +333,10 @@ onMounted(() => {
           height: 30px;
           line-height: 30px;
           margin-right: 10px;
+          color: inherit;
+          &:hover {
+            @include commonHover;
+          }
         }
         .recent-work-date {
           width: auto;
@@ -417,6 +427,10 @@ onMounted(() => {
           height: 80px;
           margin-right: 10px;
           flex: 1;
+          color: inherit;
+          &:hover {
+            @include commonHover;
+          }
           .recent-work-msg {
             @include multiLineOverflow;
           }

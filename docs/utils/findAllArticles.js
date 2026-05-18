@@ -17,7 +17,7 @@ const findMarkdownFiles = async (folderPath) => {
       } else {
         const fileName = path.basename(filePath);
         if (fileName.toLowerCase().endsWith('.md')) {
-          markdownFiles.push(handleFileInfo(stats, fileName, folderPath));
+          markdownFiles.push(handleFileInfo(stats, filePath, fileName, folderPath));
         }
       }
     }
@@ -26,11 +26,13 @@ const findMarkdownFiles = async (folderPath) => {
   }
 }
 
-const handleFileInfo = (stats, fileName, folderPath) => {
+const handleFileInfo = (stats, filePath, fileName, folderPath) => {
+  const link = `/${path.relative('docs', filePath).replace(/\\/g, '/')}`.replace(/\.md$/, '')
   const info = {
     timestamp: dayjs(stats.ctime).unix(),
     createTime: dayjs(stats.ctime).format('YYYY-MM-DD HH:mm:ss'),
     lastTime: dayjs(stats.mtime).format('YYYY-MM-DD HH:mm:ss'),
+    link: link.endsWith('/index') ? link.slice(0, -6) : link,
   }
   if (fileName === 'index.md') {
     const parentFolder = folderPath.split('/').pop();

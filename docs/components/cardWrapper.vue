@@ -3,7 +3,8 @@
     <div class="wrapper-header">
       <slot v-if="$slots.headerSlot" name="headerSlot"></slot>
       <div v-else class="wrapper-header-title">
-        <span class="main-title">{{ title }}</span>
+        <a v-if="titleLink" class="main-title" :href="titleLink" target="_blank" rel="noopener">{{ title }}</a>
+        <span v-else class="main-title">{{ title }}</span>
         <span class="sub-title">{{ subTitle }}</span>
       </div>
       <slot name="extendTitleSlot"></slot>
@@ -16,7 +17,7 @@
 </template>
 <script setup>
 const props = defineProps(['data'])
-const { title, subTitle, context } = props.data
+const { title, subTitle, context, titleLink } = props.data
 </script>
 <style lang="scss" scoped>
 .card-wrapper {
@@ -43,6 +44,10 @@ const { title, subTitle, context } = props.data
         font-size: 24px;
         font-weight: 600;
         margin-right: 4px;
+        color: inherit;
+        &:hover {
+          color: var(--vp-c-brand);
+        }
       }
       .sub-title {
         font-size: 14px;

@@ -30,6 +30,7 @@ interface GithubCommitsWithRepoResponse {
 interface CustomCommitInfo {
   repoName?: string,
   sha: string,
+  html_url: string,
   committer: Record<'name' | 'date' | 'email', string>,
   message: string
 }
@@ -66,6 +67,7 @@ export function getAllCommitsByMultiRepo(repos: string[], params?: Object): Prom
         return {
           repoName: repo,
           sha: commitRep.sha,
+          html_url: commitRep.html_url,
           committer: {
             ...commitInfo.committer,
             date: dayjs(commitInfo.committer.date).format('YYYY-MM-DD HH:mm:ss')
