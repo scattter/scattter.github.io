@@ -72,7 +72,9 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: '6.28 杭州AI嘉年华简短感受', link: `${EXPLORE_SHARE_PATH}/6.28 杭州AI嘉年华简短感受` },
         { text: 'Transform模型初步探索', link: `${EXPLORE_SHARE_PATH}/Transform模型初步探索` },
         { text: '大模型体验记录', link: `${EXPLORE_SHARE_PATH}/大模型体验记录` },
+        { text: 'Coding配置与使用入门', link: `${EXPLORE_SHARE_PATH}/Coding配置与使用入门` },
         { text: '初试软硬件产品开发体验', link: `${EXPLORE_SHARE_PATH}/初试软硬件产品开发体验` },
+        { text: 'Apple GPT 土耳其订阅', link: `${EXPLORE_SHARE_PATH}/gpt土耳其订阅` },
       ]
     },
     {
