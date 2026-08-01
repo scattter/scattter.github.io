@@ -15,7 +15,7 @@ const otherExploreItems = [
   { text: '公网访问(DDNS+IPV6)', link: `${EXPLORE_OTHERS_PATH}/公网访问(DDNS+IPV6)`},
   {
     text: '前端语音识别探索',
-    link: `${EXPLORE_OTHERS_PATH}/前端语音识别探索`
+    link: `${EXPLORE_FRONT_PATH}/前端语音识别探索`
   },
   {
     text: '24小时直播推流探索',
@@ -46,13 +46,13 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: 'arco-design简单使用记录', link: `${EXPLORE_FRONT_PATH}/arco-design简单使用记录` },
         { text: '前端项目部署方案', link: `${EXPLORE_FRONT_PATH}/前端项目部署方案` },
         { text: '同构渲染', link: `${EXPLORE_FRONT_PATH}/同构渲染` },
-        { text: '浏览器和服务器间交互', link: `${EXPLORE_FRONT_PATH}/浏览器和服务器间交互` },
+        { text: '浏览器和服务器间交互', link: `${EXPLORE_FRONT_PATH}/浏览器和服务器间通信` },
         { text: '基于AST的循环引用检测', link: `${EXPLORE_FRONT_PATH}/基于AST的循环引用检测` },
         { text: '前端业务埋点实现', link: `${EXPLORE_FRONT_PATH}/前端业务埋点实现` },
         { text: '前端路由状态保持', link: `${EXPLORE_FRONT_PATH}/前端路由状态保持` },
         { text: 'Spline交互新尝试', link: `${EXPLORE_FRONT_PATH}/Spline交互新尝试` },
         { text: '前端控制并发上传请求个数', link: `${EXPLORE_FRONT_PATH}/前端控制并发上传请求个数` },
-        { text: 'Canvas绘制图片与下载', link: `${EXPLORE_FRONT_PATH}/Canvas绘制图片与下载` },
+        { text: 'Canvas绘制图片与下载', link: `${EXPLORE_FRONT_PATH}/Canvas绘制层叠图片与下载` },
       ]
     },
     {

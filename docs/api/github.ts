@@ -7,8 +7,6 @@ const DEFAULT_PAGE_CONFIG = {
   per_page: 10
 }
 
-const Authorization = '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'
-
 // 基于event获取组装commit信息(event包括push, watch这种, 需要自己进行判断组装)
 interface GithubCommitsWithEventResponse {
   sha: string,
@@ -61,7 +59,7 @@ interface GithubEventResponse {
 // 返回的是[ CustomCommitInfo, CustomCommitInfo ] 这种格式的数据
 export function getAllCommitsByMultiRepo(repos: string[], params?: Object): Promise<Array<CustomCommitInfo>> {
   return axios.all(repos.map(repo => {
-    return axios.get(`https://api.github.com/repos/scattter/${repo}/commits`, { headers: { Authorization }, params: { ...DEFAULT_PAGE_CONFIG, ...params } })
+    return axios.get(`https://api.github.com/repos/scattter/${repo}/commits`, { params: { ...DEFAULT_PAGE_CONFIG, ...params } })
       .then(({ data }) => (data as []).map((commitRep: GithubCommitsWithRepoResponse) => {
         const { commit: commitInfo } = commitRep
         return {
@@ -110,7 +108,7 @@ interface RepoInfoInterface {
 }
 
 export function getRepoInfo(repoNames: string[]): Promise<Record<string, Partial<RepoInfoInterface>>> {
-  return axios.get(`https://api.github.com/users/scattter/repos`, { headers: { Authorization } })
+  return axios.get(`https://api.github.com/users/scattter/repos`)
     .then(res => {
       const data: Array<Partial<RepoInfoInterface>> = res.data
       let results: Record<string, Partial<RepoInfoInterface>> = {}

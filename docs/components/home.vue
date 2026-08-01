@@ -1,7 +1,24 @@
 <template>
   <div class="home">
-    <div class="banner">WELCOME</div>
-    <mapContainer />
+    <div class="cards code">
+      <cardWrapper class="home-card" :data="context['recentProject']">
+        <template v-slot:contextSlot>
+          <div class="recent-project">
+            <div v-for="project in projects" :key="project.name" class="project">
+              <div class="project-title">
+                <span class="project-name">{{ project.name }}</span>
+                <div class="project-language">
+                  <div class="language-tag" :class="project.language.toLowerCase()"></div>
+                  {{ project.language }}
+                </div>
+              </div>
+              <p class="project-desc">{{ project.desc }}</p>
+              <p class="project-why"><span class="why-label">初衷：</span>{{ project.why }}</p>
+            </div>
+          </div>
+        </template>
+      </cardWrapper>
+    </div>
     <div class="cards intro">
       <cardWrapper class="home-card about-me" :data="context['aboutMe']">
         <template v-slot:contextSlot>
@@ -20,109 +37,71 @@
       </cardWrapper>
       <cardWrapper class="home-card" :data="context['recentWork']">
         <template v-slot:contextSlot>
-          <div class="recent-work-wrapper">
-<!--            <Calendar @handlePrevMonth="handleChangeMonth" @handleNextMonth="handleChangeMonth">-->
-<!--              <template v-slot:day="{ data }">-->
-<!--                <div-->
-<!--                    v-if="isNeedRenderDay(data)"-->
-<!--                    v-tooltip.force="findCurDayCommit(data)"-->
-<!--                    class="has-commit"-->
-<!--                >-->
-<!--                  <span class="commit-day" :class="{ today: isToday(data, 1) }">-->
-<!--                    {{ data.day }}-->
-<!--                  </span>-->
-<!--                </div>-->
-<!--                <span v-else :class="{ today: isToday(data, 1) }">{{ data.day }}</span>-->
-<!--              </template>-->
-<!--            </Calendar>-->
-            <div class="recent-work">
-              <div class="recent-work-empty" v-if="state.articles && state.articles.length === 0">
-                暂无数据
-              </div>
-              <li v-for="article in state.articles" :key="article.createTime" class="recent-work-item">
+          <div class="recent-work">
+            <div class="recent-work-empty" v-if="articles.length === 0">
+              暂无数据
+            </div>
+            <ul class="recent-work-list">
+              <li v-for="article in articles" :key="article.createTime" class="recent-work-item">
                 <a v-tooltip="article.name" class="recent-work-msg" :href="article.link" target="_blank" rel="noopener">
                   ⏺ {{ article.name }}
                 </a>
                 <div class="recent-work-date">{{ format(article.createTime, 'zh_CN') }}</div>
               </li>
-            </div>
-          </div>
-        </template>
-      </cardWrapper>
-      <cardWrapper class="home-card" :data="context['recentUpdate']">
-        <template v-slot:contextSlot>
-          <div class="recent-update">
-            <li v-for="commit in state.recentCommits" :key="commit.sha" class="recent-update-item">
-              <a class="recent-work-item-wrapper" :href="commit.html_url" target="_blank" rel="noopener">
-                <strong>⏺ Repo: {{ commit.repoName }}</strong>
-                <div class="recent-work-msg" v-tooltip="commit.message">{{ commit.message }}</div>
-                <div class="commit-date">{{ commit.committer.date }}</div>
-              </a>
-              <div class="recent-work-date">{{ format(commit.committer.date, 'zh_CN') }}</div>
-            </li>
-          </div>
-        </template>
-      </cardWrapper>
-    </div>
-    <div class="cards code">
-      <cardWrapper v-if="false" class="home-card" :data="context['recentProject']">
-        <template v-slot:contextSlot>
-          <div class="recent-project">
-            <div v-for="repo in repos" :key="repo" class="project">
-              <strong class="recent-project-title">
-                <a :href="'https://github.com/scattter/' + repo" target="_blank">{{ repo }}</a>
-              </strong>
-              <p class="project-desc">{{ state.reposInfo[repo]?.description }}</p>
-              <div class="project-language">
-                <div class="language-tag" :class="state.reposInfo[repo]?.language?.toString().toLowerCase()" />
-                {{ state.reposInfo[repo]?.language || '' }}
-              </div>
-            </div>
-          </div>
-        </template>
-        <template v-slot:extendTitleSlot>
-          <a class="recent-project-more" href="https://github.com/scattter" target="_blank">查看更多</a>
-        </template>
-      </cardWrapper>
-      <cardWrapper v-if="false" class="home-card" :data="context['recentCommit']">
-        <template v-slot:contextSlot>
-          <div class="recent-commit">
-            <li v-for="commit in state.recentCommits" :key="commit.sha" class="commits">
-              <strong>Repo: {{ commit.repoName }}</strong>
-              <p class="commit-message">{{ commit.message }}</p>
-              <p class="commit-date">{{ commit.committer.date }}</p>
-            </li>
+            </ul>
           </div>
         </template>
       </cardWrapper>
     </div>
   </div>
 </template>
-<script lang="jsx" setup>
-import { onMounted, reactive, defineComponent } from 'vue'
-import dayjs from "dayjs"
-import _ from 'lodash'
-
-import Calendar from '@/pages/project/50projects50days/viewComponent/Calendar/index.vue'
-import { isToday } from '@/utils/time'
-
+<script setup>
 import cardWrapper from './cardWrapper.vue'
-import mapContainer from './amap/mapContainer.vue'
 import { tooltip } from "@/pages/js/vue/directives/tooltip/tooltip";
-import { getAllCommitsByMultiRepo, getRepoInfo } from '@/api/github';
 import articles from '@/public/asserts/articles.json';
 import { format } from "timeago.js";
 
 const vTooltip = tooltip
-const state = reactive({
-  recentCommits: [],
-  curSiteCommits: [],
-  curSiteCommitDays: [],
-  reposInfo: {},
-  articles,
-})
 
-const MAX_PER_PAGE = 100
+const projects = [
+  {
+    name: '随礼册',
+    language: 'TypeScript',
+    desc: '记录人情往来的微信小程序：随礼、收礼都能随手记，婚礼、满月、乔迁等宴席支持按礼单集中管理',
+    why: '每次随礼都不知道记哪里，靠记忆和翻聊天记录，时间一长就乱。想做一个打开就能记一笔的地方，送出去的、收回来的都有据可查',
+  },
+  {
+    name: 'LCD-1.47',
+    language: 'Cpp',
+    desc: '基于 ESP32-S3 + 1.47 寸屏幕的桌面控制台：显示电脑状态，三个实体按键通过 BLE 控制 Mac 的音量、快捷键、启动 App 和脚本',
+    why: '想给电脑加一块带实体按键和小屏幕的控制台，软硬件都自己动手，把想法做成能跑的东西',
+  },
+  {
+    name: 'FundDig',
+    language: 'TypeScript',
+    desc: '基金计划与组合回测工具，管理持仓与加减仓记录，按比例构建组合回测',
+    why: '用纪律管理投资，让每一次买卖都有记录可查',
+  },
+  {
+    name: 'EasyOnvif',
+    language: 'TypeScript',
+    desc: '家庭摄像头管理系统，部署在 NAS 上，支持实时预览、云台控制、事件录制与回放',
+    why: '摆脱云平台限制，自己掌控家庭监控的存储与查看',
+  },
+  {
+    name: 'scattter.github.io',
+    language: 'Vue',
+    desc: '基于 VitePress 的个人博客，记录前端学习、工程化与性能优化实践',
+    why: '把学习和踩坑过程沉淀成文档，同时作为个人作品展示窗口',
+  },
+  {
+    name: 'common-utils',
+    language: 'JavaScript',
+    desc: '前端工具与学习实验合集：手写 JS 工具函数、Vue 指令、设计模式，以及云盘下载、语音识别等小实验',
+    why: '工作中的常用代码与笔记统一沉淀，避免重复造轮子',
+  },
+]
+
 const context = {
   'aboutMe': {
     title: '关于我',
@@ -130,77 +109,14 @@ const context = {
   },
   'recentWork': {
     title: '本站文章',
-    subTitle: `total ${state.articles.length} articles`,
-    titleLink: state.articles[0]?.link,
-  },
-  'recentUpdate': {
-    title: 'Github更新',
-    subTitle: 'last 30 commits',
-    titleLink: 'https://github.com/scattter',
+    subTitle: `total ${articles.length} articles`,
+    titleLink: articles[0]?.link,
   },
   'recentProject': {
-    title: '最近项目',
-    subTitle: '4 projects',
-  },
-  'recentCommit': {
-    title: 'Github提交',
-    subTitle: 'last 30 commits'
+    title: '我的项目',
+    subTitle: `${projects.length} projects`,
   }
 }
-const repos = ['common-utils', 'soft-work-frontend', 'soft-work-backend', 'scattter.github.io']
-
-const isNeedRenderDay = ({ year, month, day }) =>
-    state.curSiteCommitDays.includes(dayjs(`${year}-${month + 1}-${day}`).format('YYYY-MM-DD'))
-
-const findCurDayCommit = ({ year, month, day }) => {
-  return state.curSiteCommits
-      .filter(
-          commit => {
-            return dayjs(commit.committer.date).isSame(dayjs(`${year}-${month + 1}-${day}`), 'day')
-          }
-      ).length
-}
-
-const getCurSiteMonthCommits = (year, month) => {
-  const initTimeFormat = `${year}-${month}-01`
-  const since = dayjs(initTimeFormat).format('YYYY-MM-DDTHH:MM:SSZ')
-  const util = dayjs(initTimeFormat).add(1, 'month').format('YYYY-MM-DDTHH:MM:SSZ')
-  // 因为比较少见, 所以暂时未处理当月commit超过100条的情况, 此处可以使用递归处理
-  getAllCommitsByMultiRepo(
-      ['scattter.github.io'],
-      {
-        since,
-        util,
-        per_page: MAX_PER_PAGE,
-      }
-  ).then(res => {
-    // 过滤满足条件的commits
-    state.curSiteCommits = _.orderBy(res, 'committer.date', 'desc')
-        .filter(commit => {
-          return dayjs(commit.committer.date).isBefore(dayjs(initTimeFormat).add(1, 'month'), 'day')
-        })
-    state.curSiteCommitDays = state.curSiteCommits.map(commit => dayjs(commit.committer.date).format('YYYY-MM-DD'))
-  })
-}
-
-const handleChangeMonth = (year, month) => {
-  getCurSiteMonthCommits(year, month + 1)
-}
-
-onMounted(() => {
-  // 查询当前站点当月commits
-  const cur = dayjs()
-  getCurSiteMonthCommits(cur.year(), cur.month() + 1)
-  // 各个仓库最近10条commit
-  getAllCommitsByMultiRepo(repos).then(res => {
-    // 根据提交时间倒序排列
-    state.recentCommits = _.orderBy(res, 'committer.date', 'desc')
-  })
-  getRepoInfo(repos).then(res => {
-    // 根据提交时间倒序排列
-    state.reposInfo = res
-  })
-})
 </script>
 <style lang="scss" scoped>
 @import "docs/.vitepress/theme/scss/mixin.scss";
@@ -208,17 +124,15 @@ onMounted(() => {
 
 .home {
   padding: 5px 10px;
-  .banner {
-    width: 100%;
-    height: 100px;
-    background-color: bisque;
-    border-radius: 10px;
-    text-align: center;
-    line-height: 100px;
-    color: brown;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: Menlo,serif;
+  .about-me,
+  .about-text,
+  .recent-work,
+  .recent-project {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
   }
   .cards {
     display: flex;
@@ -268,9 +182,7 @@ onMounted(() => {
       }
 
       .about-context,
-      .recent-work-wrapper,
-      .recent-work,
-      .recent-update {
+      .recent-work {
         height: var(--intro-height);
         max-height: var(--intro-height);
       }
@@ -307,41 +219,6 @@ onMounted(() => {
       }
     }
 
-    .recent-work-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      width: 100%;
-
-      @media screen and (max-width: 970px) {
-        flex-direction: column;
-        margin-left: 0;
-      }
-
-      :deep(.calendar-wrapper) {
-        box-shadow: none;
-        .v-tooltip {
-          margin-bottom: 5px;
-        }
-      }
-      .today {
-        display: inline-block;
-        width: 32px;
-        font-weight: bolder;
-        color: $white;
-        border-radius: 50%;
-        background-color: $linkColor;
-      }
-      .has-commit {
-        .commit-day {
-          display: inline-block;
-          width: 32px;
-          border: 1px solid $linkColor;
-          border-radius: 50%;
-        }
-      }
-    }
-
     .recent-work {
       width: 100%;
       max-height: 320px;
@@ -349,6 +226,11 @@ onMounted(() => {
       //margin-left: 20px;
       padding-right: 15px;
       overflow-y: auto;
+      .recent-work-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
       .recent-work-empty {
         margin-top: 50%;
         text-align: center;
@@ -384,43 +266,62 @@ onMounted(() => {
     }
 
     .recent-project {
-      display: flex;
-      justify-content: space-between;
-      align-content: space-between;
-      flex-wrap: wrap;
-      @media screen and (min-width: 800px) {
-        height: 300px;
-      }
-      @media screen and (max-width: 800px) {
-        height: 400px;
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      grid-auto-rows: 180px;
+      gap: 12px;
+      width: 100%;
+      max-height: 380px;
+      overflow-y: auto;
       .project {
-        //width: 48%;
-        //height: 45%;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 12px 14px;
+        border: 1px solid var(--vp-c-bg-mute);
         border-radius: 8px;
-        padding: 4px 8px;
-        border: 2px solid var(--vp-c-text-4);
-        @media screen and (min-width: 800px) {
-          width: 48%;
-          height: 45%;
+        .project-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .project-name {
+            font-weight: 600;
+          }
         }
-        @media screen and (max-width: 800px) {
-          width: 100%;
-          height: 20%;
+        .project-desc,
+        .project-why {
+          height: 42px;
+          margin: 6px 0;
+          overflow-y: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          &::-webkit-scrollbar {
+            width: 0;
+          }
+        }
+        .project-desc {
+          font-size: 14px;
+          color: var(--vp-c-text-2);
+        }
+        .project-why {
+          font-size: 12px;
+          color: var(--vp-c-text-3);
+          .why-label {
+            font-weight: 600;
+          }
         }
         .project-language {
           display: flex;
           align-items: center;
+          font-size: 12px;
           color: var(--vp-c-text-2);
           .language-tag {
             display: inline-block;
-            width: 16px;
-            height: 16px;
+            width: 12px;
+            height: 12px;
             margin-right: 5px;
             border-radius: 50%;
+            background-color: var(--vp-c-text-4);
           }
           .language-tag.vue {
             background-color: $vueTag;
@@ -428,93 +329,15 @@ onMounted(() => {
           .language-tag.javascript {
             background-color: $jsTag;
           }
-        }
-      }
-      .recent-project-title {
-        &:hover {
-          @include commonHover;
-          border-bottom: 1px solid $hoverColor;
-        }
-      }
-    }
-
-    .recent-project-more {
-      color: var(--vp-c-text-4);
-      &:hover {
-        @include commonHover;
-      }
-    }
-
-    .recent-update {
-      @media screen and (min-width: 800px) {
-        max-height: 300px;
-      }
-      @media screen and (max-width: 800px) {
-        max-height: 400px;
-      }
-      overflow-y: auto;
-      .recent-update-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        min-height: 80px;
-        .recent-work-item-wrapper {
-          min-width: 0;
-          height: 80px;
-          margin-right: 10px;
-          flex: 1;
-          color: inherit;
-          &:hover {
-            @include commonHover;
+          .language-tag.typescript {
+            background-color: $tsTag;
           }
-          .recent-work-msg {
-            @include multiLineOverflow;
-          }
-          div {
-            margin-left: 20px;
-          }
-          .commit-date {
-            font-size: 12px;
-            color: var(--vp-c-text-2);
+          .language-tag.cpp {
+            background-color: #f34b7d;
           }
         }
-        .recent-work-date {
-          flex-shrink: 0;
-          width: auto;
-          white-space: nowrap;
-          color: var(--vp-c-text-2);
-          padding: 2px 4px;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-        }
-      }
-
-      @media screen and (max-width: 1100px) {
-        .recent-update-item {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 8px 0;
-          .recent-work-item-wrapper {
-            width: 100%;
-            height: auto;
-            margin-right: 0;
-          }
-          .recent-work-date {
-            margin-top: 4px;
-            margin-left: 20px;
-          }
-        }
-      }
-      .commits {
-        margin-bottom: 8px;
       }
     }
   }
-}
-
-.dark .banner {
-  border: 1px solid var(--vp-c-bg-mute);
-  color: $white;
-  background-color: $darkModeColor;
 }
 </style>
