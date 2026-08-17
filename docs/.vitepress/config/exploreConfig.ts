@@ -75,6 +75,7 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: 'Coding配置与使用入门', link: `${EXPLORE_SHARE_PATH}/Coding配置与使用入门` },
         { text: '初试软硬件产品开发体验', link: `${EXPLORE_SHARE_PATH}/初试软硬件产品开发体验` },
         { text: 'Apple GPT 土耳其订阅', link: `${EXPLORE_SHARE_PATH}/gpt土耳其订阅` },
+        { text: '睡个好觉 - Hackday项目记录', link: `${EXPLORE_SHARE_PATH}/睡个好觉 - Hackday项目记录` },
       ]
     },
     {
