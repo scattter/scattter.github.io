@@ -26,7 +26,7 @@ const { title, subTitle, context, titleLink } = props.data
   align-items: flex-start;
   width: 100%;
   height: 100%;
-  border: 2px solid var(--vp-c-bg-mute);
+  border: 2px solid var(--vp-c-bg-soft);
   border-radius: 10px;
   margin: 10px;
   padding: 24px;
@@ -38,7 +38,7 @@ const { title, subTitle, context, titleLink } = props.data
     padding-bottom: 8px;
     margin-bottom: 8px;
     width: 100%;
-    border-bottom: 1px solid var(--vp-c-bg-mute);
+    border-bottom: 1px solid var(--vp-c-bg-soft);
     .wrapper-header-title {
       .main-title {
         font-size: 24px;
@@ -51,7 +51,7 @@ const { title, subTitle, context, titleLink } = props.data
       }
       .sub-title {
         font-size: 14px;
-        color: var(--vp-c-text-4);
+        color: var(--vp-c-text-3);
       }
     }
   }

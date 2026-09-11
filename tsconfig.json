@@ -13,7 +13,7 @@
       "@/*": ["docs/*"],
       "@viewComponents/*": ["docs/project/50projects50days/viewComponent/*"],
     },
-    "lib": ["es2020", "dom"],
+    "lib": ["es2020", "es2022.intl", "dom"],
     "skipLibCheck": true,
   },
   "exclude": ["node_modules"]

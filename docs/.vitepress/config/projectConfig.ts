@@ -1,4 +1,4 @@
-import { VitePressConfig, VitePressNav } from '@/types/common'
+import type { VitePressConfig, VitePressNav } from '@/types/common'
 
 const SOFT_WORK_PATH = '/pages/project'
 const _50_PROJECTS_50_DAYS = '/pages/project/50projects50days'
@@ -147,23 +147,22 @@ export function sidebarProject(): VitePressConfig[] {
   return [
     {
       text: 'Self projects',
-      collapsible: true,
+      collapsed: false,
       items: [
         {
           text: 'have a try',
-          collapsible: true,
+          collapsed: false,
           items: softWorkItems
         },
       ]
     },
     {
       text: '50projects50days',
-      collapsible: true,
+      collapsed: false,
       items: _50ProjectsItems,
     },
     {
       text: 'Typescript study',
-      collapsible: true,
       collapsed: true,
       items: typescriptStudyItems,
     },

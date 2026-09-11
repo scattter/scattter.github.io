@@ -1,4 +1,4 @@
-import { VitePressConfig, VitePressNav } from '@/types/common'
+import type { VitePressConfig, VitePressNav } from '@/types/common'
 
 const JS_CONFIG_PATTERNS_PATH = '/pages/js/designPatterns'
 const JS_CONFIG_VUE_PATH = '/pages/js/vue'
@@ -9,7 +9,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
   return [
     {
       text: '设计模式',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: '发布订阅模式', link: `${JS_CONFIG_PATTERNS_PATH}/event/index` },
         { text: '观察者模式', link: `${JS_CONFIG_PATTERNS_PATH}/observe/index` },
@@ -25,7 +25,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
     },
     {
       text: 'vue相关',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: 'tooltip指令', link: `${JS_CONFIG_VUE_PATH}/directives/tooltip/index` },
         { text: 'ClickOutside指令', link: `${JS_CONFIG_VUE_PATH}/directives/clickoutside/index` },
@@ -34,7 +34,7 @@ export function sidebarJsConfig(): VitePressConfig[] {
     },
     {
       text: 'share',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: 'JS内置深拷贝函数介绍', link: `${JS_CONFIG_SHARE_PATH}/deepClone/JS内置深拷贝函数介绍` },
         { text: '基于Grid的栅格化布局', link: `${JS_CONFIG_SHARE_PATH}/基于Grid的栅格化布局` }

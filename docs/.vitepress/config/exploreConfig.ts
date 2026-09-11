@@ -1,4 +1,4 @@
-import { VitePressConfig, VitePressNav } from '@/types/common'
+import type { VitePressConfig, VitePressNav } from '@/types/common'
 
 const EXPLORE_FRONT_PATH = '/pages/explore/frontend'
 const EXPLORE_OTHERS_PATH = '/pages/explore/others'
@@ -39,7 +39,7 @@ export function sidebarExplore(): VitePressConfig[] {
   return [
     {
       text: '前端探索',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: 'eslint和prettier配置', link: `${EXPLORE_FRONT_PATH}/eslint和prettier配置` },
         { text: '生成脚本执行记录并发布npm包', link: `${EXPLORE_OTHERS_PATH}/生成脚本执行记录并发布npm包` },
@@ -57,7 +57,7 @@ export function sidebarExplore(): VitePressConfig[] {
     },
     {
       text: '开发记录&性能优化',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: '处理主题包切换主题多余刷新', link: `${EXPLORE_OPTIMIZE_PATH}/处理主题包切换主题多余刷新` },
         { text: '项目打包资源底层替换', link: `${EXPLORE_OPTIMIZE_PATH}/项目打包资源底层替换` },
@@ -67,7 +67,7 @@ export function sidebarExplore(): VitePressConfig[] {
     },
     {
       text: '相关分享',
-      collapsible: true,
+      collapsed: false,
       items: [
         { text: '6.28 杭州AI嘉年华简短感受', link: `${EXPLORE_SHARE_PATH}/6.28 杭州AI嘉年华简短感受` },
         { text: 'Transform模型初步探索', link: `${EXPLORE_SHARE_PATH}/Transform模型初步探索` },
@@ -81,7 +81,7 @@ export function sidebarExplore(): VitePressConfig[] {
     },
     {
       text: '其他探索',
-      collapsible: true,
+      collapsed: false,
       items: otherExploreItems,
     }
   ]

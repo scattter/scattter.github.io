@@ -215,7 +215,7 @@ const context = {
       .about-intro-more {
         margin-top: 2px;
         font-size: 14px;
-        color: var(--vp-c-text-4);
+        color: var(--vp-c-text-3);
       }
     }
 
@@ -236,7 +236,7 @@ const context = {
         text-align: center;
         font-size: 32px;
         line-height: 32px;
-        color: var(--vp-c-text-4);
+        color: var(--vp-c-text-3);
       }
       .recent-work-item {
         display: flex;
@@ -278,7 +278,7 @@ const context = {
         flex-direction: column;
         justify-content: space-between;
         padding: 12px 14px;
-        border: 1px solid var(--vp-c-bg-mute);
+        border: 1px solid var(--vp-c-bg-soft);
         border-radius: 8px;
         .project-title {
           display: flex;
@@ -321,7 +321,7 @@ const context = {
             height: 12px;
             margin-right: 5px;
             border-radius: 50%;
-            background-color: var(--vp-c-text-4);
+            background-color: var(--vp-c-text-3);
           }
           .language-tag.vue {
             background-color: $vueTag;

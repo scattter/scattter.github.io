@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress"
-import { VitePressNav } from "@/types/common";
+import type { VitePressNav } from "@/types/common";
 import { sidebarProject, navProject } from "./config/projectConfig"
 import { sidebarExplore, navExplore } from "./config/exploreConfig"
 import { sidebarJsConfig, navJsConfig } from "./config/jsConfig"
@@ -30,6 +30,7 @@ export default withMermaid(defineConfig({
     ],
   },
   title: 'Scatter Site',
+  lang: 'zh-CN',
   head: [
     ['meta', { name: 'google-site-verification', content: 'pe2Js8d1Jm4CaobO0Wg5Ij5cBBYN177ph1_-uJYdMLo' }],
   ],
@@ -41,6 +42,39 @@ export default withMermaid(defineConfig({
     toc: { level: [1, 2, 3] },
   },
   themeConfig: {
+    search: {
+      provider: 'local',
+      options: {
+        miniSearch: {
+          options: {
+            // 中文按词索引，支持搜索标题和正文中间的关键词。
+            tokenize: (text: string) => {
+              const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' })
+              return Array.from(segmenter.segment(text))
+                .filter(({ isWordLike }) => isWordLike)
+                .map(({ segment }) => segment)
+            },
+          },
+        },
+        translations: {
+          button: {
+            buttonText: '搜索',
+            buttonAriaLabel: '搜索文章',
+          },
+          modal: {
+            displayDetails: '显示详细内容',
+            resetButtonTitle: '清空搜索',
+            backButtonTitle: '关闭搜索',
+            noResultsText: '没有找到相关文章',
+            footer: {
+              selectText: '选择',
+              navigateText: '切换',
+              closeText: '关闭',
+            },
+          },
+        },
+      },
+    },
     logo: '/logo.jpeg',
     siteTitle: 'scatter',
     socialLinks: [

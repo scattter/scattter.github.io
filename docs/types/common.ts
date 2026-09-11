@@ -1,12 +1,8 @@
-import { DefaultTheme } from "vitepress";
+import type { DefaultTheme } from "vitepress";
 
 export type { DirectiveBinding } from 'vue'
 
 
-export interface VitePressConfig extends DefaultTheme.SidebarGroup {
-  items: (DefaultTheme.SidebarItem & {
-    collapsible?: boolean
-  })[]
-}
+export type VitePressConfig = DefaultTheme.SidebarItem
 
 export type VitePressNav = DefaultTheme.NavItem
