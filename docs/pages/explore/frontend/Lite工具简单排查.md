@@ -2,7 +2,7 @@
 
 以 **[此方案](https://sit.meijian.com/mj/meijian-tool/meijian-platform/lite-design?configId&designId=1039855&subSiteFrom=default)** 为基准测试
 
-![image2025-8-18_15-46-36](/Users/zhangke/Desktop/image2025-8-18_15-46-36.png)
+> 优化前性能截图待补充。
 
 
 
@@ -21,7 +21,7 @@
 
 简单处理后得分
 
-![image2025-8-25_17-49-28](/Users/zhangke/.Trash/image2025-8-25_17-49-28.png)
+> 优化后性能截图待补充。
 
 
 
