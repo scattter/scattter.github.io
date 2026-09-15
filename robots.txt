@@ -1,3 +1,4 @@
 User-agent: *
-Disallow: /about.html
 Allow: /
+
+Sitemap: https://scattter.github.io/sitemap.xml
