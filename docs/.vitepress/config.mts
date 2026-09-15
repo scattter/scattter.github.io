@@ -7,6 +7,8 @@ import { resolve } from 'path'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 import { visualizer } from "rollup-plugin-visualizer";
 
+const hostname = 'https://scattter.github.io'
+
 export default withMermaid(defineConfig({
   vite: {
     resolve: {
@@ -36,6 +38,20 @@ export default withMermaid(defineConfig({
   ],
   description: 'self write',
   lastUpdated: true,
+  sitemap: {
+    hostname,
+  },
+  transformPageData(pageData) {
+    const pagePath = pageData.relativePath
+      .replace(/(^|\/)index\.md$/, '$1')
+      .replace(/\.md$/, '.html')
+
+    pageData.frontmatter.head ??= []
+    pageData.frontmatter.head.push([
+      'link',
+      { rel: 'canonical', href: new URL(pagePath, `${hostname}/`).href },
+    ])
+  },
   markdown: {
     lineNumbers: true,
     // 目录 options for markdown-it-toc
