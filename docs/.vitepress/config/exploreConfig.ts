@@ -78,6 +78,7 @@ export function sidebarExplore(): VitePressConfig[] {
         { text: '睡个好觉 - Hackday项目记录', link: `${EXPLORE_SHARE_PATH}/睡个好觉 - Hackday项目记录` },
         { text: 'hackday参与后感想', link: `${EXPLORE_SHARE_PATH}/hackday参与后感想` },
         { text: '心意册小程序开发的感受', link: `${EXPLORE_SHARE_PATH}/一些微信小程序开发的感受` },
+        { text: '0917 小红书推广总结', link: `${EXPLORE_SHARE_PATH}/0917-小红书推广总结` },
       ]
     },
     {
