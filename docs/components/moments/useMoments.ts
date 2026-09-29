@@ -1,0 +1,178 @@
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import type { User } from '@supabase/supabase-js'
+import {
+  contentLimit, exportMoments, getSupabase, isConfigured, listMoments,
+  ownerId, publishMoment, type Moment,
+} from '../../utils/moments'
+
+export function useMoments() {
+  const user = ref<User | null>(null)
+  const moments = ref<Moment[]>([])
+  const draft = ref('')
+  const authLoading = ref(isConfigured)
+  const authBusy = ref(false)
+  const loading = ref(false)
+  const publishing = ref(false)
+  const exporting = ref(false)
+  const hasMore = ref(true)
+  const loadError = ref('')
+  const actionError = ref('')
+  const notice = ref('')
+  const isOwner = computed(() => Boolean(ownerId && user.value?.id === ownerId))
+  const contentLength = computed(() => Array.from(draft.value.trim()).length)
+  const canPublish = computed(() => isOwner.value && !publishing.value
+    && contentLength.value > 0 && contentLength.value <= contentLimit)
+  let cursor: Moment | undefined
+  let pendingPost: { id: string; content: string } | undefined
+  let unsubscribe: (() => void) | undefined
+  let disposed = false
+
+  async function loadMore() {
+    if (!isConfigured || loading.value || !hasMore.value) return
+    loading.value = true
+    loadError.value = ''
+    try {
+      const page = await listMoments(cursor)
+      if (disposed) return
+      const existing = new Set(moments.value.map(item => item.id))
+      moments.value.push(...page.items.filter(item => !existing.has(item.id)))
+      cursor = page.items[page.items.length - 1] ?? cursor
+      hasMore.value = page.hasMore
+    } catch {
+      if (!disposed) loadError.value = '暂时无法加载记录，请稍后重试。'
+    } finally {
+      if (!disposed) loading.value = false
+    }
+  }
+
+  async function initAuth() {
+    const callback = new URL(window.location.href)
+    const code = callback.searchParams.get('code')
+    const hash = new URLSearchParams(callback.hash.slice(1))
+    const callbackError = callback.searchParams.has('error') || hash.has('error')
+    try {
+      const auth = getSupabase().auth
+      const { data } = auth.onAuthStateChange((_event, session) => {
+        if (disposed) return
+        user.value = session?.user ?? null
+        if (!session) {
+          draft.value = ''
+          pendingPost = undefined
+        }
+      })
+      unsubscribe = () => data.subscription.unsubscribe()
+      if (callbackError) throw new Error('OAuth callback failed')
+      const result = code ? await auth.exchangeCodeForSession(code) : await auth.getSession()
+      if (result.error) throw result.error
+      if (!disposed) user.value = result.data.session?.user ?? null
+    } catch {
+      if (!disposed) actionError.value = '登录未完成，请重新尝试。'
+    } finally {
+      if (!disposed && (code || callbackError)) {
+        for (const key of ['code', 'error', 'error_code', 'error_description']) {
+          callback.searchParams.delete(key)
+        }
+        if (hash.has('error')) callback.hash = ''
+        window.history.replaceState(window.history.state, '', callback.pathname + callback.search + callback.hash)
+      }
+      if (!disposed) authLoading.value = false
+    }
+  }
+
+  async function signIn() {
+    if (authBusy.value) return
+    authBusy.value = true
+    actionError.value = ''
+    try {
+      const { error } = await getSupabase().auth.signInWithOAuth({
+        provider: 'github',
+        options: { redirectTo: `${window.location.origin}/moments` },
+      })
+      if (error) throw error
+    } catch {
+      actionError.value = '暂时无法登录，请稍后重试。'
+    } finally {
+      authBusy.value = false
+    }
+  }
+
+  async function signOut() {
+    if (authBusy.value) return
+    authBusy.value = true
+    actionError.value = ''
+    notice.value = ''
+    try {
+      const { error } = await getSupabase().auth.signOut({ scope: 'local' })
+      if (error) throw error
+    } catch {
+      actionError.value = '退出未完成，请稍后重试。'
+    } finally {
+      authBusy.value = false
+    }
+  }
+
+  async function publish() {
+    if (!canPublish.value) return
+    publishing.value = true
+    actionError.value = ''
+    notice.value = ''
+    const content = draft.value.trim()
+    try {
+      if (pendingPost?.content !== content) pendingPost = { id: crypto.randomUUID(), content }
+      const saved = await publishMoment(pendingPost.id, content)
+      if (disposed) return
+      moments.value = [saved, ...moments.value.filter(item => item.id !== saved.id)]
+      draft.value = ''
+      pendingPost = undefined
+      notice.value = '已发布。'
+    } catch {
+      if (!disposed) actionError.value = '发布未完成，内容已保留，请重试。'
+    } finally {
+      if (!disposed) publishing.value = false
+    }
+  }
+
+  async function downloadBackup() {
+    if (!isOwner.value || exporting.value) return
+    exporting.value = true
+    actionError.value = ''
+    notice.value = ''
+    try {
+      const items = await exportMoments()
+      if (disposed) return
+      const exportedAt = new Date().toISOString()
+      const blob = new Blob([JSON.stringify({ version: 1, exportedAt, moments: items }, null, 2)], {
+        type: 'application/json;charset=utf-8',
+      })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `moments-${exportedAt.slice(0, 10)}.json`
+      document.body.append(link)
+      link.click()
+      link.remove()
+      setTimeout(() => URL.revokeObjectURL(url), 0)
+      notice.value = `已导出 ${items.length} 条记录。`
+    } catch {
+      if (!disposed) actionError.value = '备份导出失败，请稍后重试。'
+    } finally {
+      if (!disposed) exporting.value = false
+    }
+  }
+
+  onMounted(() => {
+    if (!isConfigured) return
+    void initAuth()
+    void loadMore()
+  })
+  onUnmounted(() => {
+    disposed = true
+    unsubscribe?.()
+  })
+
+  return {
+    user, moments, draft, authLoading, authBusy, loading, publishing, exporting,
+    hasMore, loadError, actionError, notice, isOwner, contentLength, canPublish,
+    isConfigured, contentLimit, loadMore, signIn, signOut, publish, downloadBackup,
+  }
+}
