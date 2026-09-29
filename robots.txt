@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://scattter.github.io/sitemap.xml
+Sitemap: https://blob.suilice.xyz/sitemap.xml
