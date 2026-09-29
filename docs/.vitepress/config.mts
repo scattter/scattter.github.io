@@ -46,6 +46,7 @@ export default (({ mode }) => {
     lang: 'zh-CN',
     head: [
       ['meta', { name: 'google-site-verification', content: 'pe2Js8d1Jm4CaobO0Wg5Ij5cBBYN177ph1_-uJYdMLo' }],
+      ['meta', { name: 'google-site-verification', content: 'Yh2iPsTWFyXNKsJWFpTbVjLXp2CBAzz2bvNTj1XVjOk' }],
     ],
     description: 'self write',
     lastUpdated: true,
