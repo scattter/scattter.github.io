@@ -1,47 +1,68 @@
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { User } from '@supabase/supabase-js'
 import {
   contentLimit, exportMoments, getSupabase, isConfigured, listMoments,
-  ownerId, publishMoment, type Moment,
+  ownerId, publishMoment, setMomentVisibility, type Moment,
 } from '../../utils/moments'
 
 export function useMoments() {
   const user = ref<User | null>(null)
   const moments = ref<Moment[]>([])
   const draft = ref('')
+  const draftPublic = ref(false)
   const authLoading = ref(isConfigured)
   const authBusy = ref(false)
   const loading = ref(false)
   const publishing = ref(false)
   const exporting = ref(false)
+  const updatingId = ref<string | null>(null)
   const hasMore = ref(true)
   const loadError = ref('')
   const actionError = ref('')
   const notice = ref('')
   const isOwner = computed(() => Boolean(ownerId && user.value?.id === ownerId))
   const contentLength = computed(() => Array.from(draft.value.trim()).length)
-  const canPublish = computed(() => isOwner.value && !publishing.value
+  const canPublish = computed(() => isOwner.value && !authBusy.value && !publishing.value
     && contentLength.value > 0 && contentLength.value <= contentLimit)
   let cursor: Moment | undefined
   let pendingPost: { id: string; content: string } | undefined
   let unsubscribe: (() => void) | undefined
   let disposed = false
+  let sessionVersion = 0
+
+  watch(() => user.value?.id, () => {
+    // 身份变化后重读列表，并丢弃旧请求，避免退出后重新显示私密内容。
+    sessionVersion++
+    moments.value = []
+    cursor = undefined
+    hasMore.value = true
+    loading.value = false
+    loadError.value = ''
+    notice.value = ''
+    if (!isOwner.value) {
+      draft.value = ''
+      draftPublic.value = false
+      pendingPost = undefined
+    }
+    if (!authLoading.value) void loadMore()
+  })
 
   async function loadMore() {
-    if (!isConfigured || loading.value || !hasMore.value) return
+    if (!isConfigured || authLoading.value || loading.value || !hasMore.value) return
+    const version = sessionVersion
     loading.value = true
     loadError.value = ''
     try {
       const page = await listMoments(cursor)
-      if (disposed) return
+      if (disposed || version !== sessionVersion) return
       const existing = new Set(moments.value.map(item => item.id))
       moments.value.push(...page.items.filter(item => !existing.has(item.id)))
       cursor = page.items[page.items.length - 1] ?? cursor
       hasMore.value = page.hasMore
     } catch {
-      if (!disposed) loadError.value = '暂时无法加载记录，请稍后重试。'
+      if (!disposed && version === sessionVersion) loadError.value = '暂时无法加载记录，请稍后重试。'
     } finally {
-      if (!disposed) loading.value = false
+      if (!disposed && version === sessionVersion) loading.value = false
     }
   }
 
@@ -57,6 +78,7 @@ export function useMoments() {
         user.value = session?.user ?? null
         if (!session) {
           draft.value = ''
+          draftPublic.value = false
           pendingPost = undefined
         }
       })
@@ -113,33 +135,54 @@ export function useMoments() {
 
   async function publish() {
     if (!canPublish.value) return
+    const version = sessionVersion
     publishing.value = true
     actionError.value = ''
     notice.value = ''
     const content = draft.value.trim()
     try {
       if (pendingPost?.content !== content) pendingPost = { id: crypto.randomUUID(), content }
-      const saved = await publishMoment(pendingPost.id, content)
-      if (disposed) return
+      const saved = await publishMoment(pendingPost.id, content, draftPublic.value)
+      if (disposed || version !== sessionVersion) return
       moments.value = [saved, ...moments.value.filter(item => item.id !== saved.id)]
       draft.value = ''
+      draftPublic.value = false
       pendingPost = undefined
       notice.value = '已发布。'
     } catch {
-      if (!disposed) actionError.value = '发布未完成，内容已保留，请重试。'
+      if (!disposed && version === sessionVersion) actionError.value = '发布未完成，内容已保留，请重试。'
     } finally {
       if (!disposed) publishing.value = false
     }
   }
 
+  async function toggleVisibility(moment: Moment) {
+    if (!isOwner.value || authBusy.value || updatingId.value) return
+    const version = sessionVersion
+    updatingId.value = moment.id
+    actionError.value = ''
+    notice.value = ''
+    try {
+      const saved = await setMomentVisibility(moment.id, !moment.is_public)
+      if (disposed || version !== sessionVersion) return
+      moments.value = moments.value.map(item => item.id === saved.id ? saved : item)
+      notice.value = saved.is_public ? '已设为公开。' : '已设为私密。'
+    } catch {
+      if (!disposed && version === sessionVersion) actionError.value = '状态保存未完成，请重试。'
+    } finally {
+      if (!disposed) updatingId.value = null
+    }
+  }
+
   async function downloadBackup() {
-    if (!isOwner.value || exporting.value) return
+    if (!isOwner.value || authBusy.value || exporting.value) return
+    const version = sessionVersion
     exporting.value = true
     actionError.value = ''
     notice.value = ''
     try {
       const items = await exportMoments()
-      if (disposed) return
+      if (disposed || version !== sessionVersion) return
       const exportedAt = new Date().toISOString()
       const blob = new Blob([JSON.stringify({ version: 1, exportedAt, moments: items }, null, 2)], {
         type: 'application/json;charset=utf-8',
@@ -154,15 +197,16 @@ export function useMoments() {
       setTimeout(() => URL.revokeObjectURL(url), 0)
       notice.value = `已导出 ${items.length} 条记录。`
     } catch {
-      if (!disposed) actionError.value = '备份导出失败，请稍后重试。'
+      if (!disposed && version === sessionVersion) actionError.value = '备份导出失败，请稍后重试。'
     } finally {
       if (!disposed) exporting.value = false
     }
   }
 
-  onMounted(() => {
+  onMounted(async () => {
     if (!isConfigured) return
-    void initAuth()
+    await initAuth()
+    if (disposed) return
     void loadMore()
   })
   onUnmounted(() => {
@@ -171,8 +215,8 @@ export function useMoments() {
   })
 
   return {
-    user, moments, draft, authLoading, authBusy, loading, publishing, exporting,
+    user, moments, draft, draftPublic, authLoading, authBusy, loading, publishing, exporting, updatingId,
     hasMore, loadError, actionError, notice, isOwner, contentLength, canPublish,
-    isConfigured, contentLimit, loadMore, signIn, signOut, publish, downloadBackup,
+    isConfigured, contentLimit, loadMore, signIn, signOut, publish, toggleVisibility, downloadBackup,
   }
 }

@@ -4,6 +4,7 @@ export type Moment = {
   id: string
   content: string
   created_at: string
+  is_public: boolean
 }
 
 type Database = {
@@ -11,8 +12,8 @@ type Database = {
     Tables: {
       moments: {
         Row: Moment
-        Insert: Pick<Moment, 'id' | 'content'>
-        Update: never
+        Insert: Pick<Moment, 'id' | 'content' | 'is_public'>
+        Update: Pick<Moment, 'is_public'>
         Relationships: []
       }
     }
@@ -26,7 +27,7 @@ const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim()
 export const ownerId = import.meta.env.VITE_SUPABASE_OWNER_ID?.trim()
 export const isConfigured = Boolean(url && key)
 export const contentLimit = 2000
-const columns = 'id, content, created_at'
+const columns = 'id, content, created_at, is_public'
 let client: SupabaseClient<Database> | undefined
 
 export function getSupabase() {
@@ -62,10 +63,10 @@ export async function listMoments(cursor?: Moment, limit = 20) {
   return { items: data.slice(0, limit), hasMore: data.length > limit }
 }
 
-export async function publishMoment(id: string, content: string) {
+export async function publishMoment(id: string, content: string, isPublic: boolean) {
   const { data, error } = await getSupabase()
     .from('moments')
-    .insert({ id, content })
+    .insert({ id, content, is_public: isPublic })
     .select(columns)
     .single()
 
@@ -75,7 +76,20 @@ export async function publishMoment(id: string, content: string) {
   // 网络中断后重试同一次发布，取回已经写入的记录，避免重复发帖。
   const saved = await getSupabase().from('moments').select(columns).eq('id', id).single()
   if (saved.error) throw saved.error
+  if (saved.data.is_public !== isPublic) return setMomentVisibility(id, isPublic)
   return saved.data
+}
+
+export async function setMomentVisibility(id: string, isPublic: boolean) {
+  const { data, error } = await getSupabase()
+    .from('moments')
+    .update({ is_public: isPublic })
+    .eq('id', id)
+    .select(columns)
+    .single()
+
+  if (error) throw error
+  return data
 }
 
 export async function exportMoments() {

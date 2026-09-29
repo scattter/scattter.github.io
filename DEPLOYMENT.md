@@ -1,6 +1,6 @@
 # 博客部署、登录与存储：流程和原理
 
-博客使用 VitePress，代码继续放在 GitHub；Cloudflare Pages 构建和托管网站；Supabase 保存碎碎念并处理 GitHub 登录。访客可以阅读，只有指定账号可以发布。
+博客使用 VitePress，代码继续放在 GitHub；Cloudflare Pages 构建和托管网站；Supabase 保存碎碎念并处理 GitHub 登录。访客只能阅读公开内容，指定作者账号可以查看全部内容、发布和切换每条记录的公开 / 私密状态。
 
 ## 各个平台负责什么
 
@@ -47,26 +47,69 @@ flowchart LR
 - 已通过 Supabase 插件创建 `public.moments`、分页索引及公开读取策略，并启用 RLS；当时验证过 REST 读取返回 200、安全检查无告警。
 - 公开密钥已写入本地 `.env.local`，该文件被 Git 忽略；`.env.example` 中的密钥为空是正常的。
 - 已在 Chrome 页面看到 GitHub OAuth 应用 `blob`，首页与回调地址正确，Supabase GitHub Provider 显示已启用。
-- 本地 `set-owner.sql` 已由你填写 UID；本地文件的修改不会自动执行到远程数据库。
+- `set-owner.sql` 需要填写与 `VITE_SUPABASE_OWNER_ID` 一致的作者 UID；本地文件的修改不会自动执行到远程数据库。
 - 已将 `yarn.lock` 中 164 个腾讯镜像地址改为 npm 官方地址，并新增 `.yarnrc` 固定源；axios 和高德依赖的官方下载与锁定校验值一致。
 
 本次整理核对了本地实现，没有重新操作控制台、运行完整构建或验收线上登录发帖。Pages 最新部署、DNS/证书状态、SQL 是否执行及线上 Owner ID 是否一致，请按末尾清单确认。此前的“尚未启用登录”“没有用户”“域名无记录”等观察不能代表你后续手动配置后的状态。
 
-下面是从数据库到上线的完整顺序；现有 Supabase 项目无需再次创建或建表。首次配置时，先部署可登录的页面，取得自己的 UID 后再开放发布。
+下面是从数据库到上线的完整顺序；现有 Supabase 项目无需再次创建。升级公开 / 私密功能时，先按下一节执行 SQL，再部署前端。首次配置时，先部署可登录的页面，取得自己的 UID 后再开放作者权限。
 
-## 1. 准备数据库（现有项目已完成）
+## 现有项目升级公开 / 私密功能
 
-如果以后重建环境：在 [Supabase](https://supabase.com/dashboard) 创建项目，在 SQL Editor 中执行 [supabase/schema.sql](./supabase/schema.sql)，并从项目 Connect / API 配置复制 **Project URL** 和 **Publishable key**。旧项目的 `anon` key 也可以使用。
+1. 在 Supabase SQL Editor 中执行最新版 [supabase/schema.sql](./supabase/schema.sql)。首次增加 `is_public` 时，历史记录全部保留为公开；之后新增记录默认私密。重复执行不会覆盖已经切换过的状态。
+2. 将 [supabase/set-owner.sql](./supabase/set-owner.sql) 中的 `owner_id` 替换成当前作者的 Supabase User UID，须与 Pages 的 `VITE_SUPABASE_OWNER_ID` 一致，然后执行完整脚本。作者由此可以读取全部记录、发布和仅修改 `is_public`。
+3. 完成下面的数据库轻量核对，再部署包含本次前端改动的提交。必须先完成两个 SQL 脚本，前端才会正确查询新增字段及操作私密内容。
+4. 登录作者账号，确认历史内容仍公开，发布选项默认私密；分别测试公开与私密记录，并在退出登录或普通账号下刷新验证可见性。导航 tab 保持原有行为。
 
-`moments` 表只需要三个字段：
+SQL 脚本不会删除内容。两份脚本分别在事务中执行；升级期间旧版前端未传 `is_public` 的新发布也会默认私密。数据库完成升级后，单独回退前端不会移除权限限制。
+
+在 SQL Editor 中运行以下只读查询，确认 `is_public` 为非空且默认值为 `false`，以及作者角色只能更新状态列：
+
+```sql
+select column_name, is_nullable, column_default
+from information_schema.columns
+where table_schema = 'public' and table_name = 'moments' and column_name = 'is_public';
+
+select
+  has_column_privilege('authenticated', 'public.moments', 'is_public', 'UPDATE') as can_update_visibility,
+  has_column_privilege('authenticated', 'public.moments', 'content', 'UPDATE') as can_update_content,
+  has_column_privilege('authenticated', 'public.moments', 'id', 'UPDATE') as can_update_id,
+  has_column_privilege('authenticated', 'public.moments', 'created_at', 'UPDATE') as can_update_created_at;
+-- 期望依次为 true、false、false、false；实际是否允许更新还由作者 RLS 策略判断。
+
+select policyname, cmd, roles, qual, with_check
+from pg_policies
+where schemaname = 'public' and tablename = 'moments'
+order by policyname;
+-- 应包含 moments_read（仅公开）、moments_owner_read、moments_insert、moments_update。
+-- 后三条策略中的 UID 必须一致，并匹配 VITE_SUPABASE_OWNER_ID。
+```
+
+SQL Editor 默认管理员身份会绕过 RLS，不能用管理员能读到私密内容来判断访客权限。发布一条私密记录后，可用下面的事务只读检查匿名身份；`private_count` 必须为 `0`，`rollback` 会恢复角色：
+
+```sql
+begin;
+set local role anon;
+select count(*) filter (where not is_public) as private_count from public.moments;
+rollback;
+```
+
+普通账号和作者的会话、状态切换仍需按第 4 步在页面验证；这些查询不能代替线上登录验收。
+
+## 1. 准备数据库
+
+如果以后重建环境：在 [Supabase](https://supabase.com/dashboard) 创建项目，在 SQL Editor 中执行 [supabase/schema.sql](./supabase/schema.sql)，并从项目 Connect / API 配置复制 **Project URL** 和 **Publishable key**。已有项目升级时也执行同一份幂等脚本。旧项目的 `anon` key 也可以使用。
+
+`moments` 表包含四个字段：
 
 | 字段 | 作用 |
 | --- | --- |
 | `id` | 每条记录的 UUID；前端发布时生成，用于识别同一次提交 |
 | `content` | 1–2000 字的纯文字，不能全部为空白 |
+| `is_public` | `true` 表示公开，`false` 表示私密；新记录默认私密 |
 | `created_at` | 数据库自动生成的发布时间 |
 
-表的读取策略允许访客查看所有帖子。初次只执行 `schema.sql` 后，RLS 尚无允许写入的策略，因此所有账号都不能发布；第 5 步才允许指定 UID 写入。
+表的读取策略只允许访客和普通账号查看公开帖子。新环境只执行 `schema.sql` 后，RLS 尚无作者策略，因此所有账号都不能发布、修改或读取私密内容；第 5 步才允许指定 UID 使用作者权限。
 
 这里只需要公开的 Publishable / anon key。不要把 `service_role`、`sb_secret_...`、数据库密码或 GitHub Client Secret 填入 `VITE_` 环境变量，这些变量会进入前端产物。
 
@@ -94,7 +137,7 @@ flowchart LR
 | `SITE_URL` | `https://blob.suilice.xyz` | 构建 sitemap、canonical 和 robots.txt |
 | `VITE_SUPABASE_URL` | `https://dycpzdoyybpbqlittocw.supabase.co` | 浏览器访问哪个 Supabase 项目 |
 | `VITE_SUPABASE_PUBLISHABLE_KEY` | 本地 `.env.local` 中同名值，或 Supabase 的 Publishable key | 项目的公开 API 配置 |
-| `VITE_SUPABASE_OWNER_ID` | 你的 Supabase User UID；首次部署可暂不添加 | 控制页面是否显示发布入口 |
+| `VITE_SUPABASE_OWNER_ID` | 你的 Supabase User UID；首次部署可暂不添加 | 控制页面是否显示作者操作入口 |
 
 保存后部署。以后推送 `master` 会自动触发部署；只发布碎碎念不需要重新部署。修改任何环境变量后都需要重新部署才会生效。
 
@@ -158,27 +201,27 @@ flowchart LR
 
 GitHub Callback URL 是 GitHub 把认证结果交给 Supabase 的位置；Supabase Redirect URLs 是 Supabase 完成认证后允许用户回到的博客地址。这两个地址对应不同阶段，不能互换。PKCE 将最后的会话兑换关联到发起登录的浏览器；Client Secret 由 Supabase 使用，博客前端不需要知道它。
 
-## 5. 指定只有你能发布
+## 5. 指定作者权限
 
 1. 打开 `https://blob.suilice.xyz/moments`，点击“博主登录”，用自己的 GitHub 账号登录。
 2. 在 Supabase **Authentication → Users** 中找到刚创建的账号，复制 **User UID**。这是 Supabase 的 UUID，不是 GitHub 用户名或数字 ID。
-3. 打开 [supabase/set-owner.sql](./supabase/set-owner.sql)，确认策略中的 UUID 是你的 User UID，再到 SQL Editor 执行。你当前的本地文件已填写 UID；仅修改或提交该文件不会自动修改 Supabase 权限。
+3. 打开 [supabase/set-owner.sql](./supabase/set-owner.sql)，将唯一的 `owner_id` 配置替换成你的 User UID，再到 SQL Editor 执行。脚本会同步配置作者读取、发布和修改状态三条策略；保留零 UUID 占位时会报错并回滚。仅修改或提交该文件不会自动修改 Supabase 权限。
 4. 在 Cloudflare Pages 项目的 Production 环境变量中，把 `VITE_SUPABASE_OWNER_ID` 设为同一个 User UID，重新部署。需要本地使用时，也更新 `.env.local` 中的同名配置。
-5. 重新打开 `/moments`，登录后会出现输入框，可以发布文字。
+5. 重新打开 `/moments`，登录后会出现输入框，可以选择公开 / 私密后发布文字，并切换已有记录的状态。
 6. 个人博客无需其他人注册时，可在 Supabase 关闭 **Allow new users to sign up**。已创建的博主账号仍可以登录。
 
-数据库的 RLS 策略才决定实际写入权限。即使有人修改浏览器里的博主 UID、绕过页面直接调用接口，也不能以其他账号发帖。发布时间由数据库生成；前端没有修改或删除历史记录的权限。
+数据库的 RLS 策略才决定实际读取和写入权限。即使有人修改浏览器里的博主 UID、绕过页面直接调用接口，也不能以其他账号发帖、切换状态或读取私密内容。作者只能修改已有记录的 `is_public`，不能修改 ID、正文和发布时间，也不能删除记录。
 
-发布时，浏览器把登录会话令牌随请求发给 Supabase。服务端验证令牌后，数据库通过 `auth.uid()` 取得真实身份，再检查它是否等于 `set-owner.sql` 中指定的 UID；只有检查通过，才允许插入记录。数据库还限制正文长度，并只允许客户端插入 `id` 和 `content`，不允许客户端指定发布时间。
+发布时，浏览器把登录会话令牌随请求发给 Supabase。服务端验证令牌后，数据库通过 `auth.uid()` 取得真实身份，再检查它是否等于 `set-owner.sql` 中指定的 UID；只有检查通过，才允许插入记录。数据库还限制正文长度，并只允许客户端插入 `id`、`content` 和 `is_public`，不允许客户端指定发布时间。未提供 `is_public` 时默认私密。
 
 | 配置或凭据 | 决定什么 |
 | --- | --- |
 | Publishable key | 浏览器使用哪个项目的公开 API；拥有它不会获得博主身份 |
 | 登录会话令牌 | Supabase 验证当前请求属于哪个用户 |
-| `VITE_SUPABASE_OWNER_ID` | 页面是否向当前账号显示发布与导出入口 |
-| 数据库 RLS 中的 UID | 当前用户是否真的能够写入数据库 |
+| `VITE_SUPABASE_OWNER_ID` | 页面是否向当前账号显示发布、状态切换与导出入口 |
+| 数据库 RLS 中的 UID | 当前用户是否真的能够发布、切换状态和读取私密记录 |
 
-帖子按 `created_at` 和 `id` 倒序分页。发布失败会在当前页面保留正文；对同一份内容重试时复用提交 ID，避免因响应丢失而重复写入。保存成功后，刷新页面会从数据库重新读取，其他访客下次打开或重新加载列表也能看到新内容；当前没有配置实时推送。
+帖子按 `created_at` 和 `id` 倒序分页。发布失败会在当前页面保留正文；对同一份内容重试时复用提交 ID，避免因响应丢失而重复写入。保存成功后，刷新页面会从数据库重新读取；访客只能看到公开记录。公开 / 私密切换保存后，后续请求立即按新权限读取，不需要重新部署；已打开页面中的内容不会被远程收回，当前没有配置实时推送。
 
 如果未来换账号，需要同时修改 SQL 中的 UID 和 Cloudflare 环境变量。`set-owner.sql` 可重新执行，不会删除帖子。
 
@@ -207,13 +250,13 @@ Cloudflare Pages 会把 `.html` 地址跳转到无后缀地址，因此本项目
 
 Cloudflare 分配的 `pages.dev` 地址会与正式域名展示同一份内容。可以按 [官方说明](https://developers.cloudflare.com/pages/configuration/custom-domains/#redirect-a-pagesdev-subdomain-to-a-custom-domain) 将该地址跳转到正式域名。分支预览默认带有禁止索引的响应头，保留它。
 
-原有文章由 VitePress 输出静态 HTML。当前碎碎念在浏览器中加载，发布立即可见，但没有为每条内容生成独立静态页面，因此不承诺每条短帖都会被搜索收录。迁移托管、站点地图提交成功也不等于 Google 已经收录。
+原有文章由 VitePress 输出静态 HTML。当前碎碎念在浏览器中加载，公开内容发布后即可读取，但没有为每条内容生成独立静态页面，因此不承诺每条短帖都会被搜索收录。迁移托管、站点地图提交成功也不等于 Google 已经收录。
 
 ## 7. 备份与日常使用
 
 - 每条记录最多 2000 字，支持换行，按纯文字展示。
 - 登录后点击“导出备份”，会下载包含**全部记录**的 JSON，不局限于当前已加载的分页。
-- 导出包含帖子 ID、正文、发布时间、备份时间和格式版本，可用于日后恢复或迁移。
+- 作者导出包含全部公开和私密记录的 ID、正文、公开状态、发布时间，以及备份时间和格式版本，可用于日后恢复或迁移。
 - 定期把 JSON 保存到自己的电脑或其他独立存储。它是内容备份；完整数据库和权限配置可另用 Supabase CLI 的 `supabase db dump` 保存。
 - 免费项目的服务和备份规则以 Supabase 当前方案为准；不要把数据库中的唯一副本当作独立备份。
 
@@ -224,7 +267,7 @@ Cloudflare 分配的 `pages.dev` 地址会与正式域名展示同一份内容�
 | 操作 | 生效位置 | 是否需要重新部署博客 |
 | --- | --- | --- |
 | 写 Markdown 文章、改样式或页面代码 | GitHub 推送触发 Pages 构建 | 需要 |
-| 发布一条碎碎念 | Supabase 数据库 | 不需要 |
+| 发布一条碎碎念或切换公开 / 私密 | Supabase 数据库 | 不需要 |
 | 修改 `SITE_URL` 或任意 `VITE_` 环境变量 | 下一次构建的网站文件 | 需要 |
 | 修改博主 UID | 执行 RLS SQL，并更新 Pages 的 Owner ID | 需要，页面配置要同步 |
 | 修改 Supabase OAuth 设置或回跳允许列表 | Supabase Auth，之后重新登录验证 | 通常不需要 |
@@ -237,7 +280,7 @@ Cloudflare 分配的 `pages.dev` 地址会与正式域名展示同一份内容�
 2. Pages 的 `blob.suilice.xyz` 状态为 Active，正式域名通过 HTTPS 正常打开。
 3. `/moments` 能读取记录，GitHub 登录后回到同一正式域名。
 4. 当前登录账号的 User UID、已执行的 RLS 策略、Pages 的 Owner ID 三处一致，且环境变量修改后已重新部署。
-5. 发布一条内容后刷新仍可见；退出登录后访客仍可阅读，页面不显示发布入口。
+5. 作者分别发布公开和私密内容，刷新后均可见；退出登录或使用普通账号时只能读取公开内容。作者切换某条状态后，访客刷新列表应立即反映变化；作者仍不能修改正文、ID、发布时间或删除记录。
 6. 正式域名的 robots.txt 与 sitemap.xml 使用正确域名，再在 Search Console 验证站点并提交 sitemap。
 
 配置文件存在、静态检查通过或看到输入框，都不能代替这些线上检查。数据已成功保存后，可以导出 JSON 留一份独立备份。
@@ -256,7 +299,7 @@ Cloudflare 分配的 `pages.dev` 地址会与正式域名展示同一份内容�
 | 无法加载记录 | `schema.sql` 是否执行、Supabase 项目是否正常、浏览器网络请求是否成功 |
 | 登录回跳失败 | GitHub Callback URL 是否填 Supabase 地址；Supabase Redirect URLs 是否包含正式域名 `/moments` |
 | 登录后提示没有发布权限 | Cloudflare 中的 Owner ID 是否等于当前 Supabase User UID |
-| 能看到输入框，但发布失败 | `set-owner.sql` 中的 UID、RLS 策略、账号会话和网络状态 |
+| 能看到输入框，但发布或切换状态失败 | 先确认新版 `schema.sql`、`set-owner.sql` 均已执行，再检查作者 UID、RLS 策略、账号会话和网络状态 |
 | sitemap 仍指向旧站 | Production 的 `SITE_URL` 是否正确，是否重新部署 |
 
 官方参考：[Cloudflare VitePress](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vitepress-site/)、[域名绑定](https://developers.cloudflare.com/pages/configuration/custom-domains/)、[Supabase GitHub 登录](https://supabase.com/docs/guides/auth/social-login/auth-github)、[数据库备份](https://supabase.com/docs/guides/platform/backups)、[阿里云 ICP 备案适用范围](https://www.alibabacloud.com/help/en/icp-filing/basic-icp-service/product-overview/what-is-an-icp-filing)。
