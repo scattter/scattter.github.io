@@ -136,9 +136,5 @@ function nav(): VitePressNav[] {
     navProject,
     navExplore,
     navJsConfig,
-    {
-      text: 'About Me',
-      link: '/about'
-    }
   ]
 }

@@ -76,7 +76,6 @@
         <p>一站式开发者，AI 高强度使用者。喜欢写代码、做小工具，也常常一脚迈进软硬件的坑里。</p>
         <p>记不住人情往来，就做随礼册；想给电脑加实体按键，就折腾 ESP32；基金和家里的摄像头，也想用自己的工具管起来。</p>
         <p>这里记录做出来的小东西、踩过的坑，以及还没来得及实现的下一堆点子。</p>
-        <a class="text-link more-link" :href="withBase('/about')">更多关于我 <span class="arrow" aria-hidden="true">→</span></a>
       </aside>
     </div>
     <footer class="home-footer"><span>© {{ year }} scatter</span><span>写一点代码，留一点生活。<span class="footer-star" aria-hidden="true">✳</span></span></footer>
@@ -316,7 +315,6 @@ const visibleArticles = computed(() => showAllArticles.value ? articles : articl
 .about-mark .flower { width: 29px; height: 29px; background: #b9d2c1; }
 .about-note h2 { font-size: 19px; }
 .about-note p { color: var(--home-muted); font-size: 13px; line-height: 2; margin-top: 12px; }
-.about-note .text-link { margin-top: 15px; }
 .home-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 29px 0; margin-top: 49px; border-top: 1px solid var(--home-line); color: var(--home-muted); font-size: 12px; }
 .footer-star { display: inline-block; margin-left: 9px; color: #92b29b; }
 
