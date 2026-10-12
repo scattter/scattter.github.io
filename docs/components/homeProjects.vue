@@ -1,8 +1,21 @@
 <template>
   <div ref="projectList" class="project-grid" :class="{ 'is-dialog': idPrefix === 'dialog' }">
     <article v-for="(project, index) in projects" :key="project.name" class="project" :class="[`project-${project.cover}`, { 'has-open-story': activeStory === project.name }]">
-      <div class="project-cover" aria-hidden="true">
-        <template v-if="project.cover === 'journal'"><div class="notebook">随礼</div><div class="flower cover-flower"></div></template>
+      <div class="project-cover" :aria-hidden="project.screenshot ? undefined : true">
+        <div v-if="project.screenshot" class="screenshot-trigger" @pointerenter="openScreenshot" @pointerleave="closeHoveredScreenshot">
+          <button class="screenshot-button" type="button" :aria-label="`放大查看${project.name}的完整截图`" :aria-expanded="screenshotPreview?.id === `${idPrefix}-project-screenshot-${index}`" :aria-controls="`${idPrefix}-project-screenshot-${index}`" @click="openScreenshot">
+            <span class="project-screenshot">
+              <img :src="withBase(project.screenshot)" :alt="`${project.name}小程序首页截图`" width="1272" height="2772" loading="lazy" decoding="async">
+            </span>
+            <span class="screenshot-zoom" aria-hidden="true">+</span>
+          </button>
+          <div :id="`${idPrefix}-project-screenshot-${index}`" class="screenshot-preview" popover="auto" role="region" :aria-label="`${project.name}完整页面截图`" @toggle="onScreenshotToggle">
+            <div class="project-screenshot">
+              <img :src="withBase(project.screenshot)" :alt="`${project.name}小程序完整首页截图`" width="1272" height="2772" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+        <template v-else-if="project.cover === 'journal'"><div class="notebook">心意</div><div class="flower cover-flower"></div></template>
         <template v-else-if="project.cover === 'photo'"><div class="photo-print"><div class="photo-landscape"></div><div class="photo-caption"></div></div><div class="flower cover-flower"></div></template>
         <template v-else-if="project.cover === 'air'"><div class="air-waves"><i></i><i></i><i></i></div><div class="air-sensor"><span>CO₂</span><div class="air-indicator"></div><div class="air-vents"></div></div></template>
         <template v-else-if="project.cover === 'console'"><div class="circuit-line"></div><div class="device"><div class="device-screen"><i></i><i></i><i></i><i></i></div><div class="device-buttons"><i></i><i></i><i></i></div></div></template>
@@ -34,6 +47,7 @@
 
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { withBase } from 'vitepress'
 
 defineProps({
   projects: { type: Array, required: true },
@@ -42,6 +56,41 @@ defineProps({
 
 const projectList = ref(null)
 const activeStory = ref(null)
+const screenshotPreview = ref(null)
+let screenshotOpenedByHover = false
+
+function openScreenshot(event) {
+  const isHover = event.type === 'pointerenter'
+  if (isHover && event.pointerType !== 'mouse') return
+  const trigger = event.currentTarget.closest('.screenshot-trigger')
+  const preview = trigger.querySelector('.screenshot-preview')
+  if (screenshotPreview.value === preview) return
+  closeScreenshot()
+
+  const rect = trigger.getBoundingClientRect()
+  const width = Math.min(340, window.innerWidth - 32, (window.innerHeight - 32) * 1272 / 2628)
+  const height = width * 2628 / 1272
+  preview.style.width = `${width}px`
+  preview.style.left = `${Math.max(16, Math.min(rect.left + rect.width / 2 - width / 2, window.innerWidth - width - 16))}px`
+  preview.style.top = `${Math.max(16, Math.min(rect.top + rect.height / 2 - height / 2, window.innerHeight - height - 16))}px`
+  screenshotOpenedByHover = isHover
+  screenshotPreview.value = preview
+  // 原生 popover 位于顶层，避免完整截图被项目弹窗的滚动区域裁切。
+  preview.showPopover()
+}
+
+function closeScreenshot() {
+  screenshotPreview.value?.hidePopover()
+  screenshotPreview.value = null
+}
+
+function closeHoveredScreenshot(event) {
+  if (event.pointerType === 'mouse' && screenshotOpenedByHover) closeScreenshot()
+}
+
+function onScreenshotToggle(event) {
+  if (event.newState === 'closed' && screenshotPreview.value === event.currentTarget) screenshotPreview.value = null
+}
 
 function closeProjectStory(event) {
   activeStory.value = null
@@ -60,8 +109,17 @@ function closeOutsideStories(event) {
   if (story && !story.contains(event.target)) activeStory.value = null
 }
 
-onMounted(() => document.addEventListener('pointerdown', closeOutsideStories))
-onBeforeUnmount(() => document.removeEventListener('pointerdown', closeOutsideStories))
+onMounted(() => {
+  document.addEventListener('pointerdown', closeOutsideStories)
+  document.addEventListener('scroll', closeScreenshot, true)
+  window.addEventListener('resize', closeScreenshot)
+})
+onBeforeUnmount(() => {
+  closeScreenshot()
+  document.removeEventListener('pointerdown', closeOutsideStories)
+  document.removeEventListener('scroll', closeScreenshot, true)
+  window.removeEventListener('resize', closeScreenshot)
+})
 </script>
 
 <style scoped>
@@ -78,6 +136,15 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', closeOutsideSt
 .project.has-open-story { z-index: 3; }
 .project-content { display: flex; flex: 1; flex-direction: column; min-width: 0; }
 .project-cover { position: relative; display: flex; flex-shrink: 0; justify-content: center; align-items: center; height: 156px; margin-bottom: 18px; }
+.screenshot-trigger { position: relative; height: 100%; max-width: 100%; aspect-ratio: 1272 / 2628; }
+.project .screenshot-button { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 8px; background: var(--home-paper); box-shadow: 0 5px 18px #29312c14; cursor: zoom-in; }
+.project-screenshot { display: block; width: 100%; aspect-ratio: 1272 / 2628; overflow: hidden; border-radius: inherit; }
+/* 两张原图均为 1272 × 2772，按宽度比例裁掉顶部 144px 状态栏，保留小程序导航。 */
+.project-screenshot img { display: block; width: 100%; height: auto; margin-top: -11.3207547%; }
+.screenshot-zoom { position: absolute; right: 4px; bottom: 4px; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--home-paper); color: var(--home-accent); box-shadow: 0 2px 6px #18251d26; font-size: 17px; line-height: 1; }
+.screenshot-preview { position: fixed; inset: auto; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; border-radius: 14px; background: var(--home-paper); color: var(--home-text); box-shadow: 0 18px 60px #18251d40, 0 0 0 1px var(--home-line); }
+.screenshot-preview:popover-open { animation: screenshot-enter .16s ease-out; }
+@keyframes screenshot-enter { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
 .project-journal { --project-angle: -1.2deg; }
 .project-journal::before { border-radius: 9px 13px 2px 5px; clip-path: polygon(0 0,100% 0,100% 98%,93% 99%,86% 98%,79% 100%,71% 98%,64% 99%,56% 98%,49% 100%,41% 98%,33% 99%,25% 98%,17% 100%,9% 98%,0 99%); }
 .project-journal::after { content: ''; top: -7px; left: 31%; width: 64px; height: 20px; background: #e6d49d99; transform: rotate(-6deg); clip-path: polygon(3% 0,97% 4%,100% 91%,96% 100%,2% 97%,0 5%); }

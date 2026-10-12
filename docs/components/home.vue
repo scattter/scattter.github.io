@@ -74,7 +74,7 @@
         <div class="about-mark"><img :src="withBase('/logo.jpeg')" alt="scatter 的头像" width="48" height="48" loading="lazy"><div class="flower" aria-hidden="true"></div></div>
         <h2 id="about-title">预算有限，好奇心管够。</h2>
         <p>一站式开发者，AI 高强度使用者。喜欢写代码、做小工具，也常常一脚迈进软硬件的坑里。</p>
-        <p>记不住人情往来，就做随礼册；想给电脑加实体按键，就折腾 ESP32；基金和家里的摄像头，也想用自己的工具管起来。</p>
+        <p>想留住送出、收到和给自己的心意，就做心意册；想给电脑加实体按键，就折腾 ESP32；基金和家里的摄像头，也想用自己的工具管起来。</p>
         <p>这里记录做出来的小东西、踩过的坑，以及还没来得及实现的下一堆点子。</p>
       </aside>
     </div>
@@ -121,16 +121,18 @@ onBeforeUnmount(() => {
 
 const projects = [
   {
-    name: '随礼册',
+    name: '心意册',
     cover: 'journal',
+    screenshot: '/projects/xinyice-home.jpg',
     category: '人情与生活',
     language: 'TypeScript',
-    desc: '记录人情往来的微信小程序：随礼、收礼都能随手记，婚礼、满月、乔迁等宴席支持按礼单集中管理',
-    why: '每次随礼都不知道记哪里，靠记忆和翻聊天记录，时间一长就乱。想做一个打开就能记一笔的地方，送出去的、收回来的都有据可查',
+    desc: '记录每一份心意的微信小程序：随礼、收礼，朋友间的心意与礼物往来，还有送给自己的礼物，都能随手记，也能按心意单集中整理',
+    why: '最初是想找个地方记随礼，后来发现，朋友送的小礼物、节日里的惦记，甚至给自己的奖励，都值得被记住。想把送出、收到和留给自己的心意好好收起来，回看时也能想起当时的温暖',
   },
   {
     name: '小图修修',
     cover: 'photo',
+    screenshot: '/projects/xiaotuxiuxiu-home.jpg',
     category: '照片与生活',
     language: 'JavaScript',
     desc: '轻量图片创作微信小程序：把照片做成票根、明信片和拼贴，也能制作贴纸、拼长图、切九宫格和加水印',
