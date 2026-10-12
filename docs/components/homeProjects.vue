@@ -1,7 +1,7 @@
 <template>
   <div ref="projectList" class="project-grid" :class="{ 'is-dialog': idPrefix === 'dialog' }">
     <article v-for="(project, index) in projects" :key="project.name" class="project" :class="[`project-${project.cover}`, { 'has-open-story': activeStory === project.name }]">
-      <div class="project-cover" :aria-hidden="project.screenshot ? undefined : true">
+      <div class="project-cover" :class="{ 'has-screenshot': project.screenshot }" :aria-hidden="project.screenshot ? undefined : true">
         <div v-if="project.screenshot" class="screenshot-trigger" @pointerenter="openScreenshot" @pointerleave="closeHoveredScreenshot">
           <button class="screenshot-button" type="button" :aria-label="`放大查看${project.name}的完整截图`" :aria-expanded="screenshotPreview?.id === `${idPrefix}-project-screenshot-${index}`" :aria-controls="`${idPrefix}-project-screenshot-${index}`" @click="openScreenshot">
             <span class="project-screenshot">
@@ -23,6 +23,7 @@
         <template v-else-if="project.cover === 'camera'"><div class="viewfinder"><i></i><i></i><i></i><i></i></div><div class="camera"><div class="camera-lens"></div><div class="camera-stand"></div></div></template>
         <template v-else-if="project.cover === 'browser'"><div class="browser-sheet"><div class="browser-dots"><i></i><i></i><i></i></div><span>&lt;/&gt;</span><div class="browser-lines"><i></i><i></i></div></div><div class="flower cover-flower"></div></template>
         <div v-else class="tool-pieces"><span>{ }</span><span>&lt;/&gt;</span><span>+</span></div>
+        <div v-if="project.screenshot" class="flower cover-flower" aria-hidden="true"></div>
       </div>
       <div class="project-content">
         <p class="project-category">{{ project.category }}</p>
@@ -136,8 +137,14 @@ onBeforeUnmount(() => {
 .project.has-open-story { z-index: 3; }
 .project-content { display: flex; flex: 1; flex-direction: column; min-width: 0; }
 .project-cover { position: relative; display: flex; flex-shrink: 0; justify-content: center; align-items: center; height: 156px; margin-bottom: 18px; }
-.screenshot-trigger { position: relative; height: 100%; max-width: 100%; aspect-ratio: 1272 / 2628; }
-.project .screenshot-button { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 8px; background: var(--home-paper); box-shadow: 0 5px 18px #29312c14; cursor: zoom-in; }
+.project-cover.has-screenshot::before { content: ''; position: absolute; left: 50%; top: 12%; width: 76%; max-width: 180px; height: 78%; border: 1px solid #c6d8c9; border-radius: 28px 12px 32px 10px; background: #d4e3d5; box-shadow: 7px 6px 0 #e0e9dd; transform: translateX(-50%) rotate(8deg); transition: transform .4s ease; pointer-events: none; }
+.project-cover.has-screenshot::after { content: ''; position: absolute; top: 10%; left: 20%; width: 35px; height: 13px; background: #e6d49dbb; clip-path: polygon(3% 0,97% 4%,100% 91%,96% 100%,2% 97%,0 5%); transform: rotate(-18deg); pointer-events: none; }
+.project-photo .project-cover.has-screenshot::before { border-color: #e1d9cb; border-radius: 12px 30px 14px 26px; background: #eeddd0; box-shadow: 7px 6px 0 #e9d9ca; transform: translateX(-50%) rotate(-8deg); }
+.project-photo .project-cover.has-screenshot::after { background: #c6d8c9bb; transform: rotate(12deg); }
+.project-cover.has-screenshot > .cover-flower { pointer-events: none; }
+.screenshot-trigger { position: relative; z-index: 1; height: 100%; max-width: 100%; aspect-ratio: 1272 / 2628; }
+.project .screenshot-button { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 8px; background: var(--home-paper); box-shadow: 0 0 0 4px var(--home-paper), 0 8px 18px #29312c26; transform: rotate(-7deg) scale(.9); transition: transform .4s ease; cursor: zoom-in; }
+.project-photo .screenshot-button { transform: rotate(7deg) scale(.9); }
 .project-screenshot { display: block; width: 100%; aspect-ratio: 1272 / 2628; overflow: hidden; border-radius: inherit; }
 /* 两张原图均为 1272 × 2772，按宽度比例裁掉顶部 144px 状态栏，保留小程序导航。 */
 .project-screenshot img { display: block; width: 100%; height: auto; margin-top: -11.3207547%; }
@@ -250,6 +257,9 @@ onBeforeUnmount(() => {
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .project:hover::before { transform: rotate(0); }
+  .project:hover .project-cover.has-screenshot::before { transform: translateX(-50%) rotate(0) scale(1.03); }
+  .project:hover .screenshot-button { transform: rotate(-2deg) translateY(-4px) scale(.94); }
+  .project-photo:hover .screenshot-button { transform: rotate(2deg) translateY(-4px) scale(.94); }
   .project:hover .notebook { transform: rotate(-6deg) translateY(-5px) scale(var(--project-art-scale)); }
   .project:hover .cover-flower { transform: rotate(50deg); }
   .project:hover .photo-print { transform: rotate(-3deg) translateY(-4px) scale(var(--project-art-scale)); }
