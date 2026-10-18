@@ -139,6 +139,17 @@ const projects = [
     why: '想把日常照片做成有纪念感的小作品，也把常用的图片处理放在一起，打开微信就能随手做一张',
   },
   {
+    name: '一起喝水吧',
+    cover: 'drink',
+    screenshot: '/projects/yiqiheshui-home.jpg',
+    screenshotWidth: 1806,
+    screenshotHeight: 959,
+    category: '喝水与日常',
+    language: 'TypeScript',
+    desc: '用称重杯垫记录每一次喝水的软硬件小项目：杯底重量变化换算成饮水量，在网页看板里查看今日饮水、补水次数和近七日趋势',
+    why: '总是一忙就忘了喝水，想把这件事交给杯垫和代码：每次拿起、放下杯子都留下记录，不用刻意打卡，也能看见自己每天一点点的积累',
+  },
+  {
     name: '空气检测联动',
     cover: 'air',
     category: '空气与智能家居',

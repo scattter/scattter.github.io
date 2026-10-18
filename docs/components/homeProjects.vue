@@ -1,17 +1,17 @@
 <template>
   <div ref="projectList" class="project-grid" :class="{ 'is-dialog': idPrefix === 'dialog' }">
-    <article v-for="(project, index) in projects" :key="project.name" class="project" :class="[`project-${project.cover}`, { 'has-open-story': activeStory === project.name }]">
-      <div class="project-cover" :class="{ 'has-screenshot': project.screenshot }" :aria-hidden="project.screenshot ? undefined : true">
-        <div v-if="project.screenshot" class="screenshot-trigger" @pointerenter="openScreenshot" @pointerleave="closeHoveredScreenshot">
+    <article v-for="(project, index) in projectItems" :key="project.name" class="project" :class="[`project-${project.cover}`, { 'has-open-story': activeStory === project.name, 'project-has-wide-cover': project.screenshot?.wide }]">
+      <div class="project-cover" :class="{ 'has-screenshot': project.screenshot, 'is-wide': project.screenshot?.wide }" :aria-hidden="project.screenshot ? undefined : true">
+        <div v-if="project.screenshot" class="screenshot-trigger" :class="{ 'is-wide': project.screenshot.wide }" :style="project.screenshot.style" :data-screenshot-ratio="project.screenshot.aspect" @pointerenter="openScreenshot" @pointerleave="closeHoveredScreenshot">
           <button class="screenshot-button" type="button" :aria-label="`放大查看${project.name}的完整截图`" :aria-expanded="screenshotPreview?.id === `${idPrefix}-project-screenshot-${index}`" :aria-controls="`${idPrefix}-project-screenshot-${index}`" @click="openScreenshot">
             <span class="project-screenshot">
-              <img :src="withBase(project.screenshot)" :alt="`${project.name}小程序首页截图`" width="1272" height="2772" loading="lazy" decoding="async">
+              <img :src="withBase(project.screenshot.src)" :alt="`${project.name}界面截图`" :width="project.screenshot.width" :height="project.screenshot.height" loading="lazy" decoding="async">
             </span>
             <span class="screenshot-zoom" aria-hidden="true">+</span>
           </button>
           <div :id="`${idPrefix}-project-screenshot-${index}`" class="screenshot-preview" popover="auto" role="region" :aria-label="`${project.name}完整页面截图`" @toggle="onScreenshotToggle">
             <div class="project-screenshot">
-              <img :src="withBase(project.screenshot)" :alt="`${project.name}小程序完整首页截图`" width="1272" height="2772" loading="lazy" decoding="async">
+              <img :src="withBase(project.screenshot.src)" :alt="`${project.name}完整界面截图`" :width="project.screenshot.width" :height="project.screenshot.height" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -47,13 +47,45 @@
 </template>
 
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { withBase } from 'vitepress'
 
-defineProps({
+const props = defineProps({
   projects: { type: Array, required: true },
   idPrefix: { type: String, required: true },
 })
+
+// 小程序截图顶部带有系统状态栏，裁掉后再按页面区域展示。
+const DEFAULT_SCREENSHOT_WIDTH = 1272
+const DEFAULT_SCREENSHOT_HEIGHT = 2772
+const DEFAULT_SCREENSHOT_CROP = 11.3207547
+const WIDE_PREVIEW_MAX_WIDTH = 1040
+const NARROW_PREVIEW_MAX_WIDTH = 340
+
+function getScreenshotMeta(project) {
+  const width = Number(project.screenshotWidth) || DEFAULT_SCREENSHOT_WIDTH
+  const height = Number(project.screenshotHeight) || DEFAULT_SCREENSHOT_HEIGHT
+  // 裁剪值以图片宽度为基准，与 margin-top 的百分比计算保持一致。
+  const crop = Number(project.screenshotCrop ?? (height > width ? DEFAULT_SCREENSHOT_CROP : 0))
+  const visibleHeight = height - width * (crop / 100)
+  return {
+    src: project.screenshot,
+    width,
+    height,
+    crop,
+    aspect: width / visibleHeight,
+    wide: width > visibleHeight,
+    style: {
+      '--screenshot-aspect': `${width} / ${visibleHeight}`,
+      '--screenshot-crop': `${-crop}%`,
+    },
+  }
+}
+
+const projectItems = computed(() => props.projects.map(project => ({
+  ...project,
+  screenshot: project.screenshot ? getScreenshotMeta(project) : null,
+})))
 
 const projectList = ref(null)
 const activeStory = ref(null)
@@ -69,8 +101,10 @@ function openScreenshot(event) {
   closeScreenshot()
 
   const rect = trigger.getBoundingClientRect()
-  const width = Math.min(340, window.innerWidth - 32, (window.innerHeight - 32) * 1272 / 2628)
-  const height = width * 2628 / 1272
+  const ratio = Number(trigger.dataset.screenshotRatio) || DEFAULT_SCREENSHOT_WIDTH / (DEFAULT_SCREENSHOT_HEIGHT - DEFAULT_SCREENSHOT_WIDTH * DEFAULT_SCREENSHOT_CROP / 100)
+  const maxWidth = ratio >= 1 ? WIDE_PREVIEW_MAX_WIDTH : NARROW_PREVIEW_MAX_WIDTH
+  const width = Math.min(maxWidth, window.innerWidth - 32, (window.innerHeight - 32) * ratio)
+  const height = width / ratio
   preview.style.width = `${width}px`
   preview.style.left = `${Math.max(16, Math.min(rect.left + rect.width / 2 - width / 2, window.innerWidth - width - 16))}px`
   preview.style.top = `${Math.max(16, Math.min(rect.top + rect.height / 2 - height / 2, window.innerHeight - height - 16))}px`
@@ -142,12 +176,18 @@ onBeforeUnmount(() => {
 .project-photo .project-cover.has-screenshot::before { border-color: #e1d9cb; border-radius: 12px 30px 14px 26px; background: #eeddd0; box-shadow: 7px 6px 0 #e9d9ca; transform: translateX(-50%) rotate(-8deg); }
 .project-photo .project-cover.has-screenshot::after { background: #c6d8c9bb; transform: rotate(12deg); }
 .project-cover.has-screenshot > .cover-flower { pointer-events: none; }
-.screenshot-trigger { position: relative; z-index: 1; height: 100%; max-width: 100%; aspect-ratio: 1272 / 2628; }
+/* 桌面端截图比例更宽，换成一页纸的衬底和一条胶带，不抢截图里的信息。 */
+.project-cover.is-wide.has-screenshot::before { content: ''; position: absolute; left: 50%; top: 5%; width: 100%; max-width: 100%; height: 90%; border: 1px solid #c6d8c9; border-radius: 9px 4px 12px 5px; background: #dfeadd; box-shadow: 5px 5px 0 #e0e9dd; transform: translateX(-50%) rotate(2.2deg); transition: transform .4s ease; pointer-events: none; }
+.project-cover.is-wide.has-screenshot::after { content: ''; position: absolute; top: 2%; left: 15%; width: 42px; height: 13px; background: #e6d49dbb; clip-path: polygon(3% 0,97% 4%,100% 91%,96% 100%,2% 97%,0 5%); transform: rotate(-7deg); pointer-events: none; }
+.project-cover.is-wide > .cover-flower { display: none; }
+.screenshot-trigger { position: relative; z-index: 1; height: 100%; max-width: 100%; aspect-ratio: var(--screenshot-aspect, 1272 / 2628); }
+.screenshot-trigger.is-wide { width: 100%; height: auto; }
 .project .screenshot-button { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 8px; background: var(--home-paper); box-shadow: 0 0 0 4px var(--home-paper), 0 8px 18px #29312c26; transform: rotate(-7deg) scale(.9); transition: transform .4s ease; cursor: zoom-in; }
+.project .screenshot-trigger.is-wide .screenshot-button { height: auto; aspect-ratio: var(--screenshot-aspect, 1806 / 959); border-radius: 10px; transform: rotate(-1.2deg) scale(.97); }
 .project-photo .screenshot-button { transform: rotate(7deg) scale(.9); }
-.project-screenshot { display: block; width: 100%; aspect-ratio: 1272 / 2628; overflow: hidden; border-radius: inherit; }
-/* 两张原图均为 1272 × 2772，按宽度比例裁掉顶部 144px 状态栏，保留小程序导航。 */
-.project-screenshot img { display: block; width: 100%; height: auto; margin-top: -11.3207547%; }
+.project-screenshot { display: block; width: 100%; aspect-ratio: var(--screenshot-aspect, 1272 / 2628); overflow: hidden; border-radius: inherit; }
+/* 截图可通过 --screenshot-crop 裁掉顶部状态栏，默认两张小程序原图各裁掉 144px。 */
+.project-screenshot img { display: block; width: 100%; height: auto; margin-top: var(--screenshot-crop, -11.3207547%); }
 .screenshot-zoom { position: absolute; right: 4px; bottom: 4px; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--home-paper); color: var(--home-accent); box-shadow: 0 2px 6px #18251d26; font-size: 17px; line-height: 1; }
 .screenshot-preview { position: fixed; inset: auto; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; border-radius: 14px; background: var(--home-paper); color: var(--home-text); box-shadow: 0 18px 60px #18251d40, 0 0 0 1px var(--home-line); }
 .screenshot-preview:popover-open { animation: screenshot-enter .16s ease-out; }
@@ -159,6 +199,8 @@ onBeforeUnmount(() => {
 .project-photo::before { background: var(--home-peach-surface); border-radius: 10px 32px 12px 24px; }
 .project-air { --project-angle: -.7deg; margin-top: 8px; }
 .project-air::before { background: var(--home-blue-surface); border-radius: 42px 16px 32px 12px; }
+.project-drink { --project-angle: -.7deg; margin-top: 8px; }
+.project-drink::before { background: var(--home-green-surface); border-radius: 48px 14px 36px 16px / 32px 14px 26px 16px; }
 .project-console { margin-top: 27px; }
 .project-console::before { background: var(--home-blue-surface); clip-path: polygon(0 18px,18px 0,calc(100% - 28px) 0,100% 28px,100% calc(100% - 17px),calc(100% - 17px) 100%,12px 100%,0 calc(100% - 12px)); }
 .project-console::after { content: ''; width: 28px; height: 7px; top: 19px; right: 32px; background: repeating-linear-gradient(90deg,#aabdc7 0 2px,transparent 2px 6px); }
@@ -259,6 +301,7 @@ onBeforeUnmount(() => {
   .project:hover::before { transform: rotate(0); }
   .project:hover .project-cover.has-screenshot::before { transform: translateX(-50%) rotate(0) scale(1.03); }
   .project:hover .screenshot-button { transform: rotate(-2deg) translateY(-4px) scale(.94); }
+  .project:hover .project-cover.is-wide .screenshot-button { transform: rotate(0) translateY(-4px) scale(1); }
   .project-photo:hover .screenshot-button { transform: rotate(2deg) translateY(-4px) scale(.94); }
   .project:hover .notebook { transform: rotate(-6deg) translateY(-5px) scale(var(--project-art-scale)); }
   .project:hover .cover-flower { transform: rotate(50deg); }
@@ -307,6 +350,13 @@ onBeforeUnmount(() => {
   .project .project-cover { height: 111px; }
   .project .project-desc { font-size: 13px; }
   .project-story { --story-offset: 86px; }
+}
+
+/* 宽截图在窄屏上横跨整张卡片，避免缩进 96px 的封面栏后看不清内容。 */
+@media (max-width: 700px) {
+  .project.project-has-wide-cover { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .project.project-has-wide-cover .project-cover { height: auto; margin-bottom: 0; }
+  .project.project-has-wide-cover .project-story { --story-offset: 0px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
