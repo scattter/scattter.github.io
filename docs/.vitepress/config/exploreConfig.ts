@@ -69,6 +69,7 @@ export function sidebarExplore(): VitePressConfig[] {
       text: '相关分享',
       collapsed: false,
       items: [
+        { text: '一起喝水吧：杯垫开发记录', link: `${EXPLORE_SHARE_PATH}/喝吧喝吧-杯垫开发记录` },
         { text: '6.28 杭州AI嘉年华简短感受', link: `${EXPLORE_SHARE_PATH}/6.28 杭州AI嘉年华简短感受` },
         { text: 'Transform模型初步探索', link: `${EXPLORE_SHARE_PATH}/Transform模型初步探索` },
         { text: '大模型体验记录', link: `${EXPLORE_SHARE_PATH}/大模型体验记录` },

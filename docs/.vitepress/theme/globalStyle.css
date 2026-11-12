@@ -42,3 +42,34 @@
     background-position: -150% 0;
   }
 }
+
+.vp-doc #安卓和mac客户端 + p img,
+.vp-doc #安卓和mac客户端 + p + table img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: min(65vh, 440px);
+  margin-top: .6em;
+}
+
+.vp-doc #安卓和mac客户端 + p + table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  overflow: visible;
+}
+
+.vp-doc #安卓和mac客户端 + p + table :is(tr, th, td) {
+  border: 0;
+  background: transparent;
+}
+
+.vp-doc #安卓和mac客户端 + p + table :is(th, td) {
+  padding: 0 8px 0 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.vp-doc #安卓和mac客户端 + p + table :is(th, td):last-child {
+  padding: 0 0 0 8px;
+}
